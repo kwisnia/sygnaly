@@ -1,5 +1,5 @@
-from Signal import Signal
-class SignalFile(Signal): 
+from SignalFactory import SignalFactory
+class SignalFile(SignalFactory): 
    def __init__(self, signal_dict: dict):
     self.signal_start_time = signal_dict['signal_start_time']
     self.signal_duration = signal_dict['signal_duration']

@@ -1,13 +1,13 @@
 from random import random
 import numpy as np
 import json
-from Signal import Signal
+from SignalFactory import SignalFactory
 from SignalFile import SignalFile
 
 SAMPLES = 1000
 
 
-def save_to_file(signal: Signal):
+def save_to_file(signal: SignalFactory):
     name = signal.name + ".json"
     output = open(name, "w")
     signal_dict = {
