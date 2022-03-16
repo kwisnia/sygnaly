@@ -5,8 +5,7 @@ class Signal:
       self.signal_start_time = signal_start_time
       self.signal_duration = signal_duration
       self.frequency = frequency
-      self.samples, self.values = type_of_signal(
-          frequency, amplitude, signal_duration, signal_start_time)
+      self.samples, self.values = type_of_signal(amplitude, signal_duration, frequency, signal_start_time)
       self.name = type_of_signal.__name__
 
    def save_to_file(self):
