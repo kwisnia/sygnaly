@@ -8,13 +8,14 @@ class Signal:
         signal_duration: float,
         frequency: int,
         type_of_signal: Callable,
-        fullfilment: float = None,
+        fullfilment: float or int = None,
+        sample_rate: float = None
     ):
         self.signal_start_time = signal_start_time
         self.signal_duration = signal_duration
         self.frequency = frequency
         self.samples, self.values = type_of_signal(
-            amplitude, signal_duration, frequency, signal_start_time, fullfilment
+            amplitude, signal_duration, frequency, signal_start_time, fullfilment, sample_rate
         )
         self.name = "".join(
             [str(elem) for elem in type_of_signal.__name__.split("_")[1:]])

@@ -1,7 +1,9 @@
+from random import random
 import numpy as np
 import json
-from Signal import Signal 
+from Signal import Signal
 from SignalFile import SignalFile
+
 SAMPLES = 1000
 
 
@@ -20,6 +22,7 @@ def save_to_file(signal: Signal):
     json.dump(signal_dict, output, indent=6)
     output.close()
 
+
 def load_from_file(filename: str):
     input_file = open(filename)
     signal_dict = json.load(input_file)
@@ -33,6 +36,7 @@ def generate_gauss_noise(
     frequency: int = 0,
     start: float = 0,
     fulfillment: float = 0,
+    sample_rate: float = 0,
 ):
     generator = np.random.default_rng()
     samples = list(np.linspace(start, start + length, SAMPLES))
@@ -46,6 +50,7 @@ def generate_uniform_noise(
     frequency: int = 0,
     start: float = 0,
     fulfillment: float = 0,
+    sample_rate: float = 0,
 ):
     generator = np.random.default_rng()
     samples = list(np.linspace(start, start + length, SAMPLES))
@@ -59,6 +64,7 @@ def generate_sinusoidal_signal(
     frequency: int,
     start: float = 0,
     fulfillment: float = 0,
+    sample_rate: float = 0,
 ):
     samples = list(np.linspace(start, start + length, SAMPLES))
     print(samples)
@@ -75,6 +81,7 @@ def generate_sinusoidal_signal_one_half_straight(
     frequency: int = 0,
     start: float = 0,
     fulfillment: float = 0,
+    sample_rate: float = 0,
 ):
     samples = list(np.linspace(start, start + length, SAMPLES))
     values = list(
@@ -91,7 +98,8 @@ def generate_sinusoidal_signal_straight(
     length: float,
     frequency: int = 0,
     start: float = 0,
-    fulfillment: float = 0,
+    fulfillment: float = None,
+    sample_rate: float = None,
 ):
     samples = list(np.linspace(start, start + length, SAMPLES))
     values = list(
@@ -109,6 +117,7 @@ def generate_rectangle_signal(
     frequency: int = 0,
     start: float = 0,
     fulfillment: float = 0,
+    sample_rate: float = None,
 ):
     samples = list(np.linspace(start, start + length, SAMPLES))
     values = list(
@@ -127,6 +136,7 @@ def generate_rectangle_signal_symmetric(
     frequency: int = 0,
     start: float = 0,
     fulfillment: float = 0,
+    sample_rate: float = None,
 ):
     samples = list(np.linspace(start, start + length, SAMPLES))
     values = list(
@@ -139,10 +149,13 @@ def generate_rectangle_signal_symmetric(
     return samples, values
 
 
-def generate_triangle_signal(amplitude: float, length: float, frequency: int = 0, start: float = 0
-                             ):
+def generate_triangle_signal(
+    amplitude: float, length: float, frequency: int = 0, start: float = 0
+):
     samples = list(np.arange(start, start + length, 1 / FREQUENCY))
-    values = list(2 * np.abs(((sample * 2 * frequency - 0.5) % 2) - 1) - 1 for sample in samples)
+    values = list(
+        2 * np.abs(((sample * 2 * frequency - 0.5) % 2) - 1) - 1 for sample in samples
+    )
     return samples, values
 
 
@@ -152,6 +165,7 @@ def generate_unit_jump_signal(
     frequency: int = 0,
     start: float = 0,
     fulfillment: float = 0,
+    sample_rate: float = None,
 ):
     samples = list(np.linspace(start, start + length, SAMPLES))
     values = list(
@@ -165,12 +179,32 @@ def generate_unit_jump_signal(
     return samples, values
 
 
-def generate_unit_impulse():
-    pass
+def generate_unit_impulse(
+    amplitude: float,
+    length: float,
+    frequency: int = 0,
+    start: float = 0,
+    breakpoint_index: int = 0,
+    sample_rate: float = 0,
+):
+    samples = list(np.linspace(start, start + length, sample_rate * length))
+    values = list(
+        0 if i != breakpoint_index - 1 else amplitude for i in range(len(samples))
+    )
+    return samples, values
 
 
-def generate_impulse_noise():
-    pass
+def generate_impulse_noise(
+    amplitude: float,
+    length: float,
+    frequency: int = 0,
+    start: float = 0,
+    amplitude_probability: float = 0,
+    sample_rate: float = 0,
+):
+    samples = list(np.linspace(start, start + length, sample_rate * length))
+    values = list(amplitude if random() < amplitude_probability else 0 for _ in samples)
+    return samples, values
 
 
 # ▪ (S1) szum o rozkładzie jednostajnym
