@@ -1,24 +1,23 @@
 import numpy as np
 
-FREQUENCY = 50
-
 def generate(type):
    pass
 
-def generate_gauss_noise(amplitude: float, length: float, start: float = 0):
+
+def generate_gauss_noise(frequency: int, amplitude: float, length: float, start: float = 0):
    generator = np.random.default_rng()
-   samples = list(np.arange(start, start + length, 1 / FREQUENCY))
-   values = list([generator.standard_normal(-amplitude, amplitude)
+   samples = list(np.arange(start, start + length, 1 / frequency))
+   values = list([generator.normal(0, 1.0)
                  for _ in samples])
-   return [samples, values]
+   return samples, values
 
 
-def generate_uniform_noise(amplitude: float, length: float, start: float = 0):
+def generate_uniform_noise(frequency: int, amplitude: float, length: float, start: float = 0):
    generator = np.random.default_rng()
-   samples = list(np.arange(start, start + length, 1 / FREQUENCY))
+   samples = list(np.arange(start, start + length, 1 / frequency))
    values = list([generator.uniform(-amplitude, amplitude)
                  for _ in samples])
-   return [samples, values]
+   return samples, values
 
 def generate_sinusoidal_signal():
    pass
