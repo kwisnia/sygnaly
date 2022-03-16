@@ -1,6 +1,30 @@
 import numpy as np
-
+import json
+from Signal import Signal 
+from SignalFile import SignalFile
 SAMPLES = 1000
+
+
+def save_to_file(signal: Signal):
+    name = signal.name + ".json"
+    output = open(name, "w")
+    signal_dict = {
+        "signal_start_time": signal.signal_start_time,
+        "signal_duration": signal.signal_duration,
+        "frequency": signal.frequency,
+        "samples": signal.samples,
+        "values": signal.values,
+        "name": signal.name,
+        "fullfilment": signal.fullfilment,
+    }
+    json.dump(signal_dict, output, indent=6)
+    output.close()
+
+def load_from_file(filename: str):
+    input_file = open(filename)
+    signal_dict = json.load(input_file)
+    input_file.close()
+    return SignalFile(signal_dict)
 
 
 def generate_gauss_noise(
