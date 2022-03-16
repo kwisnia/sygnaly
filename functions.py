@@ -1,50 +1,80 @@
+from random import sample
 import numpy as np
 
+
 def generate(type):
-   pass
+    pass
 
 
-def generate_gauss_noise(frequency: int, amplitude: float, length: float, start: float = 0):
-   generator = np.random.default_rng()
-   samples = list(np.arange(start, start + length, 1 / frequency))
-   values = list([generator.normal(0, 1.0)
-                 for _ in samples])
-   return samples, values
+def generate_gauss_noise(
+    frequency: int, amplitude: float, length: float, start: float = 0
+):
+    generator = np.random.default_rng()
+    samples = list(np.arange(start, start + length, 1 / frequency))
+    values = list([generator.normal(0, 1.0) for _ in samples])
+    return samples, values
 
 
-def generate_uniform_noise(frequency: int, amplitude: float, length: float, start: float = 0):
-   generator = np.random.default_rng()
-   samples = list(np.arange(start, start + length, 1 / frequency))
-   values = list([generator.uniform(-amplitude, amplitude)
-                 for _ in samples])
-   return samples, values
+def generate_uniform_noise(
+    frequency: int, amplitude: float, length: float, start: float = 0
+):
+    generator = np.random.default_rng()
+    samples = list(np.arange(start, start + length, 1 / frequency))
+    values = list([generator.uniform(-amplitude, amplitude) for _ in samples])
+    return samples, values
 
-def generate_sinusoidal_signal():
-   pass
 
-def generate_sinusoidal_signal_one_half_straight():
-   pass
+def generate_sinusoidal_signal(
+    frequency: int, amplitude: float, length: float, start: float = 0
+):
+    samples = list(np.arange(start, start + length, 1 / frequency))
+    values = list(
+        amplitude * np.sin(2 * np.pi / frequency * (sample - start))
+        for sample in samples
+    )
+    return samples, values
 
-def generate_sinusoidal_signal_straight():
-   pass
+
+def generate_sinusoidal_signal_one_half_straight(
+    frequency: int, amplitude: float, length: float, start: float = 0
+):
+    samples = list(np.arange(start, start + length, 1 / frequency))
+    values = list(
+        amplitude * np.sin(sample) if np.sin(sample) > 0 else 0 for sample in samples
+    )
+    return samples, values
+
+
+def generate_sinusoidal_signal_straight(
+    frequency: int, amplitude: float, length: float, start: float = 0
+):
+    samples = list(np.arange(start, start + length, 1 / frequency))
+    values = list((abs(amplitude * np.sin(sample)) for sample in samples))
+    return samples, values
+
 
 def generate_rectangle_signal():
-   pass
+    pass
+
 
 def generate_rectangle_signal_symmetric():
-   pass
+    pass
+
 
 def generate_triangle_signal():
-   pass
+    pass
+
 
 def generate_unit_jump_signal():
-   pass
+    pass
+
 
 def generate_unit_impulse():
-   pass
+    pass
+
 
 def generate_impulse_noise():
-   pass
+    pass
 
 
 # ▪ (S1) szum o rozkładzie jednostajnym
