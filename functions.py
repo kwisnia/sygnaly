@@ -1,4 +1,3 @@
-from random import sample
 import numpy as np
 
 SAMPLES = 1000
@@ -116,8 +115,11 @@ def generate_rectangle_signal_symmetric(
     return samples, values
 
 
-def generate_triangle_signal():
-    pass
+def generate_triangle_signal(amplitude: float, length: float, frequency: int = 0, start: float = 0
+                             ):
+    samples = list(np.arange(start, start + length, 1 / FREQUENCY))
+    values = list(2 * np.abs(((sample * 2 * frequency - 0.5) % 2) - 1) - 1 for sample in samples)
+    return samples, values
 
 
 def generate_unit_jump_signal(
