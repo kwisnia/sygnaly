@@ -1,5 +1,6 @@
 from PySide6 import QtWidgets, QtCore
-from plot import plot_continuous, plot_discrete
+from gui.SignalStatsWindow import SignalStatsWindow
+from plot import histogram, plot_continuous, plot_discrete
 from SignalFactory import SignalFactory
 from functions import *
 from operations import *
@@ -12,8 +13,8 @@ class MainWindow(QtWidgets.QWidget):
         self.signal_factory = SignalFactory()
 
         self.signals = [
-            "Szum o rozkładzie jednostajnym",
             "Szum gaussowski",
+            "Szum o rozkładzie jednostajnym",
             "Sygnał sinusoidalny",
             "Sygnał sinusoidalny wyprostowany jednopołówkowo",
             "Sygnał sinusoidalny wyprostowany dwupołówkowo",
@@ -25,14 +26,20 @@ class MainWindow(QtWidgets.QWidget):
             "Szum impulsowy",
         ]
 
-        self.first_signal = QtWidgets.QComboBox()
+        self.first_signal_combobox = QtWidgets.QComboBox()
         self.first_signal_type = generate_gauss_noise
         self.second_signal_type = generate_gauss_noise
-        self.first_signal.addItems(self.signals)
-        self.second_signal = QtWidgets.QComboBox()
-        self.second_signal.addItems(self.signals)
-        self.first_signal.currentIndexChanged.connect(self.show_first_signal_fields)
-        self.second_signal.currentIndexChanged.connect(self.show_second_signal_fields)
+        self.first_signal = None
+        self.second_signal = None
+        self.first_signal_combobox.addItems(self.signals)
+        self.second_signal_combobox = QtWidgets.QComboBox()
+        self.second_signal_combobox.addItems(self.signals)
+        self.first_signal_combobox.currentIndexChanged.connect(
+            self.show_first_signal_fields
+        )
+        self.second_signal_combobox.currentIndexChanged.connect(
+            self.show_second_signal_fields
+        )
         self.first_signal_start = QtWidgets.QDoubleSpinBox()
         self.second_signal_start = QtWidgets.QDoubleSpinBox()
         self.first_signal_length = QtWidgets.QDoubleSpinBox()
@@ -63,16 +70,34 @@ class MainWindow(QtWidgets.QWidget):
         self.second_signal_file_name = QtWidgets.QLineEdit("Nazwa pliku")
         self.operation_signal_file_name = QtWidgets.QLineEdit("Nazwa pliku")
         self.first_signal_save_button = QtWidgets.QPushButton("Zapisz sygnał do pliku")
+        self.first_signal_load_button = QtWidgets.QPushButton("Wczytaj sygnał z pliku")
         self.second_signal_save_button = QtWidgets.QPushButton("Zapisz sygnał do pliku")
+        self.second_signal_load_button = QtWidgets.QPushButton("Wczytaj sygnał z pliku")
         self.operation_signal_save_button = QtWidgets.QPushButton(
             "Zapisz sygnał z ostatniej operacji do pliku"
         )
 
-        self.first_signal_generate.clicked.connect(self.generate_first_signal)
-        self.second_signal_generate.clicked.connect(self.generate_second_signal)
+        self.first_signal_start.setMaximum(10000)
+        self.second_signal_start.setMaximum(10000)
+        self.first_signal_length.setMaximum(10000)
+        self.second_signal_length.setMaximum(10000)
+        self.first_amplitude.setMaximum(10000)
+        self.second_amplitude.setMaximum(10000)
+        self.first_frequency.setMaximum(10000)
+        self.second_frequency.setMaximum(10000)
+        self.first_fullfilment.setMaximum(10000)
+        self.second_fullfilment.setMaximum(10000)
+        self.first_sample_rate.setMaximum(10000)
+        self.second_sample_rate.setMaximum(10000)
+
+        self.first_signal_generate.clicked.connect(self.generate_first_and_plot)
+        self.second_signal_generate.clicked.connect(self.generate_second_and_plot)
 
         self.first_signal_save_button.clicked.connect(self.save_first_signal_to_file)
         self.second_signal_save_button.clicked.connect(self.save_second_signal_to_file)
+
+        self.first_signal_load_button.clicked.connect(self.load_first_signal)
+        self.second_signal_load_button.clicked.connect(self.load_second_signal)
 
         self.add_signals_button = QtWidgets.QPushButton("Dodaj sygnały")
         self.substract_signals_button = QtWidgets.QPushButton("Odejmij sygnały")
@@ -89,7 +114,7 @@ class MainWindow(QtWidgets.QWidget):
 
         first_signal_components = [
             QtWidgets.QLabel("Typ pierwszego sygnału"),
-            self.first_signal,
+            self.first_signal_combobox,
             self.first_signal_start_text,
             self.first_signal_start,
             self.first_signal_length_text,
@@ -105,11 +130,12 @@ class MainWindow(QtWidgets.QWidget):
             self.first_signal_generate,
             self.first_signal_file_name,
             self.first_signal_save_button,
+            self.first_signal_load_button,
         ]
 
         second_signal_components = [
             QtWidgets.QLabel("Typ drugiego sygnału"),
-            self.second_signal,
+            self.second_signal_combobox,
             self.second_signal_start_text,
             self.second_signal_start,
             self.second_signal_length_text,
@@ -125,6 +151,7 @@ class MainWindow(QtWidgets.QWidget):
             self.second_signal_generate,
             self.second_signal_file_name,
             self.second_signal_save_button,
+            self.second_signal_load_button,
         ]
 
         self.layout = QtWidgets.QGridLayout(self)
@@ -135,12 +162,12 @@ class MainWindow(QtWidgets.QWidget):
         for index, widget in enumerate(second_signal_components):
             self.layout.addWidget(widget, index, 1)
 
-        self.layout.addWidget(self.add_signals_button, 17, 0, 2, 2)
-        self.layout.addWidget(self.substract_signals_button, 18, 0, 2, 2)
-        self.layout.addWidget(self.multiply_signals_button, 19, 0, 2, 2)
-        self.layout.addWidget(self.divide_signals_button, 20, 0, 2, 2)
-        self.layout.addWidget(self.operation_signal_file_name, 21, 0, 2, 2)
-        self.layout.addWidget(self.operation_signal_save_button, 22, 0, 2, 2)
+        self.layout.addWidget(self.add_signals_button, 18, 0, 2, 2)
+        self.layout.addWidget(self.substract_signals_button, 19, 0, 2, 2)
+        self.layout.addWidget(self.multiply_signals_button, 20, 0, 2, 2)
+        self.layout.addWidget(self.divide_signals_button, 21, 0, 2, 2)
+        self.layout.addWidget(self.operation_signal_file_name, 22, 0, 2, 2)
+        self.layout.addWidget(self.operation_signal_save_button, 23, 0, 2, 2)
 
         self.first_amplitude.hide()
         self.first_amplitude_text.hide()
@@ -323,16 +350,14 @@ class MainWindow(QtWidgets.QWidget):
             self.second_sample_rate.show()
             self.second_sample_rate_text.show()
 
-    def plot_signal(self, signal: Signal):
-        if (
-            self.second_signal.currentIndex() == 9
-            or self.second_signal.currentIndex() == 10
-        ):
+    def plot_signal(self, signal: Signal, combobox: QtWidgets.QComboBox):
+        if combobox.currentIndex() == 9 or combobox.currentIndex() == 10:
             plot_discrete(signal)
         else:
             plot_continuous(signal)
+        histogram(signal, int(signal.signal_duration))
 
-    def generate_first_signal(self, plot=True):
+    def generate_first_signal(self):
         signal = self.signal_factory.create(
             amplitude=self.first_amplitude.value(),
             signal_start_time=self.first_signal_start.value(),
@@ -342,11 +367,16 @@ class MainWindow(QtWidgets.QWidget):
             fullfilment=self.first_fullfilment.value(),
             sample_rate=self.first_sample_rate.value(),
         )
-        if plot:
-            self.plot_signal(signal)
+        self.first_signal = signal
         return signal
 
-    def generate_second_signal(self, plot=True):
+    def generate_first_and_plot(self):
+        signal = self.generate_first_signal()
+        self.plot_signal(signal, self.first_signal_combobox)
+        self.popup = SignalStatsWindow(signal)
+        self.popup.show()
+
+    def generate_second_signal(self):
         signal = self.signal_factory.create(
             amplitude=self.second_amplitude.value(),
             signal_start_time=self.second_signal_start.value(),
@@ -356,56 +386,90 @@ class MainWindow(QtWidgets.QWidget):
             fullfilment=self.second_fullfilment.value(),
             sample_rate=self.second_sample_rate.value(),
         )
-        if plot:
-            self.plot_signal(signal)
+        self.second_signal = signal
         return signal
 
+    def generate_second_and_plot(self):
+        signal = self.generate_second_signal()
+        self.plot_signal(signal, self.second_signal_combobox)
+        popup = SignalStatsWindow(signal)
+        popup.show()
+
     def save_first_signal_to_file(self):
-        save_to_file(
-            self.generate_first_signal(False), self.first_signal_file_name.text()
-        )
+        save_to_file(self.generate_first_signal(), self.first_signal_file_name.text())
 
     def save_second_signal_to_file(self):
-        save_to_file(
-            self.generate_second_signal(False), self.second_signal_file_name.text()
-        )
+        save_to_file(self.generate_second_signal(), self.second_signal_file_name.text())
 
     def add_signals(self):
+        if self.first_signal is None:
+            self.generate_first_signal()
+        if self.second_signal is None:
+            self.generate_second_signal()
         self.operation_signal_file_name.show()
         self.operation_signal_save_button.show()
         self.operation_result = add(
-            self.generate_first_signal(plot=False),
-            self.generate_second_signal(plot=False),
+            self.first_signal,
+            self.second_signal,
         )
+        print(self.operation_result.values)
 
-        self.plot_signal(self.operation_result)
+        self.plot_signal(self.operation_result, self.first_signal_combobox)
 
     def substract_signals(self):
+        if self.first_signal is None:
+            self.generate_first_signal()
+        if self.second_signal is None:
+            self.generate_second_signal()
         self.operation_signal_file_name.show()
         self.operation_signal_save_button.show()
         self.operation_result = subtract(
-            self.generate_first_signal(plot=False),
-            self.generate_second_signal(plot=False),
+            self.first_signal,
+            self.second_signal,
         )
-        self.plot_signal(self.operation_result)
+        self.plot_signal(self.operation_result, self.first_signal_combobox)
 
     def multiply_signals(self):
+        if self.first_signal is None:
+            self.generate_first_signal()
+        if self.second_signal is None:
+            self.generate_second_signal()
         self.operation_signal_file_name.show()
         self.operation_signal_save_button.show()
         self.operation_result = multiply(
-            self.generate_first_signal(plot=False),
-            self.generate_second_signal(plot=False),
+            self.first_signal,
+            self.second_signal,
         )
-        self.plot_signal(self.operation_result)
+        self.plot_signal(self.operation_result, self.first_signal_combobox)
 
     def divide_signals(self):
+        if self.first_signal is None:
+            self.generate_first_signal()
+        if self.second_signal is None:
+            self.generate_second_signal()
         self.operation_signal_file_name.show()
         self.operation_signal_save_button.show()
-        self.operation_result = multiply(
-            self.generate_first_signal(plot=False),
-            self.generate_second_signal(plot=False),
-        )
-        self.plot_signal(self.operation_result)
+        self.operation_result = multiply(self.first_signal, self.second_signal)
+        self.plot_signal(self.operation_result, self.first_signal_combobox)
 
     def save_operation_signal_to_file(self):
         save_to_file(self.operation_result, self.operation_signal_file_name.text())
+
+    def load_first_signal(
+        self,
+    ):
+        fileName = QtWidgets.QFileDialog.getOpenFileName(
+            self, "Wybierz sygnał", ".", "Pliki JSON (*.json)"
+        )
+        self.first_signal = load_from_file(fileName[0])
+        self.plot_signal(self.first_signal, self.first_signal_combobox)
+
+    def load_second_signal(
+        self,
+    ):
+        fileName = QtWidgets.QFileDialog.getOpenFileName(
+            self, "Wybierz sygnał", ".", "Pliki JSON (*.json)"
+        )
+        print(fileName)
+        self.second_signal = load_from_file(fileName[0])
+        self.plot_signal(self.second_signal, self.second_signal_combobox)
