@@ -1,23 +1,21 @@
 from random import random
 import numpy as np
 import json
-from SignalFactory import SignalFactory
-from SignalFile import SignalFile
+from Signal import Signal
 
 SAMPLES = 1000
 
 
-def save_to_file(signal: SignalFactory):
+def save_to_file(signal: Signal):
     name = signal.name + ".json"
     output = open(name, "w")
     signal_dict = {
         "signal_start_time": signal.signal_start_time,
         "signal_duration": signal.signal_duration,
-        "frequency": signal.frequency,
         "samples": signal.samples,
         "values": signal.values,
         "name": signal.name,
-        "fullfilment": signal.fullfilment,
+        "sample_rate": signal.sample_rate,
     }
     json.dump(signal_dict, output, indent=6)
     output.close()
@@ -27,7 +25,13 @@ def load_from_file(filename: str):
     input_file = open(filename)
     signal_dict = json.load(input_file)
     input_file.close()
-    return SignalFile(signal_dict)
+    return Signal(
+        signal_dict['signal_start_time'],
+        signal_dict['signal_duration'],
+        signal_dict['samples'],
+        signal_dict['values'],
+        signal_dict['name'],
+        signal_dict['sample_rate'])
 
 
 def generate_gauss_noise(

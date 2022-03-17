@@ -1,5 +1,4 @@
 from typing import Callable
-
 from Signal import Signal
 from functions import SAMPLES
 
@@ -26,4 +25,4 @@ class SignalFactory:
             fullfilment,
             sample_rate,
         )
-        return Signal(signal_start_time, signal_duration, samples, values, name)
+        return Signal(signal_start_time, signal_duration, samples, values, name, sample_rate)
