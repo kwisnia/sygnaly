@@ -26,12 +26,13 @@ def load_from_file(filename: str):
     signal_dict = json.load(input_file)
     input_file.close()
     return Signal(
-        signal_dict['signal_start_time'],
-        signal_dict['signal_duration'],
-        signal_dict['samples'],
-        signal_dict['values'],
-        signal_dict['name'],
-        signal_dict['sample_rate'])
+        signal_dict["signal_start_time"],
+        signal_dict["signal_duration"],
+        signal_dict["samples"],
+        signal_dict["values"],
+        signal_dict["name"],
+        signal_dict["sample_rate"],
+    )
 
 
 def generate_gauss_noise(
@@ -156,7 +157,7 @@ def generate_rectangle_signal_symmetric(
 def generate_triangle_signal(
     amplitude: float, length: float, frequency: int = 0, start: float = 0
 ):
-    samples = list(np.arange(start, start + length, 1 / FREQUENCY))
+    samples = list(np.linspace(start, start + length, SAMPLES))
     values = list(
         2 * np.abs(((sample * 2 * frequency - 0.5) % 2) - 1) - 1 for sample in samples
     )
@@ -191,7 +192,7 @@ def generate_unit_impulse(
     breakpoint_index: int = 0,
     sample_rate: float = 0,
 ):
-    samples = list(np.linspace(start, start + length, sample_rate * length))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list(
         0 if i != breakpoint_index - 1 else amplitude for i in range(len(samples))
     )
@@ -206,7 +207,7 @@ def generate_impulse_noise(
     amplitude_probability: float = 0,
     sample_rate: float = 0,
 ):
-    samples = list(np.linspace(start, start + length, sample_rate * length))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list(amplitude if random() < amplitude_probability else 0 for _ in samples)
     return samples, values
 
