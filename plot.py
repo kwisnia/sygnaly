@@ -8,3 +8,7 @@ def plot_continuous(signal: Signal):
 def plot_discrete(signal: Signal):
    plt.scatter(signal.samples, signal.values)
    plt.show()
+
+def histogram(signal: Signal, bins: int):
+   plt.hist(signal.samples, signal.values, bins=bins)
+   plt.show()
