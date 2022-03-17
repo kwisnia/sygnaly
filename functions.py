@@ -156,8 +156,14 @@ def generate_rectangle_signal_symmetric(
 
 
 def generate_triangle_signal(
-    amplitude: float, length: float, frequency: int = 0, start: float = 0
+    amplitude: float,
+    length: float,
+    frequency: int = 0,
+    start: float = 0,
+    fulfillment: float = 0,
+    sample_rate: float = None,
 ):
+    # TODO: Include fulfillment param in calculation
     samples = list(np.linspace(start, start + length, SAMPLES))
     values = list(
         2 * np.abs(((sample * 2 * frequency - 0.5) % 2) - 1) - 1 for sample in samples

@@ -232,7 +232,7 @@ class MainWindow(QtWidgets.QWidget):
             self.first_frequency.show()
             self.first_frequency_text.show()
             self.first_fullfilment.show()
-            self.first_fullfilment_text.setText("Długość okresu")
+            self.first_fullfilment_text.setText("Współczynnik wypełnienia")
             self.first_fullfilment_text.show()
             self.first_sample_rate.hide()
             self.first_sample_rate_text.hide()
