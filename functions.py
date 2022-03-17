@@ -15,6 +15,7 @@ def save_to_file(signal: Signal):
         "samples": signal.samples,
         "values": signal.values,
         "name": signal.name,
+        "frequency": signal.frequency,
         "sample_rate": signal.sample_rate,
     }
     json.dump(signal_dict, output, indent=6)
@@ -31,6 +32,7 @@ def load_from_file(filename: str):
         signal_dict["samples"],
         signal_dict["values"],
         signal_dict["name"],
+        signal_dict["frequency"],
         signal_dict["sample_rate"],
     )
 

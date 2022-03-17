@@ -1,10 +1,15 @@
+from SignalFactory import SignalFactory
 from Signal import Signal
 import numpy as np
 
 
 def avg_signal_value(signal: Signal):
    if (signal.frequency is not None):
-      pass
+      num_of_samples_in_interval = (len(signal.samples) / signal.signal_duration) / signal.frequency
+      unnecessary_samples = len(signal.samples) % num_of_samples_in_interval
+      valid_samples = signal.samples[:len(signal.samples) - unnecessary_samples]
+      value = (
+          1 / (valid_samples[-1] - valid_samples[0] + 1)) * np.sum(signal.values[:len(signal.samples) - unnecessary_samples])
    else:
       value = (1 / (signal.samples[-1] - signal.samples[0] + 1)) * np.sum(signal.values)
    return value
