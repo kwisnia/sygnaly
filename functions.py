@@ -74,7 +74,6 @@ def generate_sinusoidal_signal(
     sample_rate: float = 0,
 ):
     samples = list(np.linspace(start, start + length, SAMPLES))
-    print(samples)
     values = list(
         amplitude * np.sin(2 * np.pi * frequency * (sample - start))
         for sample in samples

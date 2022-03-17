@@ -25,4 +25,4 @@ class SignalFactory:
             fullfilment,
             sample_rate,
         )
-        return Signal(signal_start_time, signal_duration, samples, values, name, sample_rate)
+        return Signal(signal_start_time, signal_duration, samples, values, name, frequency, sample_rate)
