@@ -6,8 +6,8 @@ from Signal import Signal
 SAMPLES = 1000
 
 
-def save_to_file(signal: Signal):
-    name = signal.name + ".json"
+def save_to_file(signal: Signal, file_name: str):
+    name = file_name + ".json"
     output = open(name, "w")
     signal_dict = {
         "signal_start_time": signal.signal_start_time,

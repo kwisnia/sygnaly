@@ -2,6 +2,7 @@ from PySide6 import QtWidgets, QtCore
 from plot import plot_continuous, plot_discrete
 from SignalFactory import SignalFactory
 from functions import *
+from operations import *
 
 
 class MainWindow(QtWidgets.QWidget):
@@ -58,9 +59,33 @@ class MainWindow(QtWidgets.QWidget):
         self.second_sample_rate_text = QtWidgets.QLabel("Częstotliwość próbkowania")
         self.first_signal_generate = QtWidgets.QPushButton("Generuj sygnał")
         self.second_signal_generate = QtWidgets.QPushButton("Generuj sygnał")
+        self.first_signal_file_name = QtWidgets.QLineEdit("Nazwa pliku")
+        self.second_signal_file_name = QtWidgets.QLineEdit("Nazwa pliku")
+        self.operation_signal_file_name = QtWidgets.QLineEdit("Nazwa pliku")
+        self.first_signal_save_button = QtWidgets.QPushButton("Zapisz sygnał do pliku")
+        self.second_signal_save_button = QtWidgets.QPushButton("Zapisz sygnał do pliku")
+        self.operation_signal_save_button = QtWidgets.QPushButton(
+            "Zapisz sygnał z ostatniej operacji do pliku"
+        )
 
         self.first_signal_generate.clicked.connect(self.generate_first_signal)
         self.second_signal_generate.clicked.connect(self.generate_second_signal)
+
+        self.first_signal_save_button.clicked.connect(self.save_first_signal_to_file)
+        self.second_signal_save_button.clicked.connect(self.save_second_signal_to_file)
+
+        self.add_signals_button = QtWidgets.QPushButton("Dodaj sygnały")
+        self.substract_signals_button = QtWidgets.QPushButton("Odejmij sygnały")
+        self.multiply_signals_button = QtWidgets.QPushButton("Pomnóż sygnały")
+        self.divide_signals_button = QtWidgets.QPushButton("Podziel sygnały")
+
+        self.add_signals_button.clicked.connect(self.add_signals)
+        self.substract_signals_button.clicked.connect(self.substract_signals)
+        self.multiply_signals_button.clicked.connect(self.multiply_signals)
+        self.divide_signals_button.clicked.connect(self.divide_signals)
+        self.operation_signal_save_button.clicked.connect(
+            self.save_operation_signal_to_file
+        )
 
         first_signal_components = [
             QtWidgets.QLabel("Typ pierwszego sygnału"),
@@ -78,6 +103,8 @@ class MainWindow(QtWidgets.QWidget):
             self.first_sample_rate_text,
             self.first_sample_rate,
             self.first_signal_generate,
+            self.first_signal_file_name,
+            self.first_signal_save_button,
         ]
 
         second_signal_components = [
@@ -96,6 +123,8 @@ class MainWindow(QtWidgets.QWidget):
             self.second_sample_rate_text,
             self.second_sample_rate,
             self.second_signal_generate,
+            self.second_signal_file_name,
+            self.second_signal_save_button,
         ]
 
         self.layout = QtWidgets.QGridLayout(self)
@@ -105,6 +134,13 @@ class MainWindow(QtWidgets.QWidget):
 
         for index, widget in enumerate(second_signal_components):
             self.layout.addWidget(widget, index, 1)
+
+        self.layout.addWidget(self.add_signals_button, 17, 0, 2, 2)
+        self.layout.addWidget(self.substract_signals_button, 18, 0, 2, 2)
+        self.layout.addWidget(self.multiply_signals_button, 19, 0, 2, 2)
+        self.layout.addWidget(self.divide_signals_button, 20, 0, 2, 2)
+        self.layout.addWidget(self.operation_signal_file_name, 21, 0, 2, 2)
+        self.layout.addWidget(self.operation_signal_save_button, 22, 0, 2, 2)
 
         self.first_amplitude.hide()
         self.first_amplitude_text.hide()
@@ -123,6 +159,9 @@ class MainWindow(QtWidgets.QWidget):
         self.second_fullfilment_text.hide()
         self.second_sample_rate.hide()
         self.second_sample_rate_text.hide()
+
+        self.operation_signal_file_name.hide()
+        self.operation_signal_save_button.hide()
 
     def show_first_signal_fields(self, index):
         if index == 0:
@@ -284,7 +323,16 @@ class MainWindow(QtWidgets.QWidget):
             self.second_sample_rate.show()
             self.second_sample_rate_text.show()
 
-    def generate_first_signal(self):
+    def plot_signal(self, signal: Signal):
+        if (
+            self.second_signal.currentIndex() == 9
+            or self.second_signal.currentIndex() == 10
+        ):
+            plot_discrete(signal)
+        else:
+            plot_continuous(signal)
+
+    def generate_first_signal(self, plot=True):
         signal = self.signal_factory.create(
             amplitude=self.first_amplitude.value(),
             signal_start_time=self.first_signal_start.value(),
@@ -294,15 +342,11 @@ class MainWindow(QtWidgets.QWidget):
             fullfilment=self.first_fullfilment.value(),
             sample_rate=self.first_sample_rate.value(),
         )
-        if (
-            self.first_signal.currentIndex() == 9
-            or self.first_signal.currentIndex() == 10
-        ):
-            plot_discrete(signal)
-        else:
-            plot_continuous(signal)
+        if plot:
+            self.plot_signal(signal)
+        return signal
 
-    def generate_second_signal(self):
+    def generate_second_signal(self, plot=True):
         signal = self.signal_factory.create(
             amplitude=self.second_amplitude.value(),
             signal_start_time=self.second_signal_start.value(),
@@ -312,10 +356,56 @@ class MainWindow(QtWidgets.QWidget):
             fullfilment=self.second_fullfilment.value(),
             sample_rate=self.second_sample_rate.value(),
         )
-        if (
-            self.second_signal.currentIndex() == 9
-            or self.second_signal.currentIndex() == 10
-        ):
-            plot_discrete(signal)
-        else:
-            plot_continuous(signal)
+        if plot:
+            self.plot_signal(signal)
+        return signal
+
+    def save_first_signal_to_file(self):
+        save_to_file(
+            self.generate_first_signal(False), self.first_signal_file_name.text()
+        )
+
+    def save_second_signal_to_file(self):
+        save_to_file(
+            self.generate_second_signal(False), self.second_signal_file_name.text()
+        )
+
+    def add_signals(self):
+        self.operation_signal_file_name.show()
+        self.operation_signal_save_button.show()
+        self.operation_result = add(
+            self.generate_first_signal(plot=False),
+            self.generate_second_signal(plot=False),
+        )
+
+        self.plot_signal(self.operation_result)
+
+    def substract_signals(self):
+        self.operation_signal_file_name.show()
+        self.operation_signal_save_button.show()
+        self.operation_result = subtract(
+            self.generate_first_signal(plot=False),
+            self.generate_second_signal(plot=False),
+        )
+        self.plot_signal(self.operation_result)
+
+    def multiply_signals(self):
+        self.operation_signal_file_name.show()
+        self.operation_signal_save_button.show()
+        self.operation_result = multiply(
+            self.generate_first_signal(plot=False),
+            self.generate_second_signal(plot=False),
+        )
+        self.plot_signal(self.operation_result)
+
+    def divide_signals(self):
+        self.operation_signal_file_name.show()
+        self.operation_signal_save_button.show()
+        self.operation_result = multiply(
+            self.generate_first_signal(plot=False),
+            self.generate_second_signal(plot=False),
+        )
+        self.plot_signal(self.operation_result)
+
+    def save_operation_signal_to_file(self):
+        save_to_file(self.operation_result, self.operation_signal_file_name.text())
