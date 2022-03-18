@@ -163,10 +163,14 @@ def generate_triangle_signal(
     fulfillment: float = 0,
     sample_rate: float = None,
 ):
-    # TODO: Include fulfillment param in calculation
     samples = list(np.linspace(start, start + length, SAMPLES))
     values = list(
-        2 * np.abs(((sample * 2 * frequency - 0.5) % 2) - 1) - 1 for sample in samples
+        (amplitude / (fulfillment * frequency)) * (sample - (frequency * int(sample / frequency)) - start)
+        if 
+            (frequency * int(sample / frequency)) + start <= sample < (fulfillment * frequency) + (frequency * int(sample / frequency)) + start
+        else 
+            -(amplitude / (frequency * (1 - fulfillment))) * (sample - (frequency * int(sample / frequency)) - start) + (amplitude / (1 - fulfillment))
+        for sample in samples 
     )
     return samples, values
 
