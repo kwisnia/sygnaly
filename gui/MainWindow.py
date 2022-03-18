@@ -392,8 +392,8 @@ class MainWindow(QtWidgets.QWidget):
     def generate_second_and_plot(self):
         signal = self.generate_second_signal()
         self.plot_signal(signal, self.second_signal_combobox)
-        popup = SignalStatsWindow(signal)
-        popup.show()
+        self.popup = SignalStatsWindow(signal)
+        self.popup.show()
 
     def save_first_signal_to_file(self):
         save_to_file(self.generate_first_signal(), self.first_signal_file_name.text())
@@ -412,9 +412,10 @@ class MainWindow(QtWidgets.QWidget):
             self.first_signal,
             self.second_signal,
         )
-        print(self.operation_result.values)
 
         self.plot_signal(self.operation_result, self.first_signal_combobox)
+        self.popup = SignalStatsWindow(self.operation_result)
+        self.popup.show()
 
     def substract_signals(self):
         if self.first_signal is None:
@@ -428,6 +429,8 @@ class MainWindow(QtWidgets.QWidget):
             self.second_signal,
         )
         self.plot_signal(self.operation_result, self.first_signal_combobox)
+        self.popup = SignalStatsWindow(self.operation_result)
+        self.popup.show()
 
     def multiply_signals(self):
         if self.first_signal is None:
@@ -441,6 +444,8 @@ class MainWindow(QtWidgets.QWidget):
             self.second_signal,
         )
         self.plot_signal(self.operation_result, self.first_signal_combobox)
+        self.popup = SignalStatsWindow(self.operation_result)
+        self.popup.show()
 
     def divide_signals(self):
         if self.first_signal is None:
@@ -449,8 +454,10 @@ class MainWindow(QtWidgets.QWidget):
             self.generate_second_signal()
         self.operation_signal_file_name.show()
         self.operation_signal_save_button.show()
-        self.operation_result = multiply(self.first_signal, self.second_signal)
+        self.operation_result = divide(self.first_signal, self.second_signal)
         self.plot_signal(self.operation_result, self.first_signal_combobox)
+        self.popup = SignalStatsWindow(self.operation_result)
+        self.popup.show()
 
     def save_operation_signal_to_file(self):
         save_to_file(self.operation_result, self.operation_signal_file_name.text())

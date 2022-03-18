@@ -52,5 +52,5 @@ def rms_signal_value(signal: Signal):
     # if (signal.frequency is not None):
     #    pass
     # else:
-    value = np.sqrt(avg_signal_power(signal)) * signal.signal_duration / SAMPLES
+    value = np.sqrt(avg_signal_power(signal))
     return value
