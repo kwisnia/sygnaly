@@ -46,7 +46,7 @@ def generate_gauss_noise(
     sample_rate: float = 0,
 ):
     generator = np.random.default_rng()
-    samples = list(np.linspace(start, start + length, SAMPLES))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list([generator.normal(0, 1.0) for _ in samples])
     return samples, values
 
@@ -60,7 +60,7 @@ def generate_uniform_noise(
     sample_rate: float = 0,
 ):
     generator = np.random.default_rng()
-    samples = list(np.linspace(start, start + length, SAMPLES))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list([generator.uniform(-amplitude, amplitude) for _ in samples])
     return samples, values
 
@@ -73,7 +73,7 @@ def generate_sinusoidal_signal(
     fulfillment: float = 0,
     sample_rate: float = 0,
 ):
-    samples = list(np.linspace(start, start + length, SAMPLES))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list(
         amplitude * np.sin(2 * np.pi * frequency * (sample - start))
         for sample in samples
@@ -89,7 +89,7 @@ def generate_sinusoidal_signal_one_half_straight(
     fulfillment: float = 0,
     sample_rate: float = 0,
 ):
-    samples = list(np.linspace(start, start + length, SAMPLES))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list(
         amplitude * np.sin(2 * np.pi * frequency * (sample - start))
         if amplitude * np.sin(2 * np.pi * frequency * (sample - start)) > 0
@@ -107,7 +107,7 @@ def generate_sinusoidal_signal_straight(
     fulfillment: float = None,
     sample_rate: float = None,
 ):
-    samples = list(np.linspace(start, start + length, SAMPLES))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list(
         (
             abs(amplitude * np.sin(2 * np.pi * frequency * (sample - start)))
@@ -125,7 +125,7 @@ def generate_rectangle_signal(
     fulfillment: float = 0,
     sample_rate: float = None,
 ):
-    samples = list(np.linspace(start, start + length, SAMPLES))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list(
         amplitude
         if ((sample - start) * frequency) - np.floor((sample - start) * frequency)
@@ -144,7 +144,7 @@ def generate_rectangle_signal_symmetric(
     fulfillment: float = 0,
     sample_rate: float = None,
 ):
-    samples = list(np.linspace(start, start + length, SAMPLES))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list(
         amplitude
         if ((sample - start) * frequency) - np.floor((sample - start) * frequency)
@@ -163,7 +163,7 @@ def generate_triangle_signal(
     fulfillment: float = 0,
     sample_rate: float = None,
 ):
-    samples = list(np.linspace(start, start + length, SAMPLES))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list(
         (amplitude / (fulfillment * frequency)) * (sample - (frequency * int(sample / frequency)) - start)
         if 
@@ -183,7 +183,7 @@ def generate_unit_jump_signal(
     fulfillment: float = 0,
     sample_rate: float = None,
 ):
-    samples = list(np.linspace(start, start + length, SAMPLES))
+    samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list(
         amplitude
         if sample > fulfillment

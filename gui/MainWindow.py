@@ -175,8 +175,6 @@ class MainWindow(QtWidgets.QWidget):
         self.first_frequency_text.hide()
         self.first_fullfilment.hide()
         self.first_fullfilment_text.hide()
-        self.first_sample_rate.hide()
-        self.first_sample_rate_text.hide()
 
         self.second_amplitude.hide()
         self.second_amplitude_text.hide()
@@ -184,8 +182,6 @@ class MainWindow(QtWidgets.QWidget):
         self.second_frequency_text.hide()
         self.second_fullfilment.hide()
         self.second_fullfilment_text.hide()
-        self.second_sample_rate.hide()
-        self.second_sample_rate_text.hide()
 
         self.operation_signal_file_name.hide()
         self.operation_signal_save_button.hide()
@@ -198,8 +194,6 @@ class MainWindow(QtWidgets.QWidget):
             self.first_frequency_text.hide()
             self.first_fullfilment.hide()
             self.first_fullfilment_text.hide()
-            self.first_sample_rate.hide()
-            self.first_sample_rate_text.hide()
             self.first_signal_type = generate_gauss_noise
         elif index == 1:
             self.first_amplitude_text.show()
@@ -208,8 +202,6 @@ class MainWindow(QtWidgets.QWidget):
             self.first_frequency_text.hide()
             self.first_fullfilment.hide()
             self.first_fullfilment_text.hide()
-            self.first_sample_rate.hide()
-            self.first_sample_rate_text.hide()
             self.first_signal_type = generate_uniform_noise
         elif index == 2 or index == 3 or index == 4:
             self.first_amplitude_text.show()
@@ -218,8 +210,6 @@ class MainWindow(QtWidgets.QWidget):
             self.first_frequency_text.show()
             self.first_fullfilment.hide()
             self.first_fullfilment_text.hide()
-            self.first_sample_rate.hide()
-            self.first_sample_rate_text.hide()
             if index == 2:
                 self.first_signal_type = generate_sinusoidal_signal
             elif index == 3:
@@ -234,8 +224,6 @@ class MainWindow(QtWidgets.QWidget):
             self.first_fullfilment.show()
             self.first_fullfilment_text.setText("Współczynnik wypełnienia")
             self.first_fullfilment_text.show()
-            self.first_sample_rate.hide()
-            self.first_sample_rate_text.hide()
             if index == 5:
                 self.first_signal_type = generate_rectangle_signal
             elif index == 6:
@@ -250,8 +238,6 @@ class MainWindow(QtWidgets.QWidget):
             self.first_fullfilment.show()
             self.first_fullfilment_text.setText("Czas skoku")
             self.first_fullfilment_text.show()
-            self.first_sample_rate.hide()
-            self.first_sample_rate_text.hide()
             self.first_signal_type = generate_unit_jump_signal
         elif index == 9 or index == 10:
             self.first_amplitude_text.show()
@@ -278,8 +264,6 @@ class MainWindow(QtWidgets.QWidget):
             self.second_frequency_text.hide()
             self.second_fullfilment.hide()
             self.second_fullfilment_text.hide()
-            self.second_sample_rate.hide()
-            self.second_sample_rate_text.hide()
             self.second_signal_type = generate_gauss_noise
         elif index == 1:
             self.second_amplitude_text.show()
@@ -288,8 +272,6 @@ class MainWindow(QtWidgets.QWidget):
             self.second_frequency_text.hide()
             self.second_fullfilment.hide()
             self.second_fullfilment_text.hide()
-            self.second_sample_rate.hide()
-            self.second_sample_rate_text.hide()
             self.second_signal_type = generate_uniform_noise
         elif index == 2 or index == 3 or index == 4:
             self.second_amplitude_text.show()
@@ -298,8 +280,6 @@ class MainWindow(QtWidgets.QWidget):
             self.second_frequency_text.show()
             self.second_fullfilment.hide()
             self.second_fullfilment_text.hide()
-            self.second_sample_rate.hide()
-            self.second_sample_rate_text.hide()
             if index == 2:
                 self.second_signal_type = generate_sinusoidal_signal
             elif index == 3:
@@ -314,8 +294,6 @@ class MainWindow(QtWidgets.QWidget):
             self.second_fullfilment.show()
             self.second_fullfilment_text.setText("Długość okresu")
             self.second_fullfilment_text.show()
-            self.second_sample_rate.hide()
-            self.second_sample_rate_text.hide()
             if index == 5:
                 self.second_signal_type = generate_rectangle_signal
             elif index == 6:
@@ -330,8 +308,6 @@ class MainWindow(QtWidgets.QWidget):
             self.second_fullfilment.show()
             self.second_fullfilment_text.setText("Czas skoku")
             self.second_fullfilment_text.show()
-            self.second_sample_rate.hide()
-            self.second_sample_rate_text.hide()
             self.second_signal_type = generate_unit_jump_signal
         elif index == 9 or index == 10:
             self.first_amplitude_text.show()
@@ -363,9 +339,9 @@ class MainWindow(QtWidgets.QWidget):
             signal_start_time=self.first_signal_start.value(),
             signal_duration=self.first_signal_length.value(),
             frequency=self.first_frequency.value(),
+            sample_rate=self.first_sample_rate.value(),
             type_of_signal=self.first_signal_type,
             fullfilment=self.first_fullfilment.value(),
-            sample_rate=self.first_sample_rate.value(),
         )
         self.first_signal = signal
         return signal
@@ -382,9 +358,9 @@ class MainWindow(QtWidgets.QWidget):
             signal_start_time=self.second_signal_start.value(),
             signal_duration=self.second_signal_length.value(),
             frequency=self.second_frequency.value(),
+            sample_rate=self.second_sample_rate.value(),
             type_of_signal=self.second_signal_type,
             fullfilment=self.second_fullfilment.value(),
-            sample_rate=self.second_sample_rate.value(),
         )
         self.second_signal = signal
         return signal

@@ -10,9 +10,9 @@ class SignalFactory:
         signal_start_time: float,
         signal_duration: float,
         frequency: int,
+        sample_rate: float,
         type_of_signal: Callable,
         fullfilment: float or int = None,
-        sample_rate: float = None,
     ):
         name = "".join([str(elem) for elem in type_of_signal.__name__.split("_")[1:]])
         if sample_rate is None:
