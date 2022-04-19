@@ -44,7 +44,7 @@ def signal_to_noise_ratio(original_signal, reconstructed_signal):
 
 
 def peak_signal_to_noise_ratio(original_signal, reconstructed_signal):
-    return 10 * math.log(max(original_signal.values)/mean_square_error(original_signal, reconstructed_signal), 10)
+    return 10 * math.log(max(original_signal.values) / mean_square_error(original_signal, reconstructed_signal), 10)
 
 
 def maximum_difference(original_signal, reconstructed_signal):
