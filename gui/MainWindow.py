@@ -4,6 +4,9 @@ from plot import histogram, plot_continuous, plot_discrete
 from SignalFactory import SignalFactory
 from functions import *
 from operations import *
+from quantization import quantize_rounded
+from reconstruction import first_order_hold, sinc, zero_order_hold
+from stats import mean_square_error
 
 
 class MainWindow(QtWidgets.QWidget):
@@ -25,15 +28,24 @@ class MainWindow(QtWidgets.QWidget):
             "Impuls jednostkowy",
             "Szum impulsowy",
         ]
+        self.reconstruction_methods = [
+            "Zero order hold",
+            "First order hold",
+            "Interpolacja sinc",
+        ]
 
         self.first_signal_combobox = QtWidgets.QComboBox()
+        self.first_signal_reconstruction_combobox = QtWidgets.QComboBox()
         self.first_signal_type = generate_gauss_noise
         self.second_signal_type = generate_gauss_noise
         self.first_signal = None
         self.second_signal = None
         self.first_signal_combobox.addItems(self.signals)
+        self.first_signal_reconstruction_combobox.addItems(self.reconstruction_methods)
         self.second_signal_combobox = QtWidgets.QComboBox()
+        self.second_signal_reconstruction_combobox = QtWidgets.QComboBox()
         self.second_signal_combobox.addItems(self.signals)
+        self.second_signal_reconstruction_combobox.addItems(self.reconstruction_methods)
         self.first_signal_combobox.currentIndexChanged.connect(
             self.show_first_signal_fields
         )
@@ -52,6 +64,8 @@ class MainWindow(QtWidgets.QWidget):
         self.second_fullfilment = QtWidgets.QDoubleSpinBox()
         self.first_sample_rate = QtWidgets.QDoubleSpinBox()
         self.second_sample_rate = QtWidgets.QDoubleSpinBox()
+        self.first_bit_count = QtWidgets.QDoubleSpinBox()
+        self.second_bit_count = QtWidgets.QDoubleSpinBox()
         self.first_signal_start_text = QtWidgets.QLabel("Początek sygnału")
         self.second_signal_start_text = QtWidgets.QLabel("Początek sygnału")
         self.first_signal_length_text = QtWidgets.QLabel("Długość sygnału")
@@ -64,6 +78,8 @@ class MainWindow(QtWidgets.QWidget):
         self.second_fullfilment_text = QtWidgets.QLabel("Długość okresu")
         self.first_sample_rate_text = QtWidgets.QLabel("Częstotliwość próbkowania")
         self.second_sample_rate_text = QtWidgets.QLabel("Częstotliwość próbkowania")
+        self.first_bit_count_text = QtWidgets.QLabel("Liczba bitów kwantyfikacji")
+        self.second_bit_count_text = QtWidgets.QLabel("Liczba bitów kwantyfikacji")
         self.first_signal_generate = QtWidgets.QPushButton("Generuj sygnał")
         self.second_signal_generate = QtWidgets.QPushButton("Generuj sygnał")
         self.first_signal_file_name = QtWidgets.QLineEdit("Nazwa pliku")
@@ -83,12 +99,12 @@ class MainWindow(QtWidgets.QWidget):
         self.second_signal_length.setMaximum(10000)
         self.first_amplitude.setMaximum(10000)
         self.second_amplitude.setMaximum(10000)
-        self.first_frequency.setMaximum(10000)
-        self.second_frequency.setMaximum(10000)
+        self.first_frequency.setMaximum(100000)
+        self.second_frequency.setMaximum(100000)
         self.first_fullfilment.setMaximum(10000)
         self.second_fullfilment.setMaximum(10000)
-        self.first_sample_rate.setMaximum(10000)
-        self.second_sample_rate.setMaximum(10000)
+        self.first_sample_rate.setMaximum(100000)
+        self.second_sample_rate.setMaximum(100000)
 
         self.first_signal_generate.clicked.connect(self.generate_first_and_plot)
         self.second_signal_generate.clicked.connect(self.generate_second_and_plot)
@@ -127,6 +143,10 @@ class MainWindow(QtWidgets.QWidget):
             self.first_fullfilment,
             self.first_sample_rate_text,
             self.first_sample_rate,
+            self.first_bit_count_text,
+            self.first_bit_count,
+            QtWidgets.QLabel("Typ rekonstrukcji pierwszego sygnału"),
+            self.first_signal_reconstruction_combobox,
             self.first_signal_generate,
             self.first_signal_file_name,
             self.first_signal_save_button,
@@ -148,6 +168,10 @@ class MainWindow(QtWidgets.QWidget):
             self.second_fullfilment,
             self.second_sample_rate_text,
             self.second_sample_rate,
+            self.second_bit_count_text,
+            self.second_bit_count,
+            QtWidgets.QLabel("Typ rekonstrukcji drugiego sygnału"),
+            self.second_signal_reconstruction_combobox,
             self.second_signal_generate,
             self.second_signal_file_name,
             self.second_signal_save_button,
@@ -162,12 +186,12 @@ class MainWindow(QtWidgets.QWidget):
         for index, widget in enumerate(second_signal_components):
             self.layout.addWidget(widget, index, 1)
 
-        self.layout.addWidget(self.add_signals_button, 18, 0, 2, 2)
-        self.layout.addWidget(self.substract_signals_button, 19, 0, 2, 2)
-        self.layout.addWidget(self.multiply_signals_button, 20, 0, 2, 2)
-        self.layout.addWidget(self.divide_signals_button, 21, 0, 2, 2)
-        self.layout.addWidget(self.operation_signal_file_name, 22, 0, 2, 2)
-        self.layout.addWidget(self.operation_signal_save_button, 23, 0, 2, 2)
+        self.layout.addWidget(self.add_signals_button, 22, 0, 2, 2)
+        self.layout.addWidget(self.substract_signals_button, 23, 0, 2, 2)
+        self.layout.addWidget(self.multiply_signals_button, 24, 0, 2, 2)
+        self.layout.addWidget(self.divide_signals_button, 25, 0, 2, 2)
+        self.layout.addWidget(self.operation_signal_file_name, 26, 0, 2, 2)
+        self.layout.addWidget(self.operation_signal_save_button, 27, 0, 2, 2)
 
         self.first_amplitude.hide()
         self.first_amplitude_text.hide()
@@ -326,11 +350,8 @@ class MainWindow(QtWidgets.QWidget):
             self.second_sample_rate.show()
             self.second_sample_rate_text.show()
 
-    def plot_signal(self, signal: Signal, combobox: QtWidgets.QComboBox):
-        if combobox.currentIndex() == 9 or combobox.currentIndex() == 10:
-            plot_discrete(signal)
-        else:
-            plot_continuous(signal)
+    def plot_signal(self, signal: Signal, second_signal: Signal = None):
+        plot_discrete(signal, second_signal)
         histogram(signal, int(signal.signal_duration))
 
     def generate_first_signal(self):
@@ -343,13 +364,34 @@ class MainWindow(QtWidgets.QWidget):
             type_of_signal=self.first_signal_type,
             fullfilment=self.first_fullfilment.value(),
         )
+        signal2 = self.signal_factory.create(
+            amplitude=self.first_amplitude.value(),
+            signal_start_time=self.first_signal_start.value(),
+            signal_duration=self.first_signal_length.value(),
+            frequency=self.first_frequency.value(),
+            sample_rate=10000,
+            type_of_signal=self.first_signal_type,
+            fullfilment=self.first_fullfilment.value(),
+        )
         self.first_signal = signal
-        return signal
+        return signal, signal2
 
     def generate_first_and_plot(self):
-        signal = self.generate_first_signal()
-        self.plot_signal(signal, self.first_signal_combobox)
-        self.popup = SignalStatsWindow(signal)
+        sampled_signal, original_signal = self.generate_first_signal()
+        self.plot_signal(sampled_signal, original_signal)
+        quantized_signal = quantize_rounded(
+            sampled_signal, int(self.first_bit_count.value()), original_signal
+        )
+        index = self.first_signal_reconstruction_combobox.currentIndex()
+        if index == 0:
+            reconstructed_signal = zero_order_hold(sampled_signal, original_signal)
+        elif index == 1:
+            reconstructed_signal = first_order_hold(sampled_signal, original_signal)
+        else:
+            reconstructed_signal = sinc(sampled_signal, original_signal)
+        self.popup = SignalStatsWindow(
+            original_signal, reconstructed_signal, sampled_signal, quantized_signal
+        )
         self.popup.show()
 
     def generate_second_signal(self):
@@ -362,12 +404,21 @@ class MainWindow(QtWidgets.QWidget):
             type_of_signal=self.second_signal_type,
             fullfilment=self.second_fullfilment.value(),
         )
-        self.second_signal = signal
-        return signal
+        signal2 = self.signal_factory
+        self.second_signal = self.signal_factory.create(
+            amplitude=self.second_amplitude.value(),
+            signal_start_time=self.second_signal_start.value(),
+            signal_duration=self.second_signal_length.value(),
+            frequency=self.second_frequency.value(),
+            sample_rate=10000,
+            type_of_signal=self.second_signal_type,
+            fullfilment=self.second_fullfilment.value(),
+        )
+        return signal, signal2
 
     def generate_second_and_plot(self):
-        signal = self.generate_second_signal()
-        self.plot_signal(signal, self.second_signal_combobox)
+        signal, signal2 = self.generate_second_signal()
+        self.plot_signal(signal, signal2)
         self.popup = SignalStatsWindow(signal)
         self.popup.show()
 
@@ -389,7 +440,7 @@ class MainWindow(QtWidgets.QWidget):
             self.second_signal,
         )
 
-        self.plot_signal(self.operation_result, self.first_signal_combobox)
+        self.plot_signal(self.operation_result)
         self.popup = SignalStatsWindow(self.operation_result)
         self.popup.show()
 
@@ -404,7 +455,7 @@ class MainWindow(QtWidgets.QWidget):
             self.first_signal,
             self.second_signal,
         )
-        self.plot_signal(self.operation_result, self.first_signal_combobox)
+        self.plot_signal(self.operation_result)
         self.popup = SignalStatsWindow(self.operation_result)
         self.popup.show()
 
@@ -419,7 +470,7 @@ class MainWindow(QtWidgets.QWidget):
             self.first_signal,
             self.second_signal,
         )
-        self.plot_signal(self.operation_result, self.first_signal_combobox)
+        self.plot_signal(self.operation_result)
         self.popup = SignalStatsWindow(self.operation_result)
         self.popup.show()
 
@@ -431,7 +482,7 @@ class MainWindow(QtWidgets.QWidget):
         self.operation_signal_file_name.show()
         self.operation_signal_save_button.show()
         self.operation_result = divide(self.first_signal, self.second_signal)
-        self.plot_signal(self.operation_result, self.first_signal_combobox)
+        self.plot_signal(self.operation_result)
         self.popup = SignalStatsWindow(self.operation_result)
         self.popup.show()
 
@@ -455,4 +506,4 @@ class MainWindow(QtWidgets.QWidget):
         )
         print(fileName)
         self.second_signal = load_from_file(fileName[0])
-        self.plot_signal(self.second_signal, self.second_signal_combobox)
+        self.plot_signal(self.second_signal)

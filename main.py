@@ -1,5 +1,4 @@
 from gui.MainWindow import MainWindow
-import PySide6.QtCore
 import sys
 from PySide6 import QtWidgets
 
@@ -11,4 +10,3 @@ if __name__ == "__main__":
     widget.show()
 
     sys.exit(app.exec())
-
