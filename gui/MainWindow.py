@@ -373,7 +373,7 @@ class MainWindow(QtWidgets.QWidget):
             type_of_signal=self.first_signal_type,
             fullfilment=self.first_fullfilment.value(),
         )
-        self.first_signal = signal
+        self.first_signal = signal2
         return signal, signal2
 
     def generate_first_and_plot(self):
@@ -417,9 +417,21 @@ class MainWindow(QtWidgets.QWidget):
         return signal, signal2
 
     def generate_second_and_plot(self):
-        signal, signal2 = self.generate_second_signal()
-        self.plot_signal(signal, signal2)
-        self.popup = SignalStatsWindow(signal)
+        sampled_signal, original_signal = self.generate_second_signal()
+        self.plot_signal(sampled_signal, original_signal)
+        quantized_signal = quantize_rounded(
+            sampled_signal, int(self.first_bit_count.value()), original_signal
+        )
+        index = self.second_signal_reconstruction_combobox.currentIndex()
+        if index == 0:
+            reconstructed_signal = zero_order_hold(sampled_signal, original_signal)
+        elif index == 1:
+            reconstructed_signal = first_order_hold(sampled_signal, original_signal)
+        else:
+            reconstructed_signal = sinc(sampled_signal, original_signal)
+        self.popup = SignalStatsWindow(
+            original_signal, reconstructed_signal, sampled_signal, quantized_signal
+        )
         self.popup.show()
 
     def save_first_signal_to_file(self):
