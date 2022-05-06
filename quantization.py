@@ -19,7 +19,7 @@ def quantize_rounded(
         )
     quantized_signal = copy(sampled_signal)
     quantized_signal.values = np.array(quantized_values)
-    plt.step(sampled_signal.samples, quantized_values)
+    plt.scatter(sampled_signal.samples, quantized_values)
     plt.plot(original_signal.samples, original_signal.values)
     plt.title("Kwantyzacja równomierna z zaokrągleniem")
     plt.legend(["Wynik kwantyzacji", "Oryginalny sygnał"])

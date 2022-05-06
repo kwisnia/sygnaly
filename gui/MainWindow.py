@@ -404,7 +404,6 @@ class MainWindow(QtWidgets.QWidget):
             type_of_signal=self.second_signal_type,
             fullfilment=self.second_fullfilment.value(),
         )
-        signal2 = self.signal_factory
         self.second_signal = self.signal_factory.create(
             amplitude=self.second_amplitude.value(),
             signal_start_time=self.second_signal_start.value(),
@@ -414,6 +413,7 @@ class MainWindow(QtWidgets.QWidget):
             type_of_signal=self.second_signal_type,
             fullfilment=self.second_fullfilment.value(),
         )
+        signal2 = self.second_signal
         return signal, signal2
 
     def generate_second_and_plot(self):
@@ -452,7 +452,7 @@ class MainWindow(QtWidgets.QWidget):
             self.second_signal,
         )
 
-        self.plot_signal(self.operation_result)
+        self.plot_signal(self.operation_result, self.operation_result)
         self.popup = SignalStatsWindow(self.operation_result)
         self.popup.show()
 
@@ -467,7 +467,7 @@ class MainWindow(QtWidgets.QWidget):
             self.first_signal,
             self.second_signal,
         )
-        self.plot_signal(self.operation_result)
+        self.plot_signal(self.operation_result, self.operation_result)
         self.popup = SignalStatsWindow(self.operation_result)
         self.popup.show()
 
@@ -482,7 +482,7 @@ class MainWindow(QtWidgets.QWidget):
             self.first_signal,
             self.second_signal,
         )
-        self.plot_signal(self.operation_result)
+        self.plot_signal(self.operation_result, self.operation_result)
         self.popup = SignalStatsWindow(self.operation_result)
         self.popup.show()
 
@@ -494,7 +494,7 @@ class MainWindow(QtWidgets.QWidget):
         self.operation_signal_file_name.show()
         self.operation_signal_save_button.show()
         self.operation_result = divide(self.first_signal, self.second_signal)
-        self.plot_signal(self.operation_result)
+        self.plot_signal(self.operation_result, self.operation_result)
         self.popup = SignalStatsWindow(self.operation_result)
         self.popup.show()
 
