@@ -7,6 +7,7 @@ from operations import *
 from quantization import quantize_rounded
 from reconstruction import first_order_hold, sinc, zero_order_hold
 from stats import mean_square_error
+from copy import deepcopy
 
 
 class MainWindow(QtWidgets.QWidget):
@@ -44,6 +45,10 @@ class MainWindow(QtWidgets.QWidget):
         self.first_signal_reconstruction_combobox.addItems(self.reconstruction_methods)
         self.second_signal_combobox = QtWidgets.QComboBox()
         self.second_signal_reconstruction_combobox = QtWidgets.QComboBox()
+        self.operation_result_reconstruction_combobox = QtWidgets.QComboBox()
+        self.operation_result_reconstruction_combobox.addItems(
+            self.reconstruction_methods
+        )
         self.second_signal_combobox.addItems(self.signals)
         self.second_signal_reconstruction_combobox.addItems(self.reconstruction_methods)
         self.first_signal_combobox.currentIndexChanged.connect(
@@ -64,8 +69,10 @@ class MainWindow(QtWidgets.QWidget):
         self.second_fullfilment = QtWidgets.QDoubleSpinBox()
         self.first_sample_rate = QtWidgets.QDoubleSpinBox()
         self.second_sample_rate = QtWidgets.QDoubleSpinBox()
+        self.operation_result_sample_rate = QtWidgets.QDoubleSpinBox()
         self.first_bit_count = QtWidgets.QDoubleSpinBox()
         self.second_bit_count = QtWidgets.QDoubleSpinBox()
+        self.operation_result_bit_count = QtWidgets.QDoubleSpinBox()
         self.first_signal_start_text = QtWidgets.QLabel("Początek sygnału")
         self.second_signal_start_text = QtWidgets.QLabel("Początek sygnału")
         self.first_signal_length_text = QtWidgets.QLabel("Długość sygnału")
@@ -119,7 +126,12 @@ class MainWindow(QtWidgets.QWidget):
         self.substract_signals_button = QtWidgets.QPushButton("Odejmij sygnały")
         self.multiply_signals_button = QtWidgets.QPushButton("Pomnóż sygnały")
         self.divide_signals_button = QtWidgets.QPushButton("Podziel sygnały")
-
+        self.operation_result_sample_rate_text = QtWidgets.QLabel(
+            "Częstotliwość próbkowania"
+        )
+        self.operation_result_bit_count_text = QtWidgets.QLabel(
+            "Liczba bitów kwantyfikacji"
+        )
         self.add_signals_button.clicked.connect(self.add_signals)
         self.substract_signals_button.clicked.connect(self.substract_signals)
         self.multiply_signals_button.clicked.connect(self.multiply_signals)
@@ -186,12 +198,19 @@ class MainWindow(QtWidgets.QWidget):
         for index, widget in enumerate(second_signal_components):
             self.layout.addWidget(widget, index, 1)
 
-        self.layout.addWidget(self.add_signals_button, 22, 0, 2, 2)
-        self.layout.addWidget(self.substract_signals_button, 23, 0, 2, 2)
-        self.layout.addWidget(self.multiply_signals_button, 24, 0, 2, 2)
-        self.layout.addWidget(self.divide_signals_button, 25, 0, 2, 2)
-        self.layout.addWidget(self.operation_signal_file_name, 26, 0, 2, 2)
-        self.layout.addWidget(self.operation_signal_save_button, 27, 0, 2, 2)
+        self.layout.addWidget(self.operation_result_bit_count_text, 22, 0, 2, 2)
+        self.layout.addWidget(self.operation_result_bit_count, 23, 0, 2, 2)
+        self.layout.addWidget(self.operation_result_sample_rate_text, 24, 0, 2, 2)
+        self.layout.addWidget(self.operation_result_sample_rate, 25, 0, 2, 2)
+        self.layout.addWidget(
+            self.operation_result_reconstruction_combobox, 26, 0, 2, 2
+        )
+        self.layout.addWidget(self.add_signals_button, 27, 0, 2, 2)
+        self.layout.addWidget(self.substract_signals_button, 28, 0, 2, 2)
+        self.layout.addWidget(self.multiply_signals_button, 29, 0, 2, 2)
+        self.layout.addWidget(self.divide_signals_button, 30, 0, 2, 2)
+        self.layout.addWidget(self.operation_signal_file_name, 31, 0, 2, 2)
+        self.layout.addWidget(self.operation_signal_save_button, 32, 0, 2, 2)
 
         self.first_amplitude.hide()
         self.first_amplitude_text.hide()
@@ -389,6 +408,7 @@ class MainWindow(QtWidgets.QWidget):
             reconstructed_signal = first_order_hold(sampled_signal, original_signal)
         else:
             reconstructed_signal = sinc(sampled_signal, original_signal)
+        self.first_signal = reconstructed_signal
         self.popup = SignalStatsWindow(
             original_signal, reconstructed_signal, sampled_signal, quantized_signal
         )
@@ -429,6 +449,7 @@ class MainWindow(QtWidgets.QWidget):
             reconstructed_signal = first_order_hold(sampled_signal, original_signal)
         else:
             reconstructed_signal = sinc(sampled_signal, original_signal)
+        self.second_signal = reconstructed_signal
         self.popup = SignalStatsWindow(
             original_signal, reconstructed_signal, sampled_signal, quantized_signal
         )
@@ -439,6 +460,33 @@ class MainWindow(QtWidgets.QWidget):
 
     def save_second_signal_to_file(self):
         save_to_file(self.generate_second_signal(), self.second_signal_file_name.text())
+
+    def sample_operation_result(self):
+
+        # sample_step = int(
+        #     10000
+        #     // self.operation_result.signal_duration
+        #     // self.operation_result_bit_count.value()
+        # )
+
+        sampled_signal = deepcopy(self.operation_result)
+        sampled_signal.samples = np.linspace(
+            self.operation_result.signal_start_time,
+            self.operation_result.signal_start_time
+            + self.operation_result.signal_duration,
+            int(
+                self.operation_result.signal_duration
+                * self.operation_result_sample_rate.value()
+            ),
+        )
+        sampled_signal.values = []
+        for x in sampled_signal.samples:
+            desired_index = np.searchsorted(self.operation_result.samples, x)
+            sampled_signal.values.append(self.operation_result.values[desired_index])
+        sampled_signal.values = np.array(sampled_signal.values)
+        sampled_signal.sample_rate = self.operation_result_sample_rate.value()
+        # sampled_signal.values = self.operation_result.values[::sample_step]
+        return sampled_signal
 
     def add_signals(self):
         if self.first_signal is None:
@@ -451,9 +499,30 @@ class MainWindow(QtWidgets.QWidget):
             self.first_signal,
             self.second_signal,
         )
-
-        self.plot_signal(self.operation_result, self.operation_result)
-        self.popup = SignalStatsWindow(self.operation_result)
+        sampled_signal = self.sample_operation_result()
+        self.plot_signal(sampled_signal, self.operation_result)
+        quantized_signal = quantize_rounded(
+            sampled_signal,
+            int(self.operation_result_bit_count.value()),
+            self.operation_result,
+        )
+        index = self.operation_result_reconstruction_combobox.currentIndex()
+        if index == 0:
+            reconstructed_signal = zero_order_hold(
+                sampled_signal, self.operation_result
+            )
+        elif index == 1:
+            reconstructed_signal = first_order_hold(
+                sampled_signal, self.operation_result
+            )
+        else:
+            reconstructed_signal = sinc(sampled_signal, self.operation_result)
+        self.popup = SignalStatsWindow(
+            self.operation_result,
+            reconstructed_signal,
+            sampled_signal,
+            quantized_signal,
+        )
         self.popup.show()
 
     def substract_signals(self):
@@ -467,8 +536,30 @@ class MainWindow(QtWidgets.QWidget):
             self.first_signal,
             self.second_signal,
         )
-        self.plot_signal(self.operation_result, self.operation_result)
-        self.popup = SignalStatsWindow(self.operation_result)
+        sampled_signal = self.sample_operation_result()
+        self.plot_signal(sampled_signal, self.operation_result)
+        quantized_signal = quantize_rounded(
+            sampled_signal,
+            int(self.operation_result_bit_count.value()),
+            self.operation_result,
+        )
+        index = self.operation_result_reconstruction_combobox.currentIndex()
+        if index == 0:
+            reconstructed_signal = zero_order_hold(
+                sampled_signal, self.operation_result
+            )
+        elif index == 1:
+            reconstructed_signal = first_order_hold(
+                sampled_signal, self.operation_result
+            )
+        else:
+            reconstructed_signal = sinc(sampled_signal, self.operation_result)
+        self.popup = SignalStatsWindow(
+            self.operation_result,
+            reconstructed_signal,
+            sampled_signal,
+            quantized_signal,
+        )
         self.popup.show()
 
     def multiply_signals(self):
@@ -482,8 +573,30 @@ class MainWindow(QtWidgets.QWidget):
             self.first_signal,
             self.second_signal,
         )
-        self.plot_signal(self.operation_result, self.operation_result)
-        self.popup = SignalStatsWindow(self.operation_result)
+        sampled_signal = self.sample_operation_result()
+        self.plot_signal(sampled_signal, self.operation_result)
+        quantized_signal = quantize_rounded(
+            sampled_signal,
+            int(self.operation_result_bit_count.value()),
+            self.operation_result,
+        )
+        index = self.operation_result_reconstruction_combobox.currentIndex()
+        if index == 0:
+            reconstructed_signal = zero_order_hold(
+                sampled_signal, self.operation_result
+            )
+        elif index == 1:
+            reconstructed_signal = first_order_hold(
+                sampled_signal, self.operation_result
+            )
+        else:
+            reconstructed_signal = sinc(sampled_signal, self.operation_result)
+        self.popup = SignalStatsWindow(
+            self.operation_result,
+            reconstructed_signal,
+            sampled_signal,
+            quantized_signal,
+        )
         self.popup.show()
 
     def divide_signals(self):
@@ -494,8 +607,30 @@ class MainWindow(QtWidgets.QWidget):
         self.operation_signal_file_name.show()
         self.operation_signal_save_button.show()
         self.operation_result = divide(self.first_signal, self.second_signal)
-        self.plot_signal(self.operation_result, self.operation_result)
-        self.popup = SignalStatsWindow(self.operation_result)
+        sampled_signal = self.sample_operation_result()
+        self.plot_signal(sampled_signal, self.operation_result)
+        quantized_signal = quantize_rounded(
+            sampled_signal,
+            int(self.operation_result_bit_count.value()),
+            self.operation_result,
+        )
+        index = self.operation_result_reconstruction_combobox.currentIndex()
+        if index == 0:
+            reconstructed_signal = zero_order_hold(
+                sampled_signal, self.operation_result
+            )
+        elif index == 1:
+            reconstructed_signal = first_order_hold(
+                sampled_signal, self.operation_result
+            )
+        else:
+            reconstructed_signal = sinc(sampled_signal, self.operation_result)
+        self.popup = SignalStatsWindow(
+            self.operation_result,
+            reconstructed_signal,
+            sampled_signal,
+            quantized_signal,
+        )
         self.popup.show()
 
     def save_operation_signal_to_file(self):
