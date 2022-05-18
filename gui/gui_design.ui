@@ -147,7 +147,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="generujPrawy">
+       <widget class="QPushButton" name="generujLewy">
         <property name="text">
          <string>generuj lewy</string>
         </property>
@@ -167,7 +167,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="generujLewy">
+       <widget class="QPushButton" name="generujPrawy">
         <property name="text">
          <string>generuj prawy</string>
         </property>
@@ -274,7 +274,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>11</number>
+      <number>12</number>
      </property>
      <widget class="QWidget" name="szumGaussowski">
       <widget class="QWidget" name="formLayoutWidget_5">
@@ -315,6 +315,9 @@
          <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_1">
           <property name="maximum">
            <double>100000.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>10.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -360,6 +363,9 @@
          <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_2">
           <property name="maximum">
            <double>100000.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>10.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -419,6 +425,9 @@
          <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_3">
           <property name="maximum">
            <double>100000.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>10.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -507,6 +516,9 @@
           <property name="maximum">
            <double>100000.000000000000000</double>
           </property>
+          <property name="value">
+           <double>10.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="2" column="0">
@@ -593,6 +605,9 @@
          <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_5">
           <property name="maximum">
            <double>100000.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>10.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -681,6 +696,9 @@
           <property name="maximum">
            <double>100000.000000000000000</double>
           </property>
+          <property name="value">
+           <double>10.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="2" column="0">
@@ -767,6 +785,9 @@
          <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_7">
           <property name="maximum">
            <double>100000.000000000000000</double>
+          </property>
+          <property name="value">
+           <double>10.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -855,6 +876,9 @@
           <property name="maximum">
            <double>100000.000000000000000</double>
           </property>
+          <property name="value">
+           <double>10.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="2" column="0">
@@ -942,6 +966,9 @@
           <property name="maximum">
            <double>100000.000000000000000</double>
           </property>
+          <property name="value">
+           <double>10.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="2" column="0">
@@ -1015,6 +1042,9 @@
           <property name="maximum">
            <double>100000.000000000000000</double>
           </property>
+          <property name="value">
+           <double>10.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="2" column="0">
@@ -1084,6 +1114,9 @@
           <property name="maximum">
            <double>100000.000000000000000</double>
           </property>
+          <property name="value">
+           <double>10.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="2" column="0">
@@ -1101,7 +1134,7 @@
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QLabel" name="wspolczynnikWypelnieniaSkokuLabel_11">
+         <widget class="QLabel" name="wspolczynnikWypelnieniaLabel_11">
           <property name="text">
            <string>Prawdopodobienstwo skoku</string>
           </property>
@@ -1292,7 +1325,7 @@
       <item row="0" column="2">
        <widget class="QTabWidget" name="prawyWygenerowaneTab">
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="wykresPrawyWygenerowaneTab">
          <attribute name="title">
@@ -1432,7 +1465,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="wykresWynikowyTab">
       <attribute name="title">
