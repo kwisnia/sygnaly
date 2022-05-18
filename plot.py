@@ -16,7 +16,7 @@ def plot_discrete(signal: Signal, second_signal: Signal = None):
     plt.figure(figsize=(7, 5))
     plt.axhline(linewidth=1, color="r", ls="-")
     plt.axvline(linewidth=1, color="r", ls="-")
-    plt.scatter(signal.samples, signal.values)
+    plt.stem(signal.samples, signal.values)
     plt.plot(second_signal.samples, second_signal.values)
     plt.xlabel("t[s]")
     plt.ylabel("A")
