@@ -264,7 +264,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>9</number>
+      <number>12</number>
      </property>
      <widget class="QWidget" name="szumGaussowski">
       <widget class="QWidget" name="formLayoutWidget_5">
@@ -288,7 +288,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_1"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_1">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_1">
@@ -298,7 +302,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_1"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_1">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -325,7 +333,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_2"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_2">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_2">
@@ -335,7 +347,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_2"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_2">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="amplitudaLabel_2">
@@ -345,7 +361,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_2"/>
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_2">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -372,7 +392,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_3"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_3">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_3">
@@ -382,7 +406,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_3"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_3">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="amplitudaLabel_3">
@@ -392,7 +420,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_3"/>
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_3">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="czestotliwoscLabel_3">
@@ -402,7 +434,11 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_3"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_3">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_3">
@@ -412,7 +448,11 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_3"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_3">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -439,7 +479,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_4"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_4">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_4">
@@ -449,7 +493,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_4"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_4">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="amplitudaLabel_4">
@@ -459,7 +507,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_4"/>
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_4">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="czestotliwoscLabel_4">
@@ -469,7 +521,11 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_4"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_4">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_4">
@@ -479,7 +535,11 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_4"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_4">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -506,7 +566,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_5"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_5">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_5">
@@ -516,7 +580,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_5"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_5">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="amplitudaLabel_5">
@@ -526,7 +594,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_5"/>
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_5">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="czestotliwoscLabel_5">
@@ -536,7 +608,11 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_5"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_5">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_5">
@@ -546,7 +622,11 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_5"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_5">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -573,7 +653,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_6"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_6">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_6">
@@ -583,7 +667,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_6"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_6">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="amplitudaLabel_6">
@@ -593,7 +681,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_6"/>
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_6">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="czestotliwoscLabel_6">
@@ -603,7 +695,11 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_6"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_6">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="wspolczynnikWypelnieniaLabel_6">
@@ -613,7 +709,11 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_6"/>
+         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_6">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -640,7 +740,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_7"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_7">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_7">
@@ -650,7 +754,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_7"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_7">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="amplitudaLabel_7">
@@ -660,7 +768,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_7"/>
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_7">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="czestotliwoscLabel_7">
@@ -670,7 +782,11 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_7"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_7">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="wspolczynnikWypelnieniaLabel_7">
@@ -680,7 +796,11 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_7"/>
+         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_7">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -707,7 +827,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_8"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_8">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_8">
@@ -717,7 +841,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_8"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_8">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="amplitudaLabel_8">
@@ -727,7 +855,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_8"/>
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_8">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="czestotliwoscLabel_8">
@@ -737,7 +869,11 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_8"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_8">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="wspolczynnikWypelnieniaLabel_8">
@@ -747,7 +883,11 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_8"/>
+         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_8">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -774,7 +914,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_9"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_9">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_9">
@@ -784,7 +928,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_9"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_9">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="amplitudaLabel_9">
@@ -794,7 +942,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_9"/>
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_9">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="wspolczynnikWypelnieniaLabel_9">
@@ -804,7 +956,11 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_9"/>
+         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_9">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -831,7 +987,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_10"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_10">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_10">
@@ -841,7 +1001,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_10"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_10">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="amplitudaLabel_10">
@@ -851,7 +1015,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_10"/>
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_10">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="wspolczynnikWypelnieniaLabel_10">
@@ -888,7 +1056,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_11"/>
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_11">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="dlugoscSygnaluLabel_11">
@@ -898,7 +1070,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_11"/>
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_11">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="amplitudaLabel_11">
@@ -908,7 +1084,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_11"/>
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_11">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="wspolczynnikWypelnieniaSkokuLabel_11">
@@ -918,7 +1098,11 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_11"/>
+         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_11">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -955,7 +1139,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_12"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_12">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_12">
@@ -965,7 +1153,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_12"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_12">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="typOknaLabel">
@@ -1033,7 +1225,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_13"/>
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_13">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="typOknaLabel_2">
@@ -1092,16 +1288,49 @@
          <attribute name="title">
           <string>Wykres</string>
          </attribute>
+         <widget class="QWidget" name="verticalLayoutWidget_8">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>551</width>
+            <height>271</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="wykresPrawyLayout"/>
+         </widget>
         </widget>
         <widget class="QWidget" name="histogramPrawyWygenerowaneTab">
          <attribute name="title">
           <string>Histogram</string>
          </attribute>
+         <widget class="QWidget" name="verticalLayoutWidget_7">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>551</width>
+            <height>271</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="histogramPrawyLayout"/>
+         </widget>
         </widget>
         <widget class="QWidget" name="statystykiPrawyWygenerowaneTab">
          <attribute name="title">
           <string>Statystyki</string>
          </attribute>
+         <widget class="QWidget" name="verticalLayoutWidget_4">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>551</width>
+            <height>271</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="statystykiPrawyLayout"/>
+         </widget>
         </widget>
        </widget>
       </item>
@@ -1114,16 +1343,49 @@
          <attribute name="title">
           <string>Wykres</string>
          </attribute>
+         <widget class="QWidget" name="verticalLayoutWidget_3">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>551</width>
+            <height>271</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="wykresLewyLayout"/>
+         </widget>
         </widget>
         <widget class="QWidget" name="histogramLewyWygenerowaneTab">
          <attribute name="title">
           <string>Histogram</string>
          </attribute>
+         <widget class="QWidget" name="verticalLayoutWidget_5">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>551</width>
+            <height>271</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="histogramLewyLayout"/>
+         </widget>
         </widget>
         <widget class="QWidget" name="statystykiLewyWygenerowaneTab">
          <attribute name="title">
           <string>Statystyki</string>
          </attribute>
+         <widget class="QWidget" name="verticalLayoutWidget_6">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>551</width>
+            <height>271</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="statystykiLewyLayout"/>
+         </widget>
         </widget>
        </widget>
       </item>
@@ -1239,7 +1501,11 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="jednoCzestotliwoscProbkowaniaDoubleSpinBox"/>
+         <widget class="QDoubleSpinBox" name="jednoCzestotliwoscProbkowaniaDoubleSpinBox">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="bityKwantyzacjiLabel">
@@ -1252,7 +1518,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="bityKwantyzacjiDoubleSpinBox"/>
+         <widget class="QDoubleSpinBox" name="bityKwantyzacjiDoubleSpinBox">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="typRekonstrukcjiLabel">
