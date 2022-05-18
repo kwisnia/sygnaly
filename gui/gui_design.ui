@@ -264,7 +264,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>11</number>
+      <number>9</number>
      </property>
      <widget class="QWidget" name="szumGaussowski">
       <widget class="QWidget" name="formLayoutWidget_5">
@@ -797,14 +797,14 @@
          <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_9"/>
         </item>
         <item row="3" column="0">
-         <widget class="QLabel" name="czasSkokuLabel_9">
+         <widget class="QLabel" name="wspolczynnikWypelnieniaLabel_9">
           <property name="text">
            <string>Czas skoku</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="czasSkokuDoubleSpinBox_9"/>
+         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_9"/>
         </item>
        </layout>
       </widget>
@@ -854,14 +854,14 @@
          <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_10"/>
         </item>
         <item row="3" column="0">
-         <widget class="QLabel" name="numerProbkiZeSkokiemLabel_10">
+         <widget class="QLabel" name="wspolczynnikWypelnieniaLabel_10">
           <property name="text">
            <string>Numer probki ze skokiem</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QSpinBox" name="numerProbkiZeSkokiemSpinBox_10"/>
+         <widget class="QSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_10"/>
         </item>
        </layout>
       </widget>
@@ -911,14 +911,14 @@
          <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_11"/>
         </item>
         <item row="3" column="0">
-         <widget class="QLabel" name="prawdopodobienstwoSkokuLabel_11">
+         <widget class="QLabel" name="wspolczynnikWypelnieniaSkokuLabel_11">
           <property name="text">
            <string>Prawdopodobienstwo skoku</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="prawdopodobienstwoSkokuDoubleSpinBox_11"/>
+         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_11"/>
         </item>
        </layout>
       </widget>
