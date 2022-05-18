@@ -39,20 +39,34 @@ def divide(first: Signal, second: Signal):
     return False
 
 
+# def convolve(first: Signal, second: Signal):
+#     if len(second.samples) > len(first.samples):
+#         first, second = second, first
+
+#     new_signal = deepcopy(first)
+#     new_signal.values = np.convolve(first.values, second.values)
+#     new_samples = len(new_signal.values) - len(first.values) + 1
+#     new_signal.samples.extend(
+#         np.linspace(
+#             first.samples[-1],
+#             first.samples[-1] + (1 / first.sample_rate) * new_samples,
+#             new_samples,
+#         )[1:]
+#     )
+#     return new_signal
+
+
 def convolve(first: Signal, second: Signal):
     if len(second.samples) > len(first.samples):
         first, second = second, first
 
     new_signal = deepcopy(first)
-    new_signal.values = np.convolve(first.values, second.values)
+    new_values = len(first.values) + len(second.values) - 1
+    new_signal.values = np.zeros(new_values)
+    for i in range(len(first.values)):
+        for j in range(len(second.values)):
+            new_signal.values[i + j] += first.values[i] * second.values[j]
     new_samples = len(new_signal.values) - len(first.values) + 1
-    print(
-        np.linspace(
-            first.samples[-1],
-            first.samples[-1] + (1 / first.sample_rate) * new_samples,
-            new_samples,
-        )[1:]
-    )
     new_signal.samples.extend(
         np.linspace(
             first.samples[-1],
