@@ -109,6 +109,16 @@
           <string>szum impulsowy</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>filtr dolnoprzepustowy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>filtr górnoprzepustowy</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>
@@ -264,7 +274,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>12</number>
+      <number>11</number>
      </property>
      <widget class="QWidget" name="szumGaussowski">
       <widget class="QWidget" name="formLayoutWidget_5">
@@ -1112,7 +1122,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>20</y>
          <width>331</width>
          <height>221</height>
         </rect>
@@ -1263,7 +1273,7 @@
       <x>10</x>
       <y>440</y>
       <width>1181</width>
-      <height>341</height>
+      <height>361</height>
      </rect>
     </property>
     <property name="title">
@@ -1275,14 +1285,14 @@
        <x>9</x>
        <y>20</y>
        <width>1161</width>
-       <height>311</height>
+       <height>331</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="wygenerowaneLayout">
       <item row="0" column="2">
        <widget class="QTabWidget" name="prawyWygenerowaneTab">
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="wykresPrawyWygenerowaneTab">
          <attribute name="title">
@@ -1294,7 +1304,7 @@
             <x>10</x>
             <y>10</y>
             <width>551</width>
-            <height>271</height>
+            <height>291</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="wykresPrawyLayout"/>
@@ -1310,7 +1320,7 @@
             <x>10</x>
             <y>10</y>
             <width>551</width>
-            <height>271</height>
+            <height>291</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="histogramPrawyLayout"/>
@@ -1326,7 +1336,7 @@
             <x>10</x>
             <y>10</y>
             <width>551</width>
-            <height>271</height>
+            <height>291</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="statystykiPrawyLayout"/>
@@ -1337,22 +1347,26 @@
       <item row="0" column="1">
        <widget class="QTabWidget" name="lewyWygenerowaneTab">
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="wykresLewyWygenerowaneTab">
          <attribute name="title">
           <string>Wykres</string>
          </attribute>
-         <widget class="QWidget" name="verticalLayoutWidget_3">
+         <widget class="QWidget" name="gridLayoutWidget_2">
           <property name="geometry">
            <rect>
             <x>10</x>
             <y>10</y>
             <width>551</width>
-            <height>271</height>
+            <height>291</height>
            </rect>
           </property>
-          <layout class="QVBoxLayout" name="wykresLewyLayout"/>
+          <layout class="QGridLayout" name="wykresLewyLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+          </layout>
          </widget>
         </widget>
         <widget class="QWidget" name="histogramLewyWygenerowaneTab">
@@ -1365,7 +1379,7 @@
             <x>10</x>
             <y>10</y>
             <width>551</width>
-            <height>271</height>
+            <height>291</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="histogramLewyLayout"/>
@@ -1381,10 +1395,14 @@
             <x>10</x>
             <y>10</y>
             <width>551</width>
-            <height>271</height>
+            <height>291</height>
            </rect>
           </property>
-          <layout class="QVBoxLayout" name="statystykiLewyLayout"/>
+          <layout class="QVBoxLayout" name="statystykiLewyLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+          </layout>
          </widget>
         </widget>
        </widget>
@@ -1414,17 +1432,39 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="wykresWynikowyTab">
       <attribute name="title">
        <string>Wykres</string>
       </attribute>
+      <widget class="QWidget" name="verticalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>531</width>
+         <height>361</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="wykresWynikowyLayout"/>
+      </widget>
      </widget>
      <widget class="QWidget" name="histogramWynikowyTab">
       <attribute name="title">
        <string>Histogram</string>
       </attribute>
+      <widget class="QWidget" name="verticalLayoutWidget_9">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>531</width>
+         <height>361</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="histogramWynikowyLayout"/>
+      </widget>
      </widget>
      <widget class="QWidget" name="statystykiWynikowyTab">
       <attribute name="title">

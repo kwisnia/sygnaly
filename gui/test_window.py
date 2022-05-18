@@ -28,4 +28,15 @@ class MainWindow(QMainWindow):
             high_pass_filter,
         ]
         self.selected_signal_type = generate_gauss_noise
-        # self.ui.wykresLewyLayout.addWidget(PlotWidget())
+        self.leftGraphWidget = PlotWidget()
+        self.leftHistWidget = PlotWidget()
+        self.rightGraphWidget = PlotWidget()
+        self.rightHistWidget = PlotWidget()
+        self.resultGraphWidget = PlotWidget(560, 380)
+        self.resultHistWidget = PlotWidget(560, 380)
+        self.ui.wykresLewyLayout.addChildWidget(self.leftGraphWidget)
+        self.ui.histogramLewyLayout.addChildWidget(self.leftHistWidget)
+        self.ui.wykresPrawyLayout.addChildWidget(self.rightGraphWidget)
+        self.ui.histogramPrawyLayout.addChildWidget(self.rightHistWidget)
+        self.ui.wykresWynikowyLayout.addChildWidget(self.resultGraphWidget)
+        self.ui.histogramWynikowyLayout.addChildWidget(self.resultHistWidget)

@@ -1,5 +1,4 @@
-from prometheus_client import Enum
-
+from enum import Enum
 
 class PlotTypes(Enum):
     """
