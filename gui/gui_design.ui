@@ -274,7 +274,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>12</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="szumGaussowski">
       <widget class="QWidget" name="formLayoutWidget_5">
@@ -1203,14 +1203,14 @@
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QLabel" name="typOknaLabel">
+         <widget class="QLabel" name="typOknaLabel_12">
           <property name="text">
            <string>Typ okna</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QComboBox" name="typOknaComboBox">
+         <widget class="QComboBox" name="typOknaComboBox_12">
           <item>
            <property name="text">
             <string>prostokatny</string>
@@ -1275,14 +1275,14 @@
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QLabel" name="typOknaLabel_2">
+         <widget class="QLabel" name="typOknaLabel_13">
           <property name="text">
            <string>Typ okna</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QComboBox" name="typOknaComboBox_2">
+         <widget class="QComboBox" name="typOknaComboBox_13">
           <item>
            <property name="text">
             <string>prostokatny</string>
@@ -1515,7 +1515,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="dzialaniaJednoSygnaloweTab">
       <attribute name="title">
@@ -1537,7 +1537,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="operacjaJednoLabel">
           <property name="text">
-           <string>operacja</string>
+           <string>Operacja</string>
           </property>
           <property name="buddy">
            <cstring>operacjaJednoComboBox</cstring>
@@ -1629,7 +1629,7 @@
         <item row="4" column="0">
          <widget class="QLabel" name="sygnalLabel">
           <property name="text">
-           <string>sygnal</string>
+           <string>Sygnal</string>
           </property>
           <property name="buddy">
            <cstring>sygnalComboBox</cstring>
@@ -1677,34 +1677,102 @@
        </layout>
       </widget>
      </widget>
-     <widget class="QWidget" name="dzialaniaDwSygnaloweTab">
+     <widget class="QWidget" name="dzialaniaDwuSygnaloweTab">
       <attribute name="title">
        <string>dwu-sygnalowe</string>
       </attribute>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>201</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="dzialaniaDwuWykonajLayout">
+        <item>
+         <widget class="QPushButton" name="dzialaniaDwuWykonajButton">
+          <property name="text">
+           <string>wykonaj</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="formLayoutWidget_3">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>191</width>
-         <height>22</height>
+         <width>201</width>
+         <height>101</height>
         </rect>
        </property>
        <layout class="QFormLayout" name="dzialaniaDwuLayout">
         <property name="verticalSpacing">
-         <number>15</number>
+         <number>14</number>
         </property>
         <item row="0" column="0">
-         <widget class="QLabel" name="operacjaDwuLabel">
+         <widget class="QLabel" name="sygnal1DwuLabel">
           <property name="text">
-           <string>operacja</string>
-          </property>
-          <property name="buddy">
-           <cstring>operacjaDwuComboBox</cstring>
+           <string>Sygnal 1</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
+         <widget class="QComboBox" name="sygnal1DwuComboBox">
+          <item>
+           <property name="text">
+            <string>lewy</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>prawy</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>wynikowy</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="sygnal2DwuLabel">
+          <property name="text">
+           <string>Sygnal 2</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="sygnal2DwuComboBox">
+          <item>
+           <property name="text">
+            <string>lewy</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>prawy</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>wynikowy</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="operacjaDwuLabel">
+          <property name="text">
+           <string>Operacja</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
          <widget class="QComboBox" name="operacjaDwuComboBox">
           <item>
            <property name="text">
@@ -1736,25 +1804,6 @@
             <string>korelacja</string>
            </property>
           </item>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="verticalLayoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>40</y>
-         <width>191</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="dzialaniaDwuWykonajLayout">
-        <item>
-         <widget class="QPushButton" name="dzialaniaDwuWykonajButton">
-          <property name="text">
-           <string>wykonaj</string>
-          </property>
          </widget>
         </item>
        </layout>
