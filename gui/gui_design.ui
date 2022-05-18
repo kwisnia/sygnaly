@@ -32,10 +32,10 @@
     <widget class="QWidget" name="formLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>20</x>
        <y>10</y>
-       <width>351</width>
-       <height>231</height>
+       <width>331</width>
+       <height>21</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout">
@@ -45,7 +45,10 @@
       <item row="0" column="0">
        <widget class="QLabel" name="typSygnaluLabel">
         <property name="text">
-         <string>Typ sygnalu</string>
+         <string>Typ sygnalu: </string>
+        </property>
+        <property name="buddy">
+         <cstring>typSygnaluComboBox</cstring>
         </property>
        </widget>
       </item>
@@ -108,63 +111,13 @@
         </item>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="poczatekSygnaluLabel_2">
-        <property name="text">
-         <string>Poczatek sygnalu</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_2"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="dlugoscSygnaluLabel">
-        <property name="text">
-         <string>Dlugosc sygnalu</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="amplitudaLabel">
-        <property name="text">
-         <string>Amplituda</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="czestotliwoscLabel">
-        <property name="text">
-         <string>Czestotliwosc</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox"/>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="czestotliwoscProbkowaniaLabel">
-        <property name="text">
-         <string>Czestotliwosc probkowania</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="czestotliwoscProbkowaniaLineEdit"/>
-      </item>
      </layout>
     </widget>
     <widget class="QWidget" name="horizontalLayoutWidget">
      <property name="geometry">
       <rect>
        <x>9</x>
-       <y>239</y>
+       <y>299</y>
        <width>351</width>
        <height>51</height>
       </rect>
@@ -229,19 +182,35 @@
      <property name="geometry">
       <rect>
        <x>9</x>
-       <y>289</y>
+       <y>349</y>
        <width>351</width>
-       <height>71</height>
+       <height>31</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QComboBox" name="comboBox"/>
+       <widget class="QComboBox" name="comboBox">
+        <item>
+         <property name="text">
+          <string>lewy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>prawy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>wynikowy</string>
+         </property>
+        </item>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton_3">
         <property name="text">
-         <string>PushButton</string>
+         <string>Zapisz do pliku</string>
         </property>
        </widget>
       </item>
@@ -251,20 +220,709 @@
      <property name="geometry">
       <rect>
        <x>9</x>
-       <y>359</y>
+       <y>379</y>
        <width>351</width>
-       <height>61</height>
+       <height>41</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
+       <widget class="QComboBox" name="comboBox_2">
+        <item>
+         <property name="text">
+          <string>lewy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>prawy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>wynikowy</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="pushButton_4">
         <property name="text">
-         <string>PushButton</string>
+         <string>Wczytaj z pliku</string>
         </property>
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>331</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="page">
+      <widget class="QWidget" name="formLayoutWidget_5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_5">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel_2">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_2"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel_2">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_2"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_2">
+      <widget class="QWidget" name="formLayoutWidget_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_4">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="amplitudaLabel">
+          <property name="text">
+           <string>Amplituda</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_3">
+      <widget class="QWidget" name="formLayoutWidget_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_8">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel_5">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_5"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel_5">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_5"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="amplitudaLabel_3">
+          <property name="text">
+           <string>Amplituda</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_3"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="czestotliwoscLabel">
+          <property name="text">
+           <string>Czestotliwosc</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="czestotliwoscProbkowaniaLabel">
+          <property name="text">
+           <string>Czestotliwosc probkowania</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_4"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_4">
+      <widget class="QWidget" name="formLayoutWidget_7">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_9">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel_6">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_6"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel_6">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_6"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="amplitudaLabel_4">
+          <property name="text">
+           <string>Amplituda</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_4"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="czestotliwoscLabel_2">
+          <property name="text">
+           <string>Czestotliwosc</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_2"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_3">
+          <property name="text">
+           <string>Czestotliwosc probkowania</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_2"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_5">
+      <widget class="QWidget" name="formLayoutWidget_8">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_10">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel_7">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_7"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel_7">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_7"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="amplitudaLabel_5">
+          <property name="text">
+           <string>Amplituda</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_5"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="czestotliwoscLabel_3">
+          <property name="text">
+           <string>Czestotliwosc</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_3"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_4">
+          <property name="text">
+           <string>Czestotliwosc probkowania</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_3"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_6">
+      <widget class="QWidget" name="formLayoutWidget_9">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_11">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel_8">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_8"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel_8">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_8"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="amplitudaLabel_6">
+          <property name="text">
+           <string>Amplituda</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_6"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="czestotliwoscLabel_4">
+          <property name="text">
+           <string>Czestotliwosc</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_4"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="wspolczynnikWypelnieniaLabel">
+          <property name="text">
+           <string>Wspolczynnik wypelnienia</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_7">
+      <widget class="QWidget" name="formLayoutWidget_10">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_12">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel_9">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_9"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel_9">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_9"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="amplitudaLabel_7">
+          <property name="text">
+           <string>Amplituda</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_7"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="czestotliwoscLabel_5">
+          <property name="text">
+           <string>Czestotliwosc</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_5"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="wspolczynnikWypelnieniaLabel_2">
+          <property name="text">
+           <string>Wspolczynnik wypelnienia</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_2"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_8">
+      <widget class="QWidget" name="formLayoutWidget_11">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_13">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel_10">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_10"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel_10">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_10"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="amplitudaLabel_8">
+          <property name="text">
+           <string>Amplituda</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_8"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="czestotliwoscLabel_6">
+          <property name="text">
+           <string>Czestotliwosc</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_6"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="wspolczynnikWypelnieniaLabel_3">
+          <property name="text">
+           <string>Wspolczynnik wypelnienia</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_3"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_9">
+      <widget class="QWidget" name="formLayoutWidget_12">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_14">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel_11">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_11"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel_11">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_11"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="amplitudaLabel_9">
+          <property name="text">
+           <string>Amplituda</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_9"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="czasSkokuLabel">
+          <property name="text">
+           <string>Czas skoku</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDoubleSpinBox" name="czasSkokuDoubleSpinBox"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_10">
+      <widget class="QWidget" name="formLayoutWidget_13">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_15">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel_12">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_12"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel_12">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_12"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="amplitudaLabel_10">
+          <property name="text">
+           <string>Amplituda</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_10"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="numerProbkiZeSkokiemLabel">
+          <property name="text">
+           <string>Numer probki ze skokiem</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QSpinBox" name="numerProbkiZeSkokiemSpinBox"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_11">
+      <widget class="QWidget" name="formLayoutWidget_14">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>331</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_16">
+        <property name="verticalSpacing">
+         <number>12</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="poczatekSygnaluLabel_13">
+          <property name="text">
+           <string>Poczatek sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QDoubleSpinBox" name="poczatekSygnaluDoubleSpinBox_13"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="dlugoscSygnaluLabel_13">
+          <property name="text">
+           <string>Dlugosc sygnalu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="dlugoscSygnaluDoubleSpinBox_13"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="amplitudaLabel_11">
+          <property name="text">
+           <string>Amplituda</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="amplitudaDoubleSpinBox_11"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="prawdopodobienstwoSkokuLabel">
+          <property name="text">
+           <string>Prawdopodobienstwo skoku</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDoubleSpinBox" name="prawdopodobienstwoSkokuDoubleSpinBox"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox">
@@ -277,7 +935,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>wygenerowane sygnały</string>
+     <string>Wygenerowane sygnały</string>
     </property>
     <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
@@ -314,7 +972,7 @@
       <item row="0" column="1">
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -339,26 +997,26 @@
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>380</x>
       <y>10</y>
-      <width>801</width>
+      <width>811</width>
       <height>421</height>
      </rect>
     </property>
     <property name="title">
-     <string>Wynik działania</string>
+     <string>Działania</string>
     </property>
     <widget class="QTabWidget" name="tabWidget_3">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>250</x>
        <y>10</y>
-       <width>581</width>
+       <width>551</width>
        <height>401</height>
       </rect>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_9">
       <attribute name="title">
@@ -376,20 +1034,275 @@
       </attribute>
      </widget>
     </widget>
+    <widget class="QTabWidget" name="tabWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>221</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_12">
+      <attribute name="title">
+       <string>jedno-sygnalowe</string>
+      </attribute>
+      <widget class="QWidget" name="formLayoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>191</width>
+         <height>171</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_2">
+        <property name="verticalSpacing">
+         <number>15</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="operacjaLabel">
+          <property name="text">
+           <string>operacja</string>
+          </property>
+          <property name="buddy">
+           <cstring>operacjaComboBox</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="operacjaComboBox">
+          <item>
+           <property name="text">
+            <string>próbkowanie</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>kwantyzacja</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>rekonstrukcja</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_2">
+          <property name="text">
+           <string>Czestotliwosc</string>
+          </property>
+          <property name="buddy">
+           <cstring>czestotliwoscProbkowaniaDoubleSpinBox</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="bityKwantyzacjiLabel">
+          <property name="text">
+           <string>Bity kwantyzacji</string>
+          </property>
+          <property name="buddy">
+           <cstring>bityKwantyzacjiDoubleSpinBox</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDoubleSpinBox" name="bityKwantyzacjiDoubleSpinBox"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="typRekonstrukcjiLabel">
+          <property name="text">
+           <string>Typ rekonstrukcji</string>
+          </property>
+          <property name="buddy">
+           <cstring>typRekonstrukcjiComboBox</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QComboBox" name="typRekonstrukcjiComboBox">
+          <item>
+           <property name="text">
+            <string>zero order</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>first order</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>sinc</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="sygnalLabel">
+          <property name="text">
+           <string>sygnal</string>
+          </property>
+          <property name="buddy">
+           <cstring>sygnalComboBox</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QComboBox" name="sygnalComboBox">
+          <item>
+           <property name="text">
+            <string>lewy</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>prawy</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>wynikowy</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>180</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QPushButton" name="pushButton_6">
+          <property name="text">
+           <string>wykonaj</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_13">
+      <attribute name="title">
+       <string>dwu-sygnalowe</string>
+      </attribute>
+      <widget class="QWidget" name="formLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>191</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_3">
+        <property name="verticalSpacing">
+         <number>15</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="operacjaLabel_2">
+          <property name="text">
+           <string>operacja</string>
+          </property>
+          <property name="buddy">
+           <cstring>operacjaComboBox_2</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="operacjaComboBox_2">
+          <item>
+           <property name="text">
+            <string>dodawanie</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>odejmowanie</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>mnożenie</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>dzielenie</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>splot</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>korelacja</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="text">
+           <string>wykonaj</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1200</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>typSygnaluComboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>stackedWidget</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>24</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>102</x>
+     <y>61</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
