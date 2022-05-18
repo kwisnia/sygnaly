@@ -3,7 +3,7 @@ import numpy as np
 from windows import blackman_window, rectangular_window
 
 
-def low_pass_filter(filter_order, cutoff_frequency, sample_rate, window_type):
+def low_pass_filter(filter_order, cutoff_frequency, window_type, sample_rate):
     if window_type == 1:
         window = [
             blackman_window(filter_order, sample_index)
@@ -24,13 +24,13 @@ def low_pass_filter(filter_order, cutoff_frequency, sample_rate, window_type):
     ) * np.array(window)
 
 
-def high_pass_filter(filter_order, cutoff_frequency, sample_rate, window_type):
-    return np.array(
+def high_pass_filter(filter_order, cutoff_frequency, window_type, sample_rate):
+    return np.linspace(0, 1 / sample_rate * filter_order), np.array(
         [
             x * (-1) ** i
             for i, x in enumerate(
                 low_pass_filter(
-                    filter_order, cutoff_frequency, sample_rate, window_type
+                    filter_order, cutoff_frequency, window_type, sample_rate
                 )
             )
         ]

@@ -28,15 +28,22 @@ class MainWindow(QtWidgets.QWidget):
             "Skok jednostkowy",
             "Impuls jednostkowy",
             "Szum impulsowy",
+            "Filtr dolnoprzepustowy",
+            "Filtr górnoprzepustowy",
         ]
         self.reconstruction_methods = [
             "Zero order hold",
             "First order hold",
             "Interpolacja sinc",
         ]
+        self.windows = ["Okno prostokątne", "Okno Blackmana"]
 
         self.first_signal_combobox = QtWidgets.QComboBox()
         self.first_signal_reconstruction_combobox = QtWidgets.QComboBox()
+        self.first_signal_window_combobox = QtWidgets.QComboBox()
+        self.second_signal_window_combobox = QtWidgets.QComboBox()
+        self.first_signal_window_combobox.addItems(self.windows)
+        self.second_signal_window_combobox.addItems(self.signals)
         self.first_signal_type = generate_gauss_noise
         self.second_signal_type = generate_gauss_noise
         self.first_signal = None
@@ -67,6 +74,8 @@ class MainWindow(QtWidgets.QWidget):
         self.second_frequency = QtWidgets.QDoubleSpinBox()
         self.first_fullfilment = QtWidgets.QDoubleSpinBox()
         self.second_fullfilment = QtWidgets.QDoubleSpinBox()
+        self.first_filter_order = QtWidgets.QSpinBox()
+        self.second_filter_order = QtWidgets.QSpinBox()
         self.first_sample_rate = QtWidgets.QDoubleSpinBox()
         self.second_sample_rate = QtWidgets.QDoubleSpinBox()
         self.operation_result_sample_rate = QtWidgets.QDoubleSpinBox()
@@ -77,12 +86,16 @@ class MainWindow(QtWidgets.QWidget):
         self.second_signal_start_text = QtWidgets.QLabel("Początek sygnału")
         self.first_signal_length_text = QtWidgets.QLabel("Długość sygnału")
         self.second_signal_length_text = QtWidgets.QLabel("Długość sygnału")
+        self.first_signal_window_text = QtWidgets.QLabel("Typ okna")
+        self.second_signal_window_text = QtWidgets.QLabel("Typ okna")
         self.first_amplitude_text = QtWidgets.QLabel("Amplituda")
         self.second_amplitude_text = QtWidgets.QLabel("Amplituda")
         self.first_frequency_text = QtWidgets.QLabel("Częstotliwość")
         self.second_frequency_text = QtWidgets.QLabel("Częstotliwość")
         self.first_fullfilment_text = QtWidgets.QLabel("Długość okresu")
         self.second_fullfilment_text = QtWidgets.QLabel("Długość okresu")
+        self.first_filter_order_text = QtWidgets.QLabel("Rząd filtru")
+        self.second_filter_order_text = QtWidgets.QLabel("Rząd filtru")
         self.first_sample_rate_text = QtWidgets.QLabel("Częstotliwość próbkowania")
         self.second_sample_rate_text = QtWidgets.QLabel("Częstotliwość próbkowania")
         self.first_bit_count_text = QtWidgets.QLabel("Liczba bitów kwantyfikacji")
@@ -151,6 +164,10 @@ class MainWindow(QtWidgets.QWidget):
             self.first_amplitude,
             self.first_frequency_text,
             self.first_frequency,
+            self.first_filter_order_text,
+            self.first_filter_order,
+            self.first_signal_window_text,
+            self.first_signal_window_combobox,
             self.first_fullfilment_text,
             self.first_fullfilment,
             self.first_sample_rate_text,
@@ -176,6 +193,10 @@ class MainWindow(QtWidgets.QWidget):
             self.second_amplitude,
             self.second_frequency_text,
             self.second_frequency,
+            self.second_filter_order_text,
+            self.second_filter_order,
+            self.second_signal_window_text,
+            self.second_signal_window_combobox,
             self.second_fullfilment_text,
             self.second_fullfilment,
             self.second_sample_rate_text,
@@ -198,19 +219,19 @@ class MainWindow(QtWidgets.QWidget):
         for index, widget in enumerate(second_signal_components):
             self.layout.addWidget(widget, index, 1)
 
-        self.layout.addWidget(self.operation_result_bit_count_text, 22, 0, 2, 2)
-        self.layout.addWidget(self.operation_result_bit_count, 23, 0, 2, 2)
-        self.layout.addWidget(self.operation_result_sample_rate_text, 24, 0, 2, 2)
-        self.layout.addWidget(self.operation_result_sample_rate, 25, 0, 2, 2)
+        self.layout.addWidget(self.operation_result_bit_count_text, 26, 0, 2, 2)
+        self.layout.addWidget(self.operation_result_bit_count, 27, 0, 2, 2)
+        self.layout.addWidget(self.operation_result_sample_rate_text, 28, 0, 2, 2)
+        self.layout.addWidget(self.operation_result_sample_rate, 29, 0, 2, 2)
         self.layout.addWidget(
-            self.operation_result_reconstruction_combobox, 26, 0, 2, 2
+            self.operation_result_reconstruction_combobox, 30, 0, 2, 2
         )
-        self.layout.addWidget(self.add_signals_button, 27, 0, 2, 2)
-        self.layout.addWidget(self.substract_signals_button, 28, 0, 2, 2)
-        self.layout.addWidget(self.multiply_signals_button, 29, 0, 2, 2)
-        self.layout.addWidget(self.divide_signals_button, 30, 0, 2, 2)
-        self.layout.addWidget(self.operation_signal_file_name, 31, 0, 2, 2)
-        self.layout.addWidget(self.operation_signal_save_button, 32, 0, 2, 2)
+        self.layout.addWidget(self.add_signals_button, 31, 0, 2, 2)
+        self.layout.addWidget(self.substract_signals_button, 32, 0, 2, 2)
+        self.layout.addWidget(self.multiply_signals_button, 33, 0, 2, 2)
+        self.layout.addWidget(self.divide_signals_button, 34, 0, 2, 2)
+        self.layout.addWidget(self.operation_signal_file_name, 35, 0, 2, 2)
+        self.layout.addWidget(self.operation_signal_save_button, 36, 0, 2, 2)
 
         self.first_amplitude.hide()
         self.first_amplitude_text.hide()
@@ -218,6 +239,10 @@ class MainWindow(QtWidgets.QWidget):
         self.first_frequency_text.hide()
         self.first_fullfilment.hide()
         self.first_fullfilment_text.hide()
+        self.first_filter_order_text.hide()
+        self.first_filter_order.hide()
+        self.first_signal_window_text.hide()
+        self.first_signal_window_combobox.hide()
 
         self.second_amplitude.hide()
         self.second_amplitude_text.hide()
@@ -225,6 +250,10 @@ class MainWindow(QtWidgets.QWidget):
         self.second_frequency_text.hide()
         self.second_fullfilment.hide()
         self.second_fullfilment_text.hide()
+        self.second_filter_order_text.hide()
+        self.second_filter_order.hide()
+        self.second_signal_window_text.hide()
+        self.second_signal_window_combobox.hide()
 
         self.operation_signal_file_name.hide()
         self.operation_signal_save_button.hide()
@@ -237,6 +266,12 @@ class MainWindow(QtWidgets.QWidget):
             self.first_frequency_text.hide()
             self.first_fullfilment.hide()
             self.first_fullfilment_text.hide()
+            self.first_filter_order_text.hide()
+            self.first_filter_order.hide()
+            self.first_signal_window_text.hide()
+            self.first_signal_window_combobox.hide()
+            self.first_signal_length_text.show()
+            self.first_signal_length.show()
             self.first_signal_type = generate_gauss_noise
         elif index == 1:
             self.first_amplitude_text.show()
@@ -245,6 +280,12 @@ class MainWindow(QtWidgets.QWidget):
             self.first_frequency_text.hide()
             self.first_fullfilment.hide()
             self.first_fullfilment_text.hide()
+            self.first_filter_order_text.hide()
+            self.first_filter_order.hide()
+            self.first_signal_window_text.hide()
+            self.first_signal_window_combobox.hide()
+            self.first_signal_length_text.show()
+            self.first_signal_length.show()
             self.first_signal_type = generate_uniform_noise
         elif index == 2 or index == 3 or index == 4:
             self.first_amplitude_text.show()
@@ -253,6 +294,12 @@ class MainWindow(QtWidgets.QWidget):
             self.first_frequency_text.show()
             self.first_fullfilment.hide()
             self.first_fullfilment_text.hide()
+            self.first_filter_order_text.hide()
+            self.first_filter_order.hide()
+            self.first_signal_window_text.hide()
+            self.first_signal_length_text.show()
+            self.first_signal_length.show()
+            self.first_signal_window_combobox.hide()
             if index == 2:
                 self.first_signal_type = generate_sinusoidal_signal
             elif index == 3:
@@ -267,6 +314,12 @@ class MainWindow(QtWidgets.QWidget):
             self.first_fullfilment.show()
             self.first_fullfilment_text.setText("Współczynnik wypełnienia")
             self.first_fullfilment_text.show()
+            self.first_filter_order_text.hide()
+            self.first_filter_order.hide()
+            self.first_signal_window_text.hide()
+            self.first_signal_length_text.show()
+            self.first_signal_length.show()
+            self.first_signal_window_combobox.hide()
             if index == 5:
                 self.first_signal_type = generate_rectangle_signal
             elif index == 6:
@@ -278,15 +331,27 @@ class MainWindow(QtWidgets.QWidget):
             self.first_amplitude.show()
             self.first_frequency.hide()
             self.first_frequency_text.hide()
+            self.first_filter_order_text.hide()
+            self.first_filter_order.hide()
+            self.first_signal_window_text.hide()
+            self.first_signal_window_combobox.hide()
             self.first_fullfilment.show()
             self.first_fullfilment_text.setText("Czas skoku")
             self.first_fullfilment_text.show()
+            self.first_signal_length_text.show()
+            self.first_signal_length.show()
             self.first_signal_type = generate_unit_jump_signal
         elif index == 9 or index == 10:
             self.first_amplitude_text.show()
             self.first_amplitude.show()
             self.first_frequency.hide()
             self.first_frequency_text.hide()
+            self.first_filter_order_text.hide()
+            self.first_filter_order.hide()
+            self.first_signal_window_text.hide()
+            self.first_signal_window_combobox.hide()
+            self.first_signal_length_text.show()
+            self.first_signal_length.show()
             self.first_fullfilment.show()
             if index == 9:
                 self.first_fullfilment_text.setText("Number próbki ze skokiem")
@@ -298,6 +363,19 @@ class MainWindow(QtWidgets.QWidget):
             self.first_fullfilment_text.show()
             self.first_sample_rate.show()
             self.first_sample_rate_text.show()
+        elif index == 11 or index == 12:
+            self.first_amplitude.hide()
+            self.first_amplitude_text.hide()
+            self.first_frequency.hide()
+            self.first_frequency_text.hide()
+            self.first_fullfilment.hide()
+            self.first_fullfilment_text.hide()
+            self.first_signal_length_text.hide()
+            self.first_signal_length.hide()
+            self.first_filter_order_text.show()
+            self.first_filter_order.show()
+            self.first_signal_window_text.show()
+            self.first_signal_window_combobox.show()
 
     def show_second_signal_fields(self, index):
         if index == 0:
