@@ -28,4 +28,4 @@ class MainWindow(QMainWindow):
             high_pass_filter,
         ]
         self.selected_signal_type = generate_gauss_noise
-        self.ui.wykresLewyLayout.addWidget(PlotWidget())
+        # self.ui.wykresLewyLayout.addWidget(PlotWidget())

@@ -13,7 +13,7 @@ def low_pass_filter(filter_order, cutoff_frequency, window_type, sample_rate):
         window = [rectangular_window() for _ in range(filter_order)]
     k = sample_rate / cutoff_frequency
     center_sample = (filter_order - 1) / 2
-    return np.array(
+    return np.linspace(0, 1 / sample_rate * filter_order), np.array(
         [
             2 / k
             if sample_index == center_sample
@@ -31,7 +31,7 @@ def high_pass_filter(filter_order, cutoff_frequency, window_type, sample_rate):
             for i, x in enumerate(
                 low_pass_filter(
                     filter_order, cutoff_frequency, window_type, sample_rate
-                )
+                )[1]
             )
         ]
     )
