@@ -4,6 +4,7 @@ from PySide6 import QtWidgets
 from SignalFactory import SignalFactory
 from filters import high_pass_filter, low_pass_filter
 from functions import *
+from stats import *
 from gui.SignalTypes import SignalTypes
 from gui.custom_widgets.PlotTypes import PlotTypes
 from gui.custom_widgets.PlotWidget import PlotWidget
@@ -129,8 +130,37 @@ class MainWindow(QMainWindow):
                 signal.samples, signal.values, PlotTypes.HISTOGRAM
             )
 
-    def sample_signal(self):
-        signal_to_sample = self._get_signal_from_combobox("sygnalComboBox")[1]
+    def _fill_stats_tab(
+        self, signal_type: SignalTypes, signal: Signal, second_signal: Signal = None
+    ):
+        stat_table = self.ui.statystykiLewyWidget
+        if signal_type == SignalTypes.RIGHT:
+            stat_table = self.ui.statystykiPrawyWidget
+        elif signal_type == SignalTypes.MIXED:
+            stat_table = self.ui.statystykiWynikowyWidget
+
+        stats = [
+            avg_signal_value,
+            abs_avg_signal_value,
+            avg_signal_power,
+            variance_signal_value,
+            rms_signal_value,
+        ]
+        stats_extra = [
+            mean_square_error,
+            signal_to_noise_ratio,
+            peak_signal_to_noise_ratio,
+            maximum_difference,
+        ]
+        for row in range(stat_table.rowCount()):
+            stat_table.item(row, 0).setText(str(round(stats[row](signal), 5)))
+        if second_signal is not None:
+            for row in range(self.ui.statystykiWynikowyExtraWidget.rowCount()):
+                self.ui.statystykiWynikowyExtraWidget.item(row, 0).setText(
+                    str(round(stats_extra[row](second_signal, signal), 5))
+                )
+
+    def sample_signal(self, signal_to_sample: Signal):
         sampled_signal = deepcopy(signal_to_sample)
         sampled_signal.samples = np.linspace(
             signal_to_sample.signal_start_time,
@@ -144,7 +174,6 @@ class MainWindow(QMainWindow):
         for x in sampled_signal.samples:
             desired_index = np.searchsorted(signal_to_sample.samples, x)
             sampled_signal.values.append(signal_to_sample.values[desired_index])
-        # sampled_signal.values = np.array(sampled_signal.values)
         sampled_signal.sample_rate = (
             self.ui.jednoCzestotliwoscProbkowaniaDoubleSpinBox.value()
         )
@@ -163,8 +192,7 @@ class MainWindow(QMainWindow):
 
         return sampled_signal
 
-    def quantize_signal(self):
-        signal_to_quantize = self._get_signal_from_combobox("sygnalComboBox")[1]
+    def quantize_signal(self, signal_to_quantize: Signal):
         quantized_signal = quantize_rounded(
             self.sampled_signal,
             int(self.ui.bityKwantyzacjiDoubleSpinBox.value()),
@@ -178,8 +206,7 @@ class MainWindow(QMainWindow):
         )
         return quantized_signal
 
-    def reconstruct_signal(self):
-        signal_to_reconstruct = self._get_signal_from_combobox("sygnalComboBox")[1]
+    def reconstruct_signal(self, signal_to_reconstruct: Signal):
         reconstructed_signal = self.reconstruction_types[
             self.ui.typRekonstrukcjiComboBox.currentIndex()
         ](self.sampled_signal, signal_to_reconstruct)
@@ -224,9 +251,11 @@ class MainWindow(QMainWindow):
         if second_signal:
             self.right_signal = generated_signal
             self._plot_signal(SignalTypes.RIGHT, generated_signal, plot_type)
+            self._fill_stats_tab(SignalTypes.RIGHT, generated_signal)
         else:
             self.left_signal = generated_signal
             self._plot_signal(SignalTypes.LEFT, generated_signal, plot_type)
+            self._fill_stats_tab(SignalTypes.LEFT, generated_signal)
 
     def save_to_file(self):
         signal_to_save = self._get_signal_from_combobox("zapiszDoPlikuComboBox")[1]
@@ -253,7 +282,9 @@ class MainWindow(QMainWindow):
             self.quantize_signal,
             self.reconstruct_signal,
         ]
-        self.operation_result = operation_types[operation_type]()
+        operated_signal = self._get_signal_from_combobox("sygnalComboBox")[1]
+        self.operation_result = operation_types[operation_type](operated_signal)
+        self._fill_stats_tab(SignalTypes.MIXED, self.operation_result, operated_signal if operation_type == 2 else None)
 
     def multi_argument_operation(self):
         signal_1 = self._get_signal_from_combobox("sygnal1DwuComboBox")[1]
@@ -262,4 +293,5 @@ class MainWindow(QMainWindow):
         self.operation_result = self.multi_argument_operations[operation_type](
             signal_1, signal_2
         )
+        self._fill_stats_tab(SignalTypes.MIXED, self.operation_result)
         self._plot_signal(SignalTypes.MIXED, self.operation_result, PlotTypes.LINE)

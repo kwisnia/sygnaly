@@ -1297,6 +1297,8 @@ class Ui_MainWindow(object):
         self.statystykiLewyWidget.setItem(2, 0, __qtablewidgetitem8)
         __qtablewidgetitem9 = QTableWidgetItem()
         self.statystykiLewyWidget.setItem(3, 0, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.statystykiLewyWidget.setItem(4, 0, __qtablewidgetitem10)
         self.statystykiLewyWidget.setObjectName("statystykiLewyWidget")
 
         self.statystykiLewyLayout.addWidget(self.statystykiLewyWidget)
@@ -1340,28 +1342,30 @@ class Ui_MainWindow(object):
         self.statystykiPrawyWidget = QTableWidget(self.verticalLayoutWidget_10)
         if self.statystykiPrawyWidget.columnCount() < 1:
             self.statystykiPrawyWidget.setColumnCount(1)
-        __qtablewidgetitem10 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem11)
         if self.statystykiPrawyWidget.rowCount() < 5:
             self.statystykiPrawyWidget.setRowCount(5)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setVerticalHeaderItem(0, __qtablewidgetitem11)
         __qtablewidgetitem12 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setVerticalHeaderItem(1, __qtablewidgetitem12)
+        self.statystykiPrawyWidget.setVerticalHeaderItem(0, __qtablewidgetitem12)
         __qtablewidgetitem13 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setVerticalHeaderItem(2, __qtablewidgetitem13)
+        self.statystykiPrawyWidget.setVerticalHeaderItem(1, __qtablewidgetitem13)
         __qtablewidgetitem14 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setVerticalHeaderItem(3, __qtablewidgetitem14)
+        self.statystykiPrawyWidget.setVerticalHeaderItem(2, __qtablewidgetitem14)
         __qtablewidgetitem15 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setVerticalHeaderItem(4, __qtablewidgetitem15)
+        self.statystykiPrawyWidget.setVerticalHeaderItem(3, __qtablewidgetitem15)
         __qtablewidgetitem16 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setItem(0, 0, __qtablewidgetitem16)
+        self.statystykiPrawyWidget.setVerticalHeaderItem(4, __qtablewidgetitem16)
         __qtablewidgetitem17 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setItem(1, 0, __qtablewidgetitem17)
+        self.statystykiPrawyWidget.setItem(0, 0, __qtablewidgetitem17)
         __qtablewidgetitem18 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setItem(2, 0, __qtablewidgetitem18)
+        self.statystykiPrawyWidget.setItem(1, 0, __qtablewidgetitem18)
         __qtablewidgetitem19 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setItem(3, 0, __qtablewidgetitem19)
+        self.statystykiPrawyWidget.setItem(2, 0, __qtablewidgetitem19)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(3, 0, __qtablewidgetitem20)
+        __qtablewidgetitem21 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(4, 0, __qtablewidgetitem21)
         self.statystykiPrawyWidget.setObjectName("statystykiPrawyWidget")
 
         self.statystykiPrawyLayout.addWidget(self.statystykiPrawyWidget)
@@ -1405,28 +1409,30 @@ class Ui_MainWindow(object):
         self.statystykiWynikowyWidget = QTableWidget(self.verticalLayoutWidget_11)
         if self.statystykiWynikowyWidget.columnCount() < 1:
             self.statystykiWynikowyWidget.setColumnCount(1)
-        __qtablewidgetitem20 = QTableWidgetItem()
-        self.statystykiWynikowyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem20)
+        __qtablewidgetitem22 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem22)
         if self.statystykiWynikowyWidget.rowCount() < 5:
             self.statystykiWynikowyWidget.setRowCount(5)
-        __qtablewidgetitem21 = QTableWidgetItem()
-        self.statystykiWynikowyWidget.setVerticalHeaderItem(0, __qtablewidgetitem21)
-        __qtablewidgetitem22 = QTableWidgetItem()
-        self.statystykiWynikowyWidget.setVerticalHeaderItem(1, __qtablewidgetitem22)
         __qtablewidgetitem23 = QTableWidgetItem()
-        self.statystykiWynikowyWidget.setVerticalHeaderItem(2, __qtablewidgetitem23)
+        self.statystykiWynikowyWidget.setVerticalHeaderItem(0, __qtablewidgetitem23)
         __qtablewidgetitem24 = QTableWidgetItem()
-        self.statystykiWynikowyWidget.setVerticalHeaderItem(3, __qtablewidgetitem24)
+        self.statystykiWynikowyWidget.setVerticalHeaderItem(1, __qtablewidgetitem24)
         __qtablewidgetitem25 = QTableWidgetItem()
-        self.statystykiWynikowyWidget.setVerticalHeaderItem(4, __qtablewidgetitem25)
+        self.statystykiWynikowyWidget.setVerticalHeaderItem(2, __qtablewidgetitem25)
         __qtablewidgetitem26 = QTableWidgetItem()
-        self.statystykiWynikowyWidget.setItem(0, 0, __qtablewidgetitem26)
+        self.statystykiWynikowyWidget.setVerticalHeaderItem(3, __qtablewidgetitem26)
         __qtablewidgetitem27 = QTableWidgetItem()
-        self.statystykiWynikowyWidget.setItem(1, 0, __qtablewidgetitem27)
+        self.statystykiWynikowyWidget.setVerticalHeaderItem(4, __qtablewidgetitem27)
         __qtablewidgetitem28 = QTableWidgetItem()
-        self.statystykiWynikowyWidget.setItem(2, 0, __qtablewidgetitem28)
+        self.statystykiWynikowyWidget.setItem(0, 0, __qtablewidgetitem28)
         __qtablewidgetitem29 = QTableWidgetItem()
-        self.statystykiWynikowyWidget.setItem(3, 0, __qtablewidgetitem29)
+        self.statystykiWynikowyWidget.setItem(1, 0, __qtablewidgetitem29)
+        __qtablewidgetitem30 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setItem(2, 0, __qtablewidgetitem30)
+        __qtablewidgetitem31 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setItem(3, 0, __qtablewidgetitem31)
+        __qtablewidgetitem32 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setItem(4, 0, __qtablewidgetitem32)
         self.statystykiWynikowyWidget.setObjectName("statystykiWynikowyWidget")
 
         self.statystykiWynikowyLayout.addWidget(self.statystykiWynikowyWidget)
@@ -1442,36 +1448,36 @@ class Ui_MainWindow(object):
         self.statystykiWynikowyExtraWidget = QTableWidget(self.verticalLayoutWidget_12)
         if self.statystykiWynikowyExtraWidget.columnCount() < 1:
             self.statystykiWynikowyExtraWidget.setColumnCount(1)
-        __qtablewidgetitem30 = QTableWidgetItem()
+        __qtablewidgetitem33 = QTableWidgetItem()
         self.statystykiWynikowyExtraWidget.setHorizontalHeaderItem(
-            0, __qtablewidgetitem30
+            0, __qtablewidgetitem33
         )
         if self.statystykiWynikowyExtraWidget.rowCount() < 4:
             self.statystykiWynikowyExtraWidget.setRowCount(4)
-        __qtablewidgetitem31 = QTableWidgetItem()
-        self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
-            0, __qtablewidgetitem31
-        )
-        __qtablewidgetitem32 = QTableWidgetItem()
-        self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
-            1, __qtablewidgetitem32
-        )
-        __qtablewidgetitem33 = QTableWidgetItem()
-        self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
-            2, __qtablewidgetitem33
-        )
         __qtablewidgetitem34 = QTableWidgetItem()
         self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
-            3, __qtablewidgetitem34
+            0, __qtablewidgetitem34
         )
         __qtablewidgetitem35 = QTableWidgetItem()
-        self.statystykiWynikowyExtraWidget.setItem(0, 0, __qtablewidgetitem35)
+        self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
+            1, __qtablewidgetitem35
+        )
         __qtablewidgetitem36 = QTableWidgetItem()
-        self.statystykiWynikowyExtraWidget.setItem(1, 0, __qtablewidgetitem36)
+        self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
+            2, __qtablewidgetitem36
+        )
         __qtablewidgetitem37 = QTableWidgetItem()
-        self.statystykiWynikowyExtraWidget.setItem(2, 0, __qtablewidgetitem37)
+        self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
+            3, __qtablewidgetitem37
+        )
         __qtablewidgetitem38 = QTableWidgetItem()
-        self.statystykiWynikowyExtraWidget.setItem(3, 0, __qtablewidgetitem38)
+        self.statystykiWynikowyExtraWidget.setItem(0, 0, __qtablewidgetitem38)
+        __qtablewidgetitem39 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setItem(1, 0, __qtablewidgetitem39)
+        __qtablewidgetitem40 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setItem(2, 0, __qtablewidgetitem40)
+        __qtablewidgetitem41 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setItem(3, 0, __qtablewidgetitem41)
         self.statystykiWynikowyExtraWidget.setObjectName(
             "statystykiWynikowyExtraWidget"
         )
