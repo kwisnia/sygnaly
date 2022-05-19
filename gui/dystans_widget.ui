@@ -87,7 +87,7 @@
      <x>240</x>
      <y>10</y>
      <width>181</width>
-     <height>121</height>
+     <height>151</height>
     </rect>
    </property>
    <property name="title">
@@ -99,7 +99,7 @@
       <x>10</x>
       <y>20</y>
       <width>166</width>
-      <height>91</height>
+      <height>118</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="obiektLayout">
@@ -135,6 +135,44 @@
      </item>
      <item row="2" column="1">
       <widget class="QDoubleSpinBox" name="predkoscSygnaluDoubleSpinBox"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="dystansOdCzujnikaLabel">
+       <property name="text">
+        <string>Dystans od czujnika</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QDoubleSpinBox" name="dystansOdCzujnikaDoubleSpinBox"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>10</y>
+     <width>301</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Statystyki</string>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>291</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QTableWidget" name="tableWidget"/>
      </item>
     </layout>
    </widget>
