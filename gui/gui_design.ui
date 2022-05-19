@@ -1029,6 +1029,20 @@
         <item row="3" column="1">
          <widget class="QSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_10"/>
         </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_10">
+          <property name="text">
+           <string>Czestotliwosc probkowania</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_10">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -1100,6 +1114,20 @@
         </item>
         <item row="3" column="1">
          <widget class="QDoubleSpinBox" name="wspolczynnikWypelnieniaDoubleSpinBox_11">
+          <property name="maximum">
+           <double>100000.000000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_11">
+          <property name="text">
+           <string>Czestotliwosc probkowania</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_11">
           <property name="maximum">
            <double>100000.000000000000000</double>
           </property>
@@ -1283,7 +1311,7 @@
       <item row="0" column="1">
        <widget class="QTabWidget" name="lewyWygenerowaneTab">
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="wykresLewyWygenerowaneTab">
          <attribute name="title">
@@ -1397,7 +1425,7 @@
       <item row="0" column="2">
        <widget class="QTabWidget" name="prawyWygenerowaneTab">
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="wykresPrawyWygenerowaneTab">
          <attribute name="title">
@@ -1529,7 +1557,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="wykresWynikowyTab">
       <attribute name="title">
@@ -1706,7 +1734,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="dzialaniaJednoSygnaloweTab">
       <attribute name="title">
