@@ -459,20 +459,6 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_3">
-          <property name="text">
-           <string>Czestotliwosc probkowania</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_3">
-          <property name="maximum">
-           <double>100000.000000000000000</double>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
      </widget>
@@ -549,20 +535,6 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_4">
-          <property name="text">
-           <string>Czestotliwosc probkowania</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_4">
-          <property name="maximum">
-           <double>100000.000000000000000</double>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
      </widget>
@@ -634,20 +606,6 @@
         </item>
         <item row="3" column="1">
          <widget class="QDoubleSpinBox" name="czestotliwoscDoubleSpinBox_5">
-          <property name="maximum">
-           <double>100000.000000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="czestotliwoscProbkowaniaLabel_5">
-          <property name="text">
-           <string>Czestotliwosc probkowania</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox_5">
           <property name="maximum">
            <double>100000.000000000000000</double>
           </property>
@@ -1322,65 +1280,10 @@
       </rect>
      </property>
      <layout class="QGridLayout" name="wygenerowaneLayout">
-      <item row="0" column="2">
-       <widget class="QTabWidget" name="prawyWygenerowaneTab">
-        <property name="currentIndex">
-         <number>2</number>
-        </property>
-        <widget class="QWidget" name="wykresPrawyWygenerowaneTab">
-         <attribute name="title">
-          <string>Wykres</string>
-         </attribute>
-         <widget class="QWidget" name="verticalLayoutWidget_8">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>10</y>
-            <width>551</width>
-            <height>291</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="wykresPrawyLayout"/>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="histogramPrawyWygenerowaneTab">
-         <attribute name="title">
-          <string>Histogram</string>
-         </attribute>
-         <widget class="QWidget" name="verticalLayoutWidget_7">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>10</y>
-            <width>551</width>
-            <height>291</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="histogramPrawyLayout"/>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="statystykiPrawyWygenerowaneTab">
-         <attribute name="title">
-          <string>Statystyki</string>
-         </attribute>
-         <widget class="QWidget" name="verticalLayoutWidget_4">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>10</y>
-            <width>551</width>
-            <height>291</height>
-           </rect>
-          </property>
-          <layout class="QVBoxLayout" name="statystykiPrawyLayout"/>
-         </widget>
-        </widget>
-       </widget>
-      </item>
       <item row="0" column="1">
        <widget class="QTabWidget" name="lewyWygenerowaneTab">
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="wykresLewyWygenerowaneTab">
          <attribute name="title">
@@ -1425,16 +1328,177 @@
          <widget class="QWidget" name="verticalLayoutWidget_6">
           <property name="geometry">
            <rect>
+            <x>70</x>
+            <y>50</y>
+            <width>421</width>
+            <height>181</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="statystykiLewyLayout">
+           <item>
+            <widget class="QTableWidget" name="statystykiLewyWidget">
+             <row>
+              <property name="text">
+               <string>Wartość średnia sygnału</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Wartość średnia bezwzględna sygnału</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Moc średnia sygnału</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Wariancja sygnału w przedziale wokół wartości średniej</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Wartość skuteczna sygnału</string>
+              </property>
+             </row>
+             <column>
+              <property name="text">
+               <string>Wartość</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QTabWidget" name="prawyWygenerowaneTab">
+        <property name="currentIndex">
+         <number>2</number>
+        </property>
+        <widget class="QWidget" name="wykresPrawyWygenerowaneTab">
+         <attribute name="title">
+          <string>Wykres</string>
+         </attribute>
+         <widget class="QWidget" name="verticalLayoutWidget_8">
+          <property name="geometry">
+           <rect>
             <x>10</x>
             <y>10</y>
             <width>551</width>
             <height>291</height>
            </rect>
           </property>
-          <layout class="QVBoxLayout" name="statystykiLewyLayout">
-           <property name="spacing">
-            <number>0</number>
-           </property>
+          <layout class="QVBoxLayout" name="wykresPrawyLayout"/>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="histogramPrawyWygenerowaneTab">
+         <attribute name="title">
+          <string>Histogram</string>
+         </attribute>
+         <widget class="QWidget" name="verticalLayoutWidget_7">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>551</width>
+            <height>291</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="histogramPrawyLayout"/>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="statystykiPrawyWygenerowaneTab">
+         <attribute name="title">
+          <string>Statystyki</string>
+         </attribute>
+         <widget class="QWidget" name="verticalLayoutWidget_10">
+          <property name="geometry">
+           <rect>
+            <x>80</x>
+            <y>50</y>
+            <width>421</width>
+            <height>181</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="statystykiPrawyLayout">
+           <item>
+            <widget class="QTableWidget" name="statystykiPrawyWidget">
+             <row>
+              <property name="text">
+               <string>Wartość średnia sygnału</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Wartość średnia bezwzględna sygnału</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Moc średnia sygnału</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Wariancja sygnału w przedziale wokół wartości średniej</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>Wartość skuteczna sygnału</string>
+              </property>
+             </row>
+             <column>
+              <property name="text">
+               <string>Wartość</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="1" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="2" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item row="3" column="0">
+              <property name="text">
+               <string/>
+              </property>
+             </item>
+            </widget>
+           </item>
           </layout>
          </widget>
         </widget>
@@ -1503,6 +1567,133 @@
       <attribute name="title">
        <string>Statystyki</string>
       </attribute>
+      <widget class="QWidget" name="verticalLayoutWidget_11">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>10</y>
+         <width>421</width>
+         <height>181</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="statystykiWynikowyLayout">
+        <item>
+         <widget class="QTableWidget" name="statystykiWynikowyWidget">
+          <row>
+           <property name="text">
+            <string>Wartość średnia sygnału</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Wartość średnia bezwzględna sygnału</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Moc średnia sygnału</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Wariancja sygnału w przedziale wokół wartości średniej</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Wartość skuteczna sygnału</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>Wartość</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_12">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>190</y>
+         <width>251</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="statystykiWynikowyExtraLayout">
+        <item>
+         <widget class="QTableWidget" name="statystykiWynikowyExtraWidget">
+          <row>
+           <property name="text">
+            <string>MSE</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Signal to noise ratio</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Peak signal to noise ratio</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>Maksymalna różnica</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>Wartość</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="1" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="2" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+          <item row="3" column="0">
+           <property name="text">
+            <string/>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </widget>
     <widget class="QTabWidget" name="dzialaniaTab">

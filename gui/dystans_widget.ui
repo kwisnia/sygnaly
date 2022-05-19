@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DystansWidget</class>
+ <widget class="QWidget" name="DystansWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QGroupBox" name="czujnikGroupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>211</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Czujnik</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>19</y>
+      <width>191</width>
+      <height>118</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="czujnikLayout">
+     <property name="verticalSpacing">
+      <number>12</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="okresSygnaluLabel">
+       <property name="text">
+        <string>Okres sygnalu</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QDoubleSpinBox" name="okresSygnaluDoubleSpinBox"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="czestotliwoscProbkowaniaLabel">
+       <property name="text">
+        <string>Czestotliwosc probkowania</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QDoubleSpinBox" name="czestotliwoscProbkowaniaDoubleSpinBox"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="dlugoscBuforuLabel">
+       <property name="text">
+        <string>Dlugosc buforu</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDoubleSpinBox" name="dlugoscBuforuDoubleSpinBox"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="okresRaportowaniaLabel">
+       <property name="text">
+        <string>Okres raportowania</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QDoubleSpinBox" name="okresRaportowaniaDoubleSpinBox"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="obiektGroupBox">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>10</y>
+     <width>181</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Śledzony obiekt</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>166</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="obiektLayout">
+     <property name="verticalSpacing">
+      <number>12</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="jednostkaCzasuLabel">
+       <property name="text">
+        <string>Jednostka czasu</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QDoubleSpinBox" name="jednostkaCzasuDoubleSpinBox"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="rzeczywistaPredkoscLabel">
+       <property name="text">
+        <string>Rzeczywista predkosc</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QDoubleSpinBox" name="rzeczywistaPredkoscDoubleSpinBox"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="predkoscSygnaluLabel">
+       <property name="text">
+        <string>Predkosc sygnalu</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDoubleSpinBox" name="predkoscSygnaluDoubleSpinBox"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
