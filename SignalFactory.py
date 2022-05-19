@@ -14,7 +14,13 @@ class SignalFactory:
         type_of_signal: Callable,
         fullfilment: float or int = None,
     ):
-        name = "".join([str(elem) for elem in type_of_signal.__name__.split("_")[1:]])
+        name = ""
+        if type_of_signal.__name__.startswith("generate"):
+            name = "".join(
+                [str(elem) for elem in type_of_signal.__name__.split("_")[1:]]
+            )
+        else:
+            name = "".join([str(elem) for elem in type_of_signal.__name__.split("_")])
         if sample_rate is None:
             sample_rate = SAMPLES / signal_duration
         samples, values = type_of_signal(
@@ -25,4 +31,12 @@ class SignalFactory:
             fullfilment,
             sample_rate,
         )
-        return Signal(signal_start_time, signal_duration, samples, values, name, frequency, sample_rate)
+        return Signal(
+            signal_start_time,
+            signal_duration,
+            samples,
+            values,
+            name,
+            frequency,
+            sample_rate,
+        )

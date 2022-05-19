@@ -49,6 +49,7 @@ from PySide6.QtWidgets import (
     QGridLayout,
     QGroupBox,
     QHBoxLayout,
+    QHeaderView,
     QLabel,
     QMainWindow,
     QPushButton,
@@ -58,6 +59,8 @@ from PySide6.QtWidgets import (
     QStackedWidget,
     QStatusBar,
     QTabWidget,
+    QTableWidget,
+    QTableWidgetItem,
     QVBoxLayout,
     QWidget,
 )
@@ -355,27 +358,6 @@ class Ui_MainWindow(object):
             3, QFormLayout.FieldRole, self.czestotliwoscDoubleSpinBox_3
         )
 
-        self.czestotliwoscProbkowaniaLabel_3 = QLabel(self.formLayoutWidget_6)
-        self.czestotliwoscProbkowaniaLabel_3.setObjectName(
-            "czestotliwoscProbkowaniaLabel_3"
-        )
-
-        self.sinusLayout.setWidget(
-            4, QFormLayout.LabelRole, self.czestotliwoscProbkowaniaLabel_3
-        )
-
-        self.czestotliwoscProbkowaniaDoubleSpinBox_3 = QDoubleSpinBox(
-            self.formLayoutWidget_6
-        )
-        self.czestotliwoscProbkowaniaDoubleSpinBox_3.setObjectName(
-            "czestotliwoscProbkowaniaDoubleSpinBox_3"
-        )
-        self.czestotliwoscProbkowaniaDoubleSpinBox_3.setMaximum(100000.000000000000000)
-
-        self.sinusLayout.setWidget(
-            4, QFormLayout.FieldRole, self.czestotliwoscProbkowaniaDoubleSpinBox_3
-        )
-
         self.generujStackedWidget.addWidget(self.sinus)
         self.sinusJedno = QWidget()
         self.sinusJedno.setObjectName("sinusJedno")
@@ -449,27 +431,6 @@ class Ui_MainWindow(object):
             3, QFormLayout.FieldRole, self.czestotliwoscDoubleSpinBox_4
         )
 
-        self.czestotliwoscProbkowaniaLabel_4 = QLabel(self.formLayoutWidget_7)
-        self.czestotliwoscProbkowaniaLabel_4.setObjectName(
-            "czestotliwoscProbkowaniaLabel_4"
-        )
-
-        self.sinusJednoLayout.setWidget(
-            4, QFormLayout.LabelRole, self.czestotliwoscProbkowaniaLabel_4
-        )
-
-        self.czestotliwoscProbkowaniaDoubleSpinBox_4 = QDoubleSpinBox(
-            self.formLayoutWidget_7
-        )
-        self.czestotliwoscProbkowaniaDoubleSpinBox_4.setObjectName(
-            "czestotliwoscProbkowaniaDoubleSpinBox_4"
-        )
-        self.czestotliwoscProbkowaniaDoubleSpinBox_4.setMaximum(100000.000000000000000)
-
-        self.sinusJednoLayout.setWidget(
-            4, QFormLayout.FieldRole, self.czestotliwoscProbkowaniaDoubleSpinBox_4
-        )
-
         self.generujStackedWidget.addWidget(self.sinusJedno)
         self.sinusDwu = QWidget()
         self.sinusDwu.setObjectName("sinusDwu")
@@ -541,27 +502,6 @@ class Ui_MainWindow(object):
 
         self.sinusDwuLayout.setWidget(
             3, QFormLayout.FieldRole, self.czestotliwoscDoubleSpinBox_5
-        )
-
-        self.czestotliwoscProbkowaniaLabel_5 = QLabel(self.formLayoutWidget_8)
-        self.czestotliwoscProbkowaniaLabel_5.setObjectName(
-            "czestotliwoscProbkowaniaLabel_5"
-        )
-
-        self.sinusDwuLayout.setWidget(
-            4, QFormLayout.LabelRole, self.czestotliwoscProbkowaniaLabel_5
-        )
-
-        self.czestotliwoscProbkowaniaDoubleSpinBox_5 = QDoubleSpinBox(
-            self.formLayoutWidget_8
-        )
-        self.czestotliwoscProbkowaniaDoubleSpinBox_5.setObjectName(
-            "czestotliwoscProbkowaniaDoubleSpinBox_5"
-        )
-        self.czestotliwoscProbkowaniaDoubleSpinBox_5.setMaximum(100000.000000000000000)
-
-        self.sinusDwuLayout.setWidget(
-            4, QFormLayout.FieldRole, self.czestotliwoscProbkowaniaDoubleSpinBox_5
         )
 
         self.generujStackedWidget.addWidget(self.sinusDwu)
@@ -1009,6 +949,27 @@ class Ui_MainWindow(object):
             3, QFormLayout.FieldRole, self.wspolczynnikWypelnieniaDoubleSpinBox_10
         )
 
+        self.czestotliwoscProbkowaniaLabel_10 = QLabel(self.formLayoutWidget_13)
+        self.czestotliwoscProbkowaniaLabel_10.setObjectName(
+            "czestotliwoscProbkowaniaLabel_10"
+        )
+
+        self.impulsJednostkowyLayout.setWidget(
+            4, QFormLayout.LabelRole, self.czestotliwoscProbkowaniaLabel_10
+        )
+
+        self.czestotliwoscProbkowaniaDoubleSpinBox_10 = QDoubleSpinBox(
+            self.formLayoutWidget_13
+        )
+        self.czestotliwoscProbkowaniaDoubleSpinBox_10.setObjectName(
+            "czestotliwoscProbkowaniaDoubleSpinBox_10"
+        )
+        self.czestotliwoscProbkowaniaDoubleSpinBox_10.setMaximum(100000.000000000000000)
+
+        self.impulsJednostkowyLayout.setWidget(
+            4, QFormLayout.FieldRole, self.czestotliwoscProbkowaniaDoubleSpinBox_10
+        )
+
         self.generujStackedWidget.addWidget(self.impulsJednostkowy)
         self.szumImpulsowy = QWidget()
         self.szumImpulsowy.setObjectName("szumImpulsowy")
@@ -1088,6 +1049,27 @@ class Ui_MainWindow(object):
 
         self.szumImpulsowyLayout.setWidget(
             3, QFormLayout.FieldRole, self.wspolczynnikWypelnieniaDoubleSpinBox_11
+        )
+
+        self.czestotliwoscProbkowaniaLabel_11 = QLabel(self.formLayoutWidget_14)
+        self.czestotliwoscProbkowaniaLabel_11.setObjectName(
+            "czestotliwoscProbkowaniaLabel_11"
+        )
+
+        self.szumImpulsowyLayout.setWidget(
+            4, QFormLayout.LabelRole, self.czestotliwoscProbkowaniaLabel_11
+        )
+
+        self.czestotliwoscProbkowaniaDoubleSpinBox_11 = QDoubleSpinBox(
+            self.formLayoutWidget_14
+        )
+        self.czestotliwoscProbkowaniaDoubleSpinBox_11.setObjectName(
+            "czestotliwoscProbkowaniaDoubleSpinBox_11"
+        )
+        self.czestotliwoscProbkowaniaDoubleSpinBox_11.setMaximum(100000.000000000000000)
+
+        self.szumImpulsowyLayout.setWidget(
+            4, QFormLayout.FieldRole, self.czestotliwoscProbkowaniaDoubleSpinBox_11
         )
 
         self.generujStackedWidget.addWidget(self.szumImpulsowy)
@@ -1259,42 +1241,6 @@ class Ui_MainWindow(object):
         self.wygenerowaneLayout = QGridLayout(self.gridLayoutWidget)
         self.wygenerowaneLayout.setObjectName("wygenerowaneLayout")
         self.wygenerowaneLayout.setContentsMargins(0, 0, 0, 0)
-        self.prawyWygenerowaneTab = QTabWidget(self.gridLayoutWidget)
-        self.prawyWygenerowaneTab.setObjectName("prawyWygenerowaneTab")
-        self.wykresPrawyWygenerowaneTab = QWidget()
-        self.wykresPrawyWygenerowaneTab.setObjectName("wykresPrawyWygenerowaneTab")
-        self.verticalLayoutWidget_8 = QWidget(self.wykresPrawyWygenerowaneTab)
-        self.verticalLayoutWidget_8.setObjectName("verticalLayoutWidget_8")
-        self.verticalLayoutWidget_8.setGeometry(QRect(10, 10, 551, 291))
-        self.wykresPrawyLayout = QVBoxLayout(self.verticalLayoutWidget_8)
-        self.wykresPrawyLayout.setObjectName("wykresPrawyLayout")
-        self.wykresPrawyLayout.setContentsMargins(0, 0, 0, 0)
-        self.prawyWygenerowaneTab.addTab(self.wykresPrawyWygenerowaneTab, "")
-        self.histogramPrawyWygenerowaneTab = QWidget()
-        self.histogramPrawyWygenerowaneTab.setObjectName(
-            "histogramPrawyWygenerowaneTab"
-        )
-        self.verticalLayoutWidget_7 = QWidget(self.histogramPrawyWygenerowaneTab)
-        self.verticalLayoutWidget_7.setObjectName("verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 10, 551, 291))
-        self.histogramPrawyLayout = QVBoxLayout(self.verticalLayoutWidget_7)
-        self.histogramPrawyLayout.setObjectName("histogramPrawyLayout")
-        self.histogramPrawyLayout.setContentsMargins(0, 0, 0, 0)
-        self.prawyWygenerowaneTab.addTab(self.histogramPrawyWygenerowaneTab, "")
-        self.statystykiPrawyWygenerowaneTab = QWidget()
-        self.statystykiPrawyWygenerowaneTab.setObjectName(
-            "statystykiPrawyWygenerowaneTab"
-        )
-        self.verticalLayoutWidget_4 = QWidget(self.statystykiPrawyWygenerowaneTab)
-        self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
-        self.verticalLayoutWidget_4.setGeometry(QRect(10, 10, 551, 291))
-        self.statystykiPrawyLayout = QVBoxLayout(self.verticalLayoutWidget_4)
-        self.statystykiPrawyLayout.setObjectName("statystykiPrawyLayout")
-        self.statystykiPrawyLayout.setContentsMargins(0, 0, 0, 0)
-        self.prawyWygenerowaneTab.addTab(self.statystykiPrawyWygenerowaneTab, "")
-
-        self.wygenerowaneLayout.addWidget(self.prawyWygenerowaneTab, 0, 2, 1, 1)
-
         self.lewyWygenerowaneTab = QTabWidget(self.gridLayoutWidget)
         self.lewyWygenerowaneTab.setObjectName("lewyWygenerowaneTab")
         self.wykresLewyWygenerowaneTab = QWidget()
@@ -1322,14 +1268,107 @@ class Ui_MainWindow(object):
         )
         self.verticalLayoutWidget_6 = QWidget(self.statystykiLewyWygenerowaneTab)
         self.verticalLayoutWidget_6.setObjectName("verticalLayoutWidget_6")
-        self.verticalLayoutWidget_6.setGeometry(QRect(10, 10, 551, 291))
+        self.verticalLayoutWidget_6.setGeometry(QRect(70, 50, 421, 181))
         self.statystykiLewyLayout = QVBoxLayout(self.verticalLayoutWidget_6)
-        self.statystykiLewyLayout.setSpacing(0)
         self.statystykiLewyLayout.setObjectName("statystykiLewyLayout")
         self.statystykiLewyLayout.setContentsMargins(0, 0, 0, 0)
+        self.statystykiLewyWidget = QTableWidget(self.verticalLayoutWidget_6)
+        if self.statystykiLewyWidget.columnCount() < 1:
+            self.statystykiLewyWidget.setColumnCount(1)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.statystykiLewyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        if self.statystykiLewyWidget.rowCount() < 5:
+            self.statystykiLewyWidget.setRowCount(5)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.statystykiLewyWidget.setVerticalHeaderItem(0, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.statystykiLewyWidget.setVerticalHeaderItem(1, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.statystykiLewyWidget.setVerticalHeaderItem(2, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.statystykiLewyWidget.setVerticalHeaderItem(3, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.statystykiLewyWidget.setVerticalHeaderItem(4, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.statystykiLewyWidget.setItem(0, 0, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.statystykiLewyWidget.setItem(1, 0, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.statystykiLewyWidget.setItem(2, 0, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.statystykiLewyWidget.setItem(3, 0, __qtablewidgetitem9)
+        self.statystykiLewyWidget.setObjectName("statystykiLewyWidget")
+
+        self.statystykiLewyLayout.addWidget(self.statystykiLewyWidget)
+
         self.lewyWygenerowaneTab.addTab(self.statystykiLewyWygenerowaneTab, "")
 
         self.wygenerowaneLayout.addWidget(self.lewyWygenerowaneTab, 0, 1, 1, 1)
+
+        self.prawyWygenerowaneTab = QTabWidget(self.gridLayoutWidget)
+        self.prawyWygenerowaneTab.setObjectName("prawyWygenerowaneTab")
+        self.wykresPrawyWygenerowaneTab = QWidget()
+        self.wykresPrawyWygenerowaneTab.setObjectName("wykresPrawyWygenerowaneTab")
+        self.verticalLayoutWidget_8 = QWidget(self.wykresPrawyWygenerowaneTab)
+        self.verticalLayoutWidget_8.setObjectName("verticalLayoutWidget_8")
+        self.verticalLayoutWidget_8.setGeometry(QRect(10, 10, 551, 291))
+        self.wykresPrawyLayout = QVBoxLayout(self.verticalLayoutWidget_8)
+        self.wykresPrawyLayout.setObjectName("wykresPrawyLayout")
+        self.wykresPrawyLayout.setContentsMargins(0, 0, 0, 0)
+        self.prawyWygenerowaneTab.addTab(self.wykresPrawyWygenerowaneTab, "")
+        self.histogramPrawyWygenerowaneTab = QWidget()
+        self.histogramPrawyWygenerowaneTab.setObjectName(
+            "histogramPrawyWygenerowaneTab"
+        )
+        self.verticalLayoutWidget_7 = QWidget(self.histogramPrawyWygenerowaneTab)
+        self.verticalLayoutWidget_7.setObjectName("verticalLayoutWidget_7")
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 10, 551, 291))
+        self.histogramPrawyLayout = QVBoxLayout(self.verticalLayoutWidget_7)
+        self.histogramPrawyLayout.setObjectName("histogramPrawyLayout")
+        self.histogramPrawyLayout.setContentsMargins(0, 0, 0, 0)
+        self.prawyWygenerowaneTab.addTab(self.histogramPrawyWygenerowaneTab, "")
+        self.statystykiPrawyWygenerowaneTab = QWidget()
+        self.statystykiPrawyWygenerowaneTab.setObjectName(
+            "statystykiPrawyWygenerowaneTab"
+        )
+        self.verticalLayoutWidget_10 = QWidget(self.statystykiPrawyWygenerowaneTab)
+        self.verticalLayoutWidget_10.setObjectName("verticalLayoutWidget_10")
+        self.verticalLayoutWidget_10.setGeometry(QRect(80, 50, 421, 181))
+        self.statystykiPrawyLayout = QVBoxLayout(self.verticalLayoutWidget_10)
+        self.statystykiPrawyLayout.setObjectName("statystykiPrawyLayout")
+        self.statystykiPrawyLayout.setContentsMargins(0, 0, 0, 0)
+        self.statystykiPrawyWidget = QTableWidget(self.verticalLayoutWidget_10)
+        if self.statystykiPrawyWidget.columnCount() < 1:
+            self.statystykiPrawyWidget.setColumnCount(1)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem10)
+        if self.statystykiPrawyWidget.rowCount() < 5:
+            self.statystykiPrawyWidget.setRowCount(5)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setVerticalHeaderItem(0, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setVerticalHeaderItem(1, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setVerticalHeaderItem(2, __qtablewidgetitem13)
+        __qtablewidgetitem14 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setVerticalHeaderItem(3, __qtablewidgetitem14)
+        __qtablewidgetitem15 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setVerticalHeaderItem(4, __qtablewidgetitem15)
+        __qtablewidgetitem16 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(0, 0, __qtablewidgetitem16)
+        __qtablewidgetitem17 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(1, 0, __qtablewidgetitem17)
+        __qtablewidgetitem18 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(2, 0, __qtablewidgetitem18)
+        __qtablewidgetitem19 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(3, 0, __qtablewidgetitem19)
+        self.statystykiPrawyWidget.setObjectName("statystykiPrawyWidget")
+
+        self.statystykiPrawyLayout.addWidget(self.statystykiPrawyWidget)
+
+        self.prawyWygenerowaneTab.addTab(self.statystykiPrawyWygenerowaneTab, "")
+
+        self.wygenerowaneLayout.addWidget(self.prawyWygenerowaneTab, 0, 2, 1, 1)
 
         self.dzialaniaGroupBox = QGroupBox(self.centralwidget)
         self.dzialaniaGroupBox.setObjectName("dzialaniaGroupBox")
@@ -1357,6 +1396,88 @@ class Ui_MainWindow(object):
         self.wynikowyTab.addTab(self.histogramWynikowyTab, "")
         self.statystykiWynikowyTab = QWidget()
         self.statystykiWynikowyTab.setObjectName("statystykiWynikowyTab")
+        self.verticalLayoutWidget_11 = QWidget(self.statystykiWynikowyTab)
+        self.verticalLayoutWidget_11.setObjectName("verticalLayoutWidget_11")
+        self.verticalLayoutWidget_11.setGeometry(QRect(60, 10, 421, 181))
+        self.statystykiWynikowyLayout = QVBoxLayout(self.verticalLayoutWidget_11)
+        self.statystykiWynikowyLayout.setObjectName("statystykiWynikowyLayout")
+        self.statystykiWynikowyLayout.setContentsMargins(0, 0, 0, 0)
+        self.statystykiWynikowyWidget = QTableWidget(self.verticalLayoutWidget_11)
+        if self.statystykiWynikowyWidget.columnCount() < 1:
+            self.statystykiWynikowyWidget.setColumnCount(1)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem20)
+        if self.statystykiWynikowyWidget.rowCount() < 5:
+            self.statystykiWynikowyWidget.setRowCount(5)
+        __qtablewidgetitem21 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setVerticalHeaderItem(0, __qtablewidgetitem21)
+        __qtablewidgetitem22 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setVerticalHeaderItem(1, __qtablewidgetitem22)
+        __qtablewidgetitem23 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setVerticalHeaderItem(2, __qtablewidgetitem23)
+        __qtablewidgetitem24 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setVerticalHeaderItem(3, __qtablewidgetitem24)
+        __qtablewidgetitem25 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setVerticalHeaderItem(4, __qtablewidgetitem25)
+        __qtablewidgetitem26 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setItem(0, 0, __qtablewidgetitem26)
+        __qtablewidgetitem27 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setItem(1, 0, __qtablewidgetitem27)
+        __qtablewidgetitem28 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setItem(2, 0, __qtablewidgetitem28)
+        __qtablewidgetitem29 = QTableWidgetItem()
+        self.statystykiWynikowyWidget.setItem(3, 0, __qtablewidgetitem29)
+        self.statystykiWynikowyWidget.setObjectName("statystykiWynikowyWidget")
+
+        self.statystykiWynikowyLayout.addWidget(self.statystykiWynikowyWidget)
+
+        self.verticalLayoutWidget_12 = QWidget(self.statystykiWynikowyTab)
+        self.verticalLayoutWidget_12.setObjectName("verticalLayoutWidget_12")
+        self.verticalLayoutWidget_12.setGeometry(QRect(140, 190, 251, 151))
+        self.statystykiWynikowyExtraLayout = QVBoxLayout(self.verticalLayoutWidget_12)
+        self.statystykiWynikowyExtraLayout.setObjectName(
+            "statystykiWynikowyExtraLayout"
+        )
+        self.statystykiWynikowyExtraLayout.setContentsMargins(0, 0, 0, 0)
+        self.statystykiWynikowyExtraWidget = QTableWidget(self.verticalLayoutWidget_12)
+        if self.statystykiWynikowyExtraWidget.columnCount() < 1:
+            self.statystykiWynikowyExtraWidget.setColumnCount(1)
+        __qtablewidgetitem30 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setHorizontalHeaderItem(
+            0, __qtablewidgetitem30
+        )
+        if self.statystykiWynikowyExtraWidget.rowCount() < 4:
+            self.statystykiWynikowyExtraWidget.setRowCount(4)
+        __qtablewidgetitem31 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
+            0, __qtablewidgetitem31
+        )
+        __qtablewidgetitem32 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
+            1, __qtablewidgetitem32
+        )
+        __qtablewidgetitem33 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
+            2, __qtablewidgetitem33
+        )
+        __qtablewidgetitem34 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setVerticalHeaderItem(
+            3, __qtablewidgetitem34
+        )
+        __qtablewidgetitem35 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setItem(0, 0, __qtablewidgetitem35)
+        __qtablewidgetitem36 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setItem(1, 0, __qtablewidgetitem36)
+        __qtablewidgetitem37 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setItem(2, 0, __qtablewidgetitem37)
+        __qtablewidgetitem38 = QTableWidgetItem()
+        self.statystykiWynikowyExtraWidget.setItem(3, 0, __qtablewidgetitem38)
+        self.statystykiWynikowyExtraWidget.setObjectName(
+            "statystykiWynikowyExtraWidget"
+        )
+
+        self.statystykiWynikowyExtraLayout.addWidget(self.statystykiWynikowyExtraWidget)
+
         self.wynikowyTab.addTab(self.statystykiWynikowyTab, "")
         self.dzialaniaTab = QTabWidget(self.dzialaniaGroupBox)
         self.dzialaniaTab.setObjectName("dzialaniaTab")
@@ -1565,10 +1686,10 @@ class Ui_MainWindow(object):
         )
 
         self.generujStackedWidget.setCurrentIndex(0)
-        self.prawyWygenerowaneTab.setCurrentIndex(2)
         self.lewyWygenerowaneTab.setCurrentIndex(0)
-        self.wynikowyTab.setCurrentIndex(2)
-        self.dzialaniaTab.setCurrentIndex(1)
+        self.prawyWygenerowaneTab.setCurrentIndex(0)
+        self.wynikowyTab.setCurrentIndex(0)
+        self.dzialaniaTab.setCurrentIndex(0)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1683,9 +1804,6 @@ class Ui_MainWindow(object):
         self.czestotliwoscLabel_3.setText(
             QCoreApplication.translate("MainWindow", "Czestotliwosc", None)
         )
-        self.czestotliwoscProbkowaniaLabel_3.setText(
-            QCoreApplication.translate("MainWindow", "Czestotliwosc probkowania", None)
-        )
         self.poczatekSygnaluLabel_4.setText(
             QCoreApplication.translate("MainWindow", "Poczatek sygnalu", None)
         )
@@ -1698,9 +1816,6 @@ class Ui_MainWindow(object):
         self.czestotliwoscLabel_4.setText(
             QCoreApplication.translate("MainWindow", "Czestotliwosc", None)
         )
-        self.czestotliwoscProbkowaniaLabel_4.setText(
-            QCoreApplication.translate("MainWindow", "Czestotliwosc probkowania", None)
-        )
         self.poczatekSygnaluLabel_5.setText(
             QCoreApplication.translate("MainWindow", "Poczatek sygnalu", None)
         )
@@ -1712,9 +1827,6 @@ class Ui_MainWindow(object):
         )
         self.czestotliwoscLabel_5.setText(
             QCoreApplication.translate("MainWindow", "Czestotliwosc", None)
-        )
-        self.czestotliwoscProbkowaniaLabel_5.setText(
-            QCoreApplication.translate("MainWindow", "Czestotliwosc probkowania", None)
         )
         self.poczatekSygnaluLabel_6.setText(
             QCoreApplication.translate("MainWindow", "Poczatek sygnalu", None)
@@ -1785,6 +1897,9 @@ class Ui_MainWindow(object):
         self.wspolczynnikWypelnieniaLabel_10.setText(
             QCoreApplication.translate("MainWindow", "Numer probki ze skokiem", None)
         )
+        self.czestotliwoscProbkowaniaLabel_10.setText(
+            QCoreApplication.translate("MainWindow", "Czestotliwosc probkowania", None)
+        )
         self.poczatekSygnaluLabel_11.setText(
             QCoreApplication.translate("MainWindow", "Poczatek sygnalu", None)
         )
@@ -1796,6 +1911,9 @@ class Ui_MainWindow(object):
         )
         self.wspolczynnikWypelnieniaLabel_11.setText(
             QCoreApplication.translate("MainWindow", "Prawdopodobienstwo skoku", None)
+        )
+        self.czestotliwoscProbkowaniaLabel_11.setText(
+            QCoreApplication.translate("MainWindow", "Czestotliwosc probkowania", None)
         )
         self.dlugoscSygnaluLabel_12.setText(
             QCoreApplication.translate("MainWindow", "Rzad filtru", None)
@@ -1838,18 +1956,6 @@ class Ui_MainWindow(object):
         self.wygenerowaneGroupBox.setTitle(
             QCoreApplication.translate("MainWindow", "Wygenerowane sygna\u0142y", None)
         )
-        self.prawyWygenerowaneTab.setTabText(
-            self.prawyWygenerowaneTab.indexOf(self.wykresPrawyWygenerowaneTab),
-            QCoreApplication.translate("MainWindow", "Wykres", None),
-        )
-        self.prawyWygenerowaneTab.setTabText(
-            self.prawyWygenerowaneTab.indexOf(self.histogramPrawyWygenerowaneTab),
-            QCoreApplication.translate("MainWindow", "Histogram", None),
-        )
-        self.prawyWygenerowaneTab.setTabText(
-            self.prawyWygenerowaneTab.indexOf(self.statystykiPrawyWygenerowaneTab),
-            QCoreApplication.translate("MainWindow", "Statystyki", None),
-        )
         self.lewyWygenerowaneTab.setTabText(
             self.lewyWygenerowaneTab.indexOf(self.wykresLewyWygenerowaneTab),
             QCoreApplication.translate("MainWindow", "Wykres", None),
@@ -1858,8 +1964,106 @@ class Ui_MainWindow(object):
             self.lewyWygenerowaneTab.indexOf(self.histogramLewyWygenerowaneTab),
             QCoreApplication.translate("MainWindow", "Histogram", None),
         )
+        ___qtablewidgetitem = self.statystykiLewyWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(
+            QCoreApplication.translate("MainWindow", "Warto\u015b\u0107", None)
+        )
+        ___qtablewidgetitem1 = self.statystykiLewyWidget.verticalHeaderItem(0)
+        ___qtablewidgetitem1.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Warto\u015b\u0107 \u015brednia sygna\u0142u", None
+            )
+        )
+        ___qtablewidgetitem2 = self.statystykiLewyWidget.verticalHeaderItem(1)
+        ___qtablewidgetitem2.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "Warto\u015b\u0107 \u015brednia bezwzgl\u0119dna sygna\u0142u",
+                None,
+            )
+        )
+        ___qtablewidgetitem3 = self.statystykiLewyWidget.verticalHeaderItem(2)
+        ___qtablewidgetitem3.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Moc \u015brednia sygna\u0142u", None
+            )
+        )
+        ___qtablewidgetitem4 = self.statystykiLewyWidget.verticalHeaderItem(3)
+        ___qtablewidgetitem4.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "Wariancja sygna\u0142u w przedziale wok\u00f3\u0142 warto\u015bci \u015bredniej",
+                None,
+            )
+        )
+        ___qtablewidgetitem5 = self.statystykiLewyWidget.verticalHeaderItem(4)
+        ___qtablewidgetitem5.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Warto\u015b\u0107 skuteczna sygna\u0142u", None
+            )
+        )
+
+        __sortingEnabled = self.statystykiLewyWidget.isSortingEnabled()
+        self.statystykiLewyWidget.setSortingEnabled(False)
+        self.statystykiLewyWidget.setSortingEnabled(__sortingEnabled)
+
         self.lewyWygenerowaneTab.setTabText(
             self.lewyWygenerowaneTab.indexOf(self.statystykiLewyWygenerowaneTab),
+            QCoreApplication.translate("MainWindow", "Statystyki", None),
+        )
+        self.prawyWygenerowaneTab.setTabText(
+            self.prawyWygenerowaneTab.indexOf(self.wykresPrawyWygenerowaneTab),
+            QCoreApplication.translate("MainWindow", "Wykres", None),
+        )
+        self.prawyWygenerowaneTab.setTabText(
+            self.prawyWygenerowaneTab.indexOf(self.histogramPrawyWygenerowaneTab),
+            QCoreApplication.translate("MainWindow", "Histogram", None),
+        )
+        ___qtablewidgetitem6 = self.statystykiPrawyWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem6.setText(
+            QCoreApplication.translate("MainWindow", "Warto\u015b\u0107", None)
+        )
+        ___qtablewidgetitem7 = self.statystykiPrawyWidget.verticalHeaderItem(0)
+        ___qtablewidgetitem7.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Warto\u015b\u0107 \u015brednia sygna\u0142u", None
+            )
+        )
+        ___qtablewidgetitem8 = self.statystykiPrawyWidget.verticalHeaderItem(1)
+        ___qtablewidgetitem8.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "Warto\u015b\u0107 \u015brednia bezwzgl\u0119dna sygna\u0142u",
+                None,
+            )
+        )
+        ___qtablewidgetitem9 = self.statystykiPrawyWidget.verticalHeaderItem(2)
+        ___qtablewidgetitem9.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Moc \u015brednia sygna\u0142u", None
+            )
+        )
+        ___qtablewidgetitem10 = self.statystykiPrawyWidget.verticalHeaderItem(3)
+        ___qtablewidgetitem10.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "Wariancja sygna\u0142u w przedziale wok\u00f3\u0142 warto\u015bci \u015bredniej",
+                None,
+            )
+        )
+        ___qtablewidgetitem11 = self.statystykiPrawyWidget.verticalHeaderItem(4)
+        ___qtablewidgetitem11.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Warto\u015b\u0107 skuteczna sygna\u0142u", None
+            )
+        )
+
+        __sortingEnabled1 = self.statystykiPrawyWidget.isSortingEnabled()
+        self.statystykiPrawyWidget.setSortingEnabled(False)
+        self.statystykiPrawyWidget.setSortingEnabled(__sortingEnabled1)
+
+        self.prawyWygenerowaneTab.setTabText(
+            self.prawyWygenerowaneTab.indexOf(self.statystykiPrawyWygenerowaneTab),
             QCoreApplication.translate("MainWindow", "Statystyki", None),
         )
         self.dzialaniaGroupBox.setTitle(
@@ -1873,6 +2077,78 @@ class Ui_MainWindow(object):
             self.wynikowyTab.indexOf(self.histogramWynikowyTab),
             QCoreApplication.translate("MainWindow", "Histogram", None),
         )
+        ___qtablewidgetitem12 = self.statystykiWynikowyWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem12.setText(
+            QCoreApplication.translate("MainWindow", "Warto\u015b\u0107", None)
+        )
+        ___qtablewidgetitem13 = self.statystykiWynikowyWidget.verticalHeaderItem(0)
+        ___qtablewidgetitem13.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Warto\u015b\u0107 \u015brednia sygna\u0142u", None
+            )
+        )
+        ___qtablewidgetitem14 = self.statystykiWynikowyWidget.verticalHeaderItem(1)
+        ___qtablewidgetitem14.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "Warto\u015b\u0107 \u015brednia bezwzgl\u0119dna sygna\u0142u",
+                None,
+            )
+        )
+        ___qtablewidgetitem15 = self.statystykiWynikowyWidget.verticalHeaderItem(2)
+        ___qtablewidgetitem15.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Moc \u015brednia sygna\u0142u", None
+            )
+        )
+        ___qtablewidgetitem16 = self.statystykiWynikowyWidget.verticalHeaderItem(3)
+        ___qtablewidgetitem16.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "Wariancja sygna\u0142u w przedziale wok\u00f3\u0142 warto\u015bci \u015bredniej",
+                None,
+            )
+        )
+        ___qtablewidgetitem17 = self.statystykiWynikowyWidget.verticalHeaderItem(4)
+        ___qtablewidgetitem17.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Warto\u015b\u0107 skuteczna sygna\u0142u", None
+            )
+        )
+
+        __sortingEnabled2 = self.statystykiWynikowyWidget.isSortingEnabled()
+        self.statystykiWynikowyWidget.setSortingEnabled(False)
+        self.statystykiWynikowyWidget.setSortingEnabled(__sortingEnabled2)
+
+        ___qtablewidgetitem18 = self.statystykiWynikowyExtraWidget.horizontalHeaderItem(
+            0
+        )
+        ___qtablewidgetitem18.setText(
+            QCoreApplication.translate("MainWindow", "Warto\u015b\u0107", None)
+        )
+        ___qtablewidgetitem19 = self.statystykiWynikowyExtraWidget.verticalHeaderItem(0)
+        ___qtablewidgetitem19.setText(
+            QCoreApplication.translate("MainWindow", "MSE", None)
+        )
+        ___qtablewidgetitem20 = self.statystykiWynikowyExtraWidget.verticalHeaderItem(1)
+        ___qtablewidgetitem20.setText(
+            QCoreApplication.translate("MainWindow", "Signal to noise ratio", None)
+        )
+        ___qtablewidgetitem21 = self.statystykiWynikowyExtraWidget.verticalHeaderItem(2)
+        ___qtablewidgetitem21.setText(
+            QCoreApplication.translate("MainWindow", "Peak signal to noise ratio", None)
+        )
+        ___qtablewidgetitem22 = self.statystykiWynikowyExtraWidget.verticalHeaderItem(3)
+        ___qtablewidgetitem22.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Maksymalna r\u00f3\u017cnica", None
+            )
+        )
+
+        __sortingEnabled3 = self.statystykiWynikowyExtraWidget.isSortingEnabled()
+        self.statystykiWynikowyExtraWidget.setSortingEnabled(False)
+        self.statystykiWynikowyExtraWidget.setSortingEnabled(__sortingEnabled3)
+
         self.wynikowyTab.setTabText(
             self.wynikowyTab.indexOf(self.statystykiWynikowyTab),
             QCoreApplication.translate("MainWindow", "Statystyki", None),

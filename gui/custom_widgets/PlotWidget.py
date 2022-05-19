@@ -25,8 +25,9 @@ class PlotWidget(QWidget):
         self.setLayout(vlayout)
         self.resize(width, height)
 
-    def plot(self, x: list[float], y: list[float], plot_type: PlotTypes):
-        self.axes.clear()
+    def plot(self, x: list[float], y: list[float], plot_type: PlotTypes, clear=True):
+        if clear:
+            self.axes.clear()
         if plot_type == PlotTypes.LINE:
             self.axes.plot(x, y)
         elif plot_type == PlotTypes.HISTOGRAM:

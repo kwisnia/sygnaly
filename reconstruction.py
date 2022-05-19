@@ -16,13 +16,8 @@ def zero_order_hold(reconstructed_signal: Signal, original_signal: Signal = None
         ]
         for x in original_signal.samples
     ]
-    plt.plot(original_signal.samples, zero_order_hold_values)
-    plt.plot(original_signal.samples, original_signal.values)
     new_signal = copy(original_signal)
     new_signal.values = np.array(zero_order_hold_values)
-    plt.title("Rekonstrukcja sygnału Zero Order Hold")
-    plt.legend(["Rekonstrukcja sygnału", "Oryginalny sygnał"])
-    plt.show()
     return new_signal
 
 
@@ -46,15 +41,6 @@ def first_order_hold(reconstructed_signal: Signal, original_signal: Signal = Non
         first_order_hold_values.append(params.slope * x + params.intercept)
     new_signal = copy(original_signal)
     new_signal.values = np.array(first_order_hold_values)
-    plt.plot(
-        original_signal.samples,
-        first_order_hold_values,
-    )
-
-    plt.plot(original_signal.samples, original_signal.values)
-    plt.title("Rekonstrukcja sygnału First Order Hold")
-    plt.legend(["Rekonstrukcja sygnału", "Oryginalny sygnał"])
-    plt.show()
     return new_signal
 
 
@@ -69,10 +55,4 @@ def sinc(reconstructed_signal: Signal, original_signal: Signal = None):
         new_samples.append(sample_value)
     new_signal = copy(original_signal)
     new_signal.values = np.array(new_samples)
-    # plt.scatter(reconstructed_signal.samples, reconstructed_signal.values)
-    plt.plot(original_signal.samples, new_samples)
-    plt.plot(original_signal.samples, original_signal.values)
-    plt.title("Rekonstrukcja sygnału funkcją sinc")
-    plt.legend(["Rekonstrukcja sygnału", "Oryginalny sygnał"])
-    plt.show()
     return new_signal

@@ -67,12 +67,13 @@ def convolve(first: Signal, second: Signal):
         for j in range(len(second.values)):
             new_signal.values[i + j] += first.values[i] * second.values[j]
     new_samples = len(new_signal.values) - len(first.values) + 1
-    new_signal.samples.extend(
+    new_signal.samples = np.append(
+        new_signal.samples,
         np.linspace(
             first.samples[-1],
             first.samples[-1] + (1 / first.sample_rate) * new_samples,
             new_samples,
-        )[1:]
+        )[1:],
     )
     return new_signal
 
@@ -81,13 +82,15 @@ def corelate(first: Signal, second: Signal):
     if len(second.samples) > len(first.samples):
         first, second = second, first
     new_signal = deepcopy(first)
+    new_signal.samples = np.array(new_signal.samples)
     new_signal.values = np.convolve(first.values, second.values[::-1])
-    new_samples = len(new_signal.values) - len(first.values)
-    new_signal.samples.extend(
+    new_samples = len(new_signal.values) - len(first.values) + 1
+    new_signal.samples = np.append(
+        new_signal.samples,
         np.linspace(
             first.samples[-1],
             first.samples[-1] + (1 / first.sample_rate) * new_samples,
             new_samples,
-        )[1:]
+        )[1:],
     )
     return new_signal
