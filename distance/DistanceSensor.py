@@ -31,7 +31,6 @@ class DistanceSensor:
             self.sample_rate,
             generate_sinusoidal_signal,
             None,
-            range_start - delay,
         )
         second_signal = self.signal_factory.create(
             0.5,
@@ -41,7 +40,6 @@ class DistanceSensor:
             self.sample_rate,
             generate_triangle_signal,
             0.25,
-            range_start - delay,
         )
         first_signal.values = np.sin(2 * np.pi * (1 / self.probe_signal_period) * (np.array(first_signal.samples) - delay))
         second_signal.values = sawtooth(
@@ -49,7 +47,7 @@ class DistanceSensor:
             * np.pi
             * (1 / (self.probe_signal_period / 6 * 2))
             * (np.array(second_signal.samples) - delay),
-            duty=0.3,
+            width=0.3,
         )
         return add(first_signal, second_signal)
 

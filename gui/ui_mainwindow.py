@@ -23,6 +23,7 @@ from PySide6.QtCore import (
     Qt,
 )
 from PySide6.QtGui import (
+    QAction,
     QBrush,
     QColor,
     QConicalGradient,
@@ -52,6 +53,8 @@ from PySide6.QtWidgets import (
     QHeaderView,
     QLabel,
     QMainWindow,
+    QMenu,
+    QMenuBar,
     QPushButton,
     QSizePolicy,
     QSpacerItem,
@@ -71,6 +74,8 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1200, 820)
+        self.actiondystans = QAction(MainWindow)
+        self.actiondystans.setObjectName("actiondystans")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.generujFrame = QFrame(self.centralwidget)
@@ -1675,6 +1680,12 @@ class Ui_MainWindow(object):
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.menuBar = QMenuBar(MainWindow)
+        self.menuBar.setObjectName("menuBar")
+        self.menuBar.setGeometry(QRect(0, 0, 1200, 21))
+        self.menustandard = QMenu(self.menuBar)
+        self.menustandard.setObjectName("menustandard")
+        MainWindow.setMenuBar(self.menuBar)
         # if QT_CONFIG(shortcut)
         self.typSygnaluLabel.setBuddy(self.typSygnaluComboBox)
         self.operacjaJednoLabel.setBuddy(self.operacjaJednoComboBox)
@@ -1686,6 +1697,10 @@ class Ui_MainWindow(object):
         self.sygnalLabel.setBuddy(self.sygnalComboBox)
         # endif // QT_CONFIG(shortcut)
 
+        self.menuBar.addAction(self.menustandard.menuAction())
+        self.menustandard.addSeparator()
+        self.menustandard.addAction(self.actiondystans)
+
         self.retranslateUi(MainWindow)
         self.typSygnaluComboBox.currentIndexChanged.connect(
             self.generujStackedWidget.setCurrentIndex
@@ -1694,7 +1709,7 @@ class Ui_MainWindow(object):
         self.generujStackedWidget.setCurrentIndex(0)
         self.lewyWygenerowaneTab.setCurrentIndex(0)
         self.prawyWygenerowaneTab.setCurrentIndex(0)
-        self.wynikowyTab.setCurrentIndex(0)
+        self.wynikowyTab.setCurrentIndex(2)
         self.dzialaniaTab.setCurrentIndex(0)
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1704,6 +1719,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(
             QCoreApplication.translate("MainWindow", "MainWindow", None)
+        )
+        self.actiondystans.setText(
+            QCoreApplication.translate("MainWindow", "dystans", None)
         )
         self.typSygnaluLabel.setText(
             QCoreApplication.translate("MainWindow", "Typ sygnalu: ", None)
@@ -2265,6 +2283,9 @@ class Ui_MainWindow(object):
         self.dzialaniaTab.setTabText(
             self.dzialaniaTab.indexOf(self.dzialaniaDwuSygnaloweTab),
             QCoreApplication.translate("MainWindow", "dwu-sygnalowe", None),
+        )
+        self.menustandard.setTitle(
+            QCoreApplication.translate("MainWindow", "okno", None)
         )
 
     # retranslateUi

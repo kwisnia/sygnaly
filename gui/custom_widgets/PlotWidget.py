@@ -11,7 +11,7 @@ from gui.custom_widgets.PlotTypes import PlotTypes
 
 
 class PlotWidget(QWidget):
-    def __init__(self, width=580, height=300, parent=None):
+    def __init__(self, width=580, height=300, parent=None, toolbar=True):
         super().__init__(parent)
 
         #  create widgets
@@ -20,7 +20,8 @@ class PlotWidget(QWidget):
         self.toolbar = NavigationToolbar2QT(self.view, self)
         #  Create layout
         vlayout = QVBoxLayout()
-        vlayout.addWidget(self.toolbar)
+        if toolbar:
+            vlayout.addWidget(self.toolbar)
         vlayout.addWidget(self.view)
         self.setLayout(vlayout)
         self.resize(width, height)

@@ -4,6 +4,7 @@ from PySide6 import QtWidgets
 from SignalFactory import SignalFactory
 from filters import high_pass_filter, low_pass_filter
 from functions import *
+from gui.SimulatorWindow import SimulatorWindow
 from stats import *
 from gui.SignalTypes import SignalTypes
 from gui.custom_widgets.PlotTypes import PlotTypes
@@ -75,6 +76,7 @@ class MainWindow(QMainWindow):
             self.single_argument_operation
         )
         self.ui.dzialaniaDwuWykonajButton.clicked.connect(self.multi_argument_operation)
+        self.ui.actiondystans.triggered.connect(self.open_simulator_window)
 
     def _get_value(self, widget_name):
         try:
@@ -159,6 +161,10 @@ class MainWindow(QMainWindow):
                 self.ui.statystykiWynikowyExtraWidget.item(row, 0).setText(
                     str(round(stats_extra[row](second_signal, signal), 5))
                 )
+
+    def open_simulator_window(self):
+        self.simulator_window = SimulatorWindow()
+        self.simulator_window.show()
 
     def sample_signal(self, signal_to_sample: Signal):
         sampled_signal = deepcopy(signal_to_sample)
