@@ -1567,7 +1567,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="wykresWynikowyTab">
       <attribute name="title">
@@ -2047,6 +2047,29 @@
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menustandard">
+    <property name="title">
+     <string>okno</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actiondystans"/>
+   </widget>
+   <addaction name="menustandard"/>
+  </widget>
+  <action name="actiondystans">
+   <property name="text">
+    <string>dystans</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>

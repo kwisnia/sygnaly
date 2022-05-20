@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -149,7 +149,7 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QGroupBox" name="groupBox">
+  <widget class="QGroupBox" name="statystykiGroupBox">
    <property name="geometry">
     <rect>
      <x>450</x>
@@ -170,11 +170,78 @@
       <height>121</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="statystykiLayout">
      <item>
-      <widget class="QTableWidget" name="tableWidget"/>
+      <widget class="QTableWidget" name="statystykiWidget">
+       <row>
+        <property name="text">
+         <string>Czas</string>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>Rzeczywisty dystans</string>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>Obliczony dystans</string>
+        </property>
+       </row>
+       <column>
+        <property name="text">
+         <string>Wartość</string>
+        </property>
+       </column>
+      </widget>
      </item>
     </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="wykresyGroupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>170</y>
+     <width>781</width>
+     <height>521</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Wykresy</string>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>781</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="wykresy1Layout"/>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>170</y>
+      <width>781</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="wykresy2Layout"/>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>350</y>
+      <width>781</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="wykresy3Layout"/>
    </widget>
   </widget>
  </widget>
