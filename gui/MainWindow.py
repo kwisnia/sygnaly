@@ -250,7 +250,7 @@ class MainWindow(QMainWindow):
             self._get_value(
                 f"wspolczynnikWypelnieniaDoubleSpinBox_{selected_signal_type}"
             )
-            if selected_signal_type != 12 or selected_signal_type != 13
+            if selected_signal_type != 12 and selected_signal_type != 13
             else self._get_combobox_value(f"typOknaComboBox_{selected_signal_type}"),
         )
         plot_type = self._get_plot_type_from_index(selected_signal_type)
@@ -290,7 +290,11 @@ class MainWindow(QMainWindow):
         ]
         operated_signal = self._get_signal_from_combobox("sygnalComboBox")[1]
         self.operation_result = operation_types[operation_type](operated_signal)
-        self._fill_stats_tab(SignalTypes.MIXED, self.operation_result, operated_signal if operation_type == 2 else None)
+        self._fill_stats_tab(
+            SignalTypes.MIXED,
+            self.operation_result,
+            operated_signal if operation_type == 2 else None,
+        )
 
     def multi_argument_operation(self):
         signal_1 = self._get_signal_from_combobox("sygnal1DwuComboBox")[1]
