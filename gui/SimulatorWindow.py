@@ -1,3 +1,5 @@
+from signal import signal
+from time import sleep
 from distance.Environment import Environment
 from PySide6 import QtWidgets, QtCore
 from distance.DistanceSensor import DistanceSensor
@@ -7,26 +9,28 @@ from gui.custom_widgets.PlotWidget import PlotWidget
 from gui.ui_distancewindow import Ui_DystansWidget
 
 
-class Worker(QtCore.QObject):
+class Worker(QtCore.QThread):
     progress = QtCore.Signal(tuple)
     finished = QtCore.Signal()
 
-    def run(self, ui):
+    def run(self):
+        print(time_unit)
         sensor = DistanceSensor(
-            ui.okresRaportowaniaDoubleSpinBox.value(),
-            ui.czestotliwoscProbkowaniaDoubleSpinBox.value(),
-            ui.dlugoscBuforuDoubleSpinBox.value(),
-            ui.okresRaportowaniaDoubleSpinBox.value(),
+            signal_period[0],
+            sampling_rate[0],
+            buffer_length[0],
+            reporting_period[0],
         )
         env = Environment(
-            ui.jednostkaCzasuDoubleSpinBox.value(),
-            ui.predkoscSygnaluDoubleSpinBox.value(),
-            ui.rzeczywistaPredkoscDoubleSpinBox.value(),
+            time_unit[0],
+            signal_speed[0],
+            item_speed[0],
             sensor,
-            ui.dystansOdCzujnikaDoubleSpinBox.value(),
+            item_distance[0],
         )
-        while True:
+        while not self.isInterruptionRequested():
             env.step()
+            sleep(time_unit[0])
             self.progress.emit((sensor, env))
         self.finished.emit()
 
@@ -45,35 +49,41 @@ class SimulatorWindow(QtWidgets.QWidget):
         self.ui.startButton.clicked.connect(self.start_simulation)
 
     def start_simulation(self):
-
+        global signal_period
+        global sampling_rate
+        global buffer_length
+        global reporting_period
+        global time_unit
+        global signal_speed
+        global item_speed
+        global item_distance
+        signal_period = (self.ui.okresSygnaluDoubleSpinBox.value(),)
+        sampling_rate = (self.ui.czestotliwoscProbkowaniaDoubleSpinBox.value(),)
+        buffer_length = (self.ui.dlugoscBuforuDoubleSpinBox.value(),)
+        reporting_period = (self.ui.okresRaportowaniaDoubleSpinBox.value(),)
+        time_unit = (self.ui.jednostkaCzasuDoubleSpinBox.value(),)
+        signal_speed = (self.ui.predkoscSygnaluDoubleSpinBox.value(),)
+        item_speed = (self.ui.rzeczywistaPredkoscDoubleSpinBox.value(),)
+        item_distance = (self.ui.dystansOdCzujnikaDoubleSpinBox.value(),)
         # Step 2: Create a QThread object
-        self.thread = QtCore.QThread()
-        # Step 3: Create a worker object
-        self.worker = Worker()
+        self.thread = Worker()
         # Step 4: Move worker to the thread
-        self.worker.moveToThread(self.thread)
-        # Step 5: Connect signals and slots
-        self.thread.started.connect(lambda: self.worker.run(self.ui))
-        self.worker.finished.connect(self.thread.quit)
-        self.worker.finished.connect(self.worker.deleteLater)
-        self.thread.finished.connect(self.thread.deleteLater)
-        self.worker.progress.connect(self.reportProgress)
+        self.thread.progress.connect(self.reportProgress)
         # Step 6: Start the thread
         self.thread.start()
 
     def reportProgress(self, objects):
-        self.probingSignalWidget.plot(
-            objects[0].probe_signal.samples, objects[0].probe_signal.values, PlotTypes.LINE
+        # print(objects)
+        self.probingSignalWidget.update(
+            objects[0].probe_signal.samples, objects[0].probe_signal.values
         )
-        self.feedbackSignalWidget.plot(
+        self.feedbackSignalWidget.update(
             objects[0].feedback_signal.samples,
             objects[0].feedback_signal.values,
-            PlotTypes.LINE,
         )
-        self.correlationSignalWidget.plot(
+        self.correlationSignalWidget.update(
             objects[0].correlated_signal.samples,
             objects[0].correlated_signal.values,
-            PlotTypes.LINE,
         )
         self.ui.statystykiWidget.item(0, 0).setText(str(objects[1].timestamp))
         self.ui.statystykiWidget.item(1, 0).setText(str(objects[1].item_distance))

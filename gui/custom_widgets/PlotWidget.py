@@ -17,6 +17,7 @@ class PlotWidget(QWidget):
         #  create widgets
         self.view = FigureCanvas(Figure(figsize=(5, 3)))
         self.axes = self.view.figure.subplots()
+        (self.lines,) = self.axes.plot([], [])
         self.toolbar = NavigationToolbar2QT(self.view, self)
         #  Create layout
         vlayout = QVBoxLayout()
@@ -40,3 +41,11 @@ class PlotWidget(QWidget):
         elif plot_type == PlotTypes.STEP:
             self.axes.step(x, y)
         self.view.draw()
+
+    def update(self, x: list[float], y: list[float]):
+        self.lines.set_xdata(x)
+        self.lines.set_ydata(y)
+        self.axes.relim()
+        self.axes.autoscale_view()
+        self.view.draw()
+        self.view.flush_events()

@@ -26,10 +26,10 @@ class Ui_DystansWidget(object):
         DystansWidget.resize(800, 880)
         self.czujnikGroupBox = QGroupBox(DystansWidget)
         self.czujnikGroupBox.setObjectName(u"czujnikGroupBox")
-        self.czujnikGroupBox.setGeometry(QRect(10, 10, 211, 151))
+        self.czujnikGroupBox.setGeometry(QRect(10, 10, 231, 151))
         self.formLayoutWidget_2 = QWidget(self.czujnikGroupBox)
         self.formLayoutWidget_2.setObjectName(u"formLayoutWidget_2")
-        self.formLayoutWidget_2.setGeometry(QRect(10, 19, 191, 118))
+        self.formLayoutWidget_2.setGeometry(QRect(10, 19, 214, 118))
         self.czujnikLayout = QFormLayout(self.formLayoutWidget_2)
         self.czujnikLayout.setObjectName(u"czujnikLayout")
         self.czujnikLayout.setVerticalSpacing(12)
@@ -41,6 +41,7 @@ class Ui_DystansWidget(object):
 
         self.okresSygnaluDoubleSpinBox = QDoubleSpinBox(self.formLayoutWidget_2)
         self.okresSygnaluDoubleSpinBox.setObjectName(u"okresSygnaluDoubleSpinBox")
+        self.okresSygnaluDoubleSpinBox.setMaximum(100000.000000000000000)
 
         self.czujnikLayout.setWidget(0, QFormLayout.FieldRole, self.okresSygnaluDoubleSpinBox)
 
@@ -51,6 +52,7 @@ class Ui_DystansWidget(object):
 
         self.czestotliwoscProbkowaniaDoubleSpinBox = QDoubleSpinBox(self.formLayoutWidget_2)
         self.czestotliwoscProbkowaniaDoubleSpinBox.setObjectName(u"czestotliwoscProbkowaniaDoubleSpinBox")
+        self.czestotliwoscProbkowaniaDoubleSpinBox.setMaximum(100000.000000000000000)
 
         self.czujnikLayout.setWidget(1, QFormLayout.FieldRole, self.czestotliwoscProbkowaniaDoubleSpinBox)
 
@@ -61,6 +63,7 @@ class Ui_DystansWidget(object):
 
         self.dlugoscBuforuDoubleSpinBox = QDoubleSpinBox(self.formLayoutWidget_2)
         self.dlugoscBuforuDoubleSpinBox.setObjectName(u"dlugoscBuforuDoubleSpinBox")
+        self.dlugoscBuforuDoubleSpinBox.setMaximum(100000.000000000000000)
 
         self.czujnikLayout.setWidget(2, QFormLayout.FieldRole, self.dlugoscBuforuDoubleSpinBox)
 
@@ -71,15 +74,16 @@ class Ui_DystansWidget(object):
 
         self.okresRaportowaniaDoubleSpinBox = QDoubleSpinBox(self.formLayoutWidget_2)
         self.okresRaportowaniaDoubleSpinBox.setObjectName(u"okresRaportowaniaDoubleSpinBox")
+        self.okresRaportowaniaDoubleSpinBox.setMaximum(100000.000000000000000)
 
         self.czujnikLayout.setWidget(3, QFormLayout.FieldRole, self.okresRaportowaniaDoubleSpinBox)
 
         self.obiektGroupBox = QGroupBox(DystansWidget)
         self.obiektGroupBox.setObjectName(u"obiektGroupBox")
-        self.obiektGroupBox.setGeometry(QRect(230, 10, 181, 151))
+        self.obiektGroupBox.setGeometry(QRect(250, 10, 211, 151))
         self.formLayoutWidget = QWidget(self.obiektGroupBox)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(10, 20, 166, 118))
+        self.formLayoutWidget.setGeometry(QRect(10, 20, 190, 118))
         self.obiektLayout = QFormLayout(self.formLayoutWidget)
         self.obiektLayout.setObjectName(u"obiektLayout")
         self.obiektLayout.setVerticalSpacing(12)
@@ -91,6 +95,7 @@ class Ui_DystansWidget(object):
 
         self.jednostkaCzasuDoubleSpinBox = QDoubleSpinBox(self.formLayoutWidget)
         self.jednostkaCzasuDoubleSpinBox.setObjectName(u"jednostkaCzasuDoubleSpinBox")
+        self.jednostkaCzasuDoubleSpinBox.setMaximum(100000.000000000000000)
 
         self.obiektLayout.setWidget(0, QFormLayout.FieldRole, self.jednostkaCzasuDoubleSpinBox)
 
@@ -101,6 +106,7 @@ class Ui_DystansWidget(object):
 
         self.rzeczywistaPredkoscDoubleSpinBox = QDoubleSpinBox(self.formLayoutWidget)
         self.rzeczywistaPredkoscDoubleSpinBox.setObjectName(u"rzeczywistaPredkoscDoubleSpinBox")
+        self.rzeczywistaPredkoscDoubleSpinBox.setMaximum(100000.000000000000000)
 
         self.obiektLayout.setWidget(1, QFormLayout.FieldRole, self.rzeczywistaPredkoscDoubleSpinBox)
 
@@ -111,6 +117,7 @@ class Ui_DystansWidget(object):
 
         self.predkoscSygnaluDoubleSpinBox = QDoubleSpinBox(self.formLayoutWidget)
         self.predkoscSygnaluDoubleSpinBox.setObjectName(u"predkoscSygnaluDoubleSpinBox")
+        self.predkoscSygnaluDoubleSpinBox.setMaximum(100000.000000000000000)
 
         self.obiektLayout.setWidget(2, QFormLayout.FieldRole, self.predkoscSygnaluDoubleSpinBox)
 
@@ -121,15 +128,16 @@ class Ui_DystansWidget(object):
 
         self.dystansOdCzujnikaDoubleSpinBox = QDoubleSpinBox(self.formLayoutWidget)
         self.dystansOdCzujnikaDoubleSpinBox.setObjectName(u"dystansOdCzujnikaDoubleSpinBox")
+        self.dystansOdCzujnikaDoubleSpinBox.setMaximum(100000.000000000000000)
 
         self.obiektLayout.setWidget(3, QFormLayout.FieldRole, self.dystansOdCzujnikaDoubleSpinBox)
 
         self.statystykiGroupBox = QGroupBox(DystansWidget)
         self.statystykiGroupBox.setObjectName(u"statystykiGroupBox")
-        self.statystykiGroupBox.setGeometry(QRect(420, 10, 251, 151))
+        self.statystykiGroupBox.setGeometry(QRect(470, 10, 241, 151))
         self.verticalLayoutWidget = QWidget(self.statystykiGroupBox)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 20, 231, 121))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 20, 221, 121))
         self.statystykiLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.statystykiLayout.setObjectName(u"statystykiLayout")
         self.statystykiLayout.setContentsMargins(0, 0, 0, 0)
@@ -161,7 +169,7 @@ class Ui_DystansWidget(object):
         self.wykresyGroupBox.setGeometry(QRect(10, 170, 781, 711))
         self.verticalLayoutWidget_2 = QWidget(self.wykresyGroupBox)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(0, 0, 781, 241))
+        self.verticalLayoutWidget_2.setGeometry(QRect(0, 20, 781, 221))
         self.wykresy1Layout = QVBoxLayout(self.verticalLayoutWidget_2)
         self.wykresy1Layout.setObjectName(u"wykresy1Layout")
         self.wykresy1Layout.setContentsMargins(0, 0, 0, 0)
@@ -179,7 +187,7 @@ class Ui_DystansWidget(object):
         self.wykresy3Layout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayoutWidget_5 = QWidget(DystansWidget)
         self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
-        self.verticalLayoutWidget_5.setGeometry(QRect(690, 119, 91, 41))
+        self.verticalLayoutWidget_5.setGeometry(QRect(710, 119, 81, 41))
         self.startButtonLayout = QVBoxLayout(self.verticalLayoutWidget_5)
         self.startButtonLayout.setObjectName(u"startButtonLayout")
         self.startButtonLayout.setContentsMargins(0, 0, 0, 0)
