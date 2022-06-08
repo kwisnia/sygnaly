@@ -35,7 +35,7 @@
        <x>20</x>
        <y>10</y>
        <width>331</width>
-       <height>22</height>
+       <height>24</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="typSygnalLayout">
@@ -1567,7 +1567,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="wykresWynikowyTab">
       <attribute name="title">
@@ -1738,6 +1738,38 @@
        </layout>
       </widget>
      </widget>
+     <widget class="QWidget" name="wykresW1Tab">
+      <attribute name="title">
+       <string>W1</string>
+      </attribute>
+      <widget class="QWidget" name="verticalLayoutWidget_16">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>10</y>
+         <width>541</width>
+         <height>361</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="wykresW1Layout"/>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="wykresW2Tab">
+      <attribute name="title">
+       <string>W2</string>
+      </attribute>
+      <widget class="QWidget" name="verticalLayoutWidget_17">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>541</width>
+         <height>371</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="wykresW2Layout"/>
+      </widget>
+     </widget>
     </widget>
     <widget class="QTabWidget" name="dzialaniaTab">
      <property name="geometry">
@@ -1760,8 +1792,8 @@
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>191</width>
-         <height>171</height>
+         <width>194</width>
+         <height>172</height>
         </rect>
        </property>
        <layout class="QFormLayout" name="dzialaniaJednoLayout">
@@ -1793,6 +1825,21 @@
           <item>
            <property name="text">
             <string>rekonstrukcja</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>FFT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>FCT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>WHT</string>
            </property>
           </item>
          </widget>
@@ -2053,7 +2100,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menustandard">

@@ -85,7 +85,7 @@ class Ui_MainWindow(object):
         self.generujFrame.setFrameShadow(QFrame.Raised)
         self.formLayoutWidget = QWidget(self.generujFrame)
         self.formLayoutWidget.setObjectName("formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(20, 10, 331, 22))
+        self.formLayoutWidget.setGeometry(QRect(20, 10, 331, 24))
         self.typSygnalLayout = QFormLayout(self.formLayoutWidget)
         self.typSygnalLayout.setObjectName("typSygnalLayout")
         self.typSygnalLayout.setVerticalSpacing(20)
@@ -1490,6 +1490,24 @@ class Ui_MainWindow(object):
         self.statystykiWynikowyExtraLayout.addWidget(self.statystykiWynikowyExtraWidget)
 
         self.wynikowyTab.addTab(self.statystykiWynikowyTab, "")
+        self.wykresW1Tab = QWidget()
+        self.wykresW1Tab.setObjectName("wykresW1Tab")
+        self.verticalLayoutWidget_16 = QWidget(self.wykresW1Tab)
+        self.verticalLayoutWidget_16.setObjectName("verticalLayoutWidget_16")
+        self.verticalLayoutWidget_16.setGeometry(QRect(0, 10, 541, 361))
+        self.wykresW1Layout = QVBoxLayout(self.verticalLayoutWidget_16)
+        self.wykresW1Layout.setObjectName("wykresW1Layout")
+        self.wykresW1Layout.setContentsMargins(0, 0, 0, 0)
+        self.wynikowyTab.addTab(self.wykresW1Tab, "")
+        self.wykresW2Tab = QWidget()
+        self.wykresW2Tab.setObjectName("wykresW2Tab")
+        self.verticalLayoutWidget_17 = QWidget(self.wykresW2Tab)
+        self.verticalLayoutWidget_17.setObjectName("verticalLayoutWidget_17")
+        self.verticalLayoutWidget_17.setGeometry(QRect(0, 0, 541, 371))
+        self.wykresW2Layout = QVBoxLayout(self.verticalLayoutWidget_17)
+        self.wykresW2Layout.setObjectName("wykresW2Layout")
+        self.wykresW2Layout.setContentsMargins(0, 0, 0, 0)
+        self.wynikowyTab.addTab(self.wykresW2Tab, "")
         self.dzialaniaTab = QTabWidget(self.dzialaniaGroupBox)
         self.dzialaniaTab.setObjectName("dzialaniaTab")
         self.dzialaniaTab.setGeometry(QRect(10, 20, 231, 391))
@@ -1497,7 +1515,7 @@ class Ui_MainWindow(object):
         self.dzialaniaJednoSygnaloweTab.setObjectName("dzialaniaJednoSygnaloweTab")
         self.formLayoutWidget_2 = QWidget(self.dzialaniaJednoSygnaloweTab)
         self.formLayoutWidget_2.setObjectName("formLayoutWidget_2")
-        self.formLayoutWidget_2.setGeometry(QRect(10, 10, 191, 171))
+        self.formLayoutWidget_2.setGeometry(QRect(10, 10, 194, 172))
         self.dzialaniaJednoLayout = QFormLayout(self.formLayoutWidget_2)
         self.dzialaniaJednoLayout.setObjectName("dzialaniaJednoLayout")
         self.dzialaniaJednoLayout.setVerticalSpacing(15)
@@ -1510,6 +1528,9 @@ class Ui_MainWindow(object):
         )
 
         self.operacjaJednoComboBox = QComboBox(self.formLayoutWidget_2)
+        self.operacjaJednoComboBox.addItem("")
+        self.operacjaJednoComboBox.addItem("")
+        self.operacjaJednoComboBox.addItem("")
         self.operacjaJednoComboBox.addItem("")
         self.operacjaJednoComboBox.addItem("")
         self.operacjaJednoComboBox.addItem("")
@@ -1682,7 +1703,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.menuBar = QMenuBar(MainWindow)
         self.menuBar.setObjectName("menuBar")
-        self.menuBar.setGeometry(QRect(0, 0, 1200, 21))
+        self.menuBar.setGeometry(QRect(0, 0, 1200, 22))
         self.menustandard = QMenu(self.menuBar)
         self.menustandard.setObjectName("menustandard")
         MainWindow.setMenuBar(self.menuBar)
@@ -1709,7 +1730,7 @@ class Ui_MainWindow(object):
         self.generujStackedWidget.setCurrentIndex(0)
         self.lewyWygenerowaneTab.setCurrentIndex(0)
         self.prawyWygenerowaneTab.setCurrentIndex(0)
-        self.wynikowyTab.setCurrentIndex(2)
+        self.wynikowyTab.setCurrentIndex(4)
         self.dzialaniaTab.setCurrentIndex(0)
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2177,6 +2198,14 @@ class Ui_MainWindow(object):
             self.wynikowyTab.indexOf(self.statystykiWynikowyTab),
             QCoreApplication.translate("MainWindow", "Statystyki", None),
         )
+        self.wynikowyTab.setTabText(
+            self.wynikowyTab.indexOf(self.wykresW1Tab),
+            QCoreApplication.translate("MainWindow", "W1", None),
+        )
+        self.wynikowyTab.setTabText(
+            self.wynikowyTab.indexOf(self.wykresW2Tab),
+            QCoreApplication.translate("MainWindow", "W2", None),
+        )
         self.operacjaJednoLabel.setText(
             QCoreApplication.translate("MainWindow", "Operacja", None)
         )
@@ -2188,6 +2217,15 @@ class Ui_MainWindow(object):
         )
         self.operacjaJednoComboBox.setItemText(
             2, QCoreApplication.translate("MainWindow", "rekonstrukcja", None)
+        )
+        self.operacjaJednoComboBox.setItemText(
+            3, QCoreApplication.translate("MainWindow", "FFT", None)
+        )
+        self.operacjaJednoComboBox.setItemText(
+            4, QCoreApplication.translate("MainWindow", "FCT", None)
+        )
+        self.operacjaJednoComboBox.setItemText(
+            5, QCoreApplication.translate("MainWindow", "WHT", None)
         )
 
         self.jednoCzestotliwoscProbkowaniaLabel.setText(
