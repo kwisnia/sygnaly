@@ -1746,12 +1746,23 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>10</y>
+         <y>0</y>
          <width>541</width>
-         <height>361</height>
+         <height>181</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="wykresW1Layout"/>
+       <layout class="QVBoxLayout" name="wykresW1LayoutUpper"/>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_18">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>180</y>
+         <width>541</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="wykresW1LayoutLower"/>
       </widget>
      </widget>
      <widget class="QWidget" name="wykresW2Tab">
@@ -1764,10 +1775,21 @@
          <x>0</x>
          <y>0</y>
          <width>541</width>
-         <height>371</height>
+         <height>181</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="wykresW2Layout"/>
+       <layout class="QVBoxLayout" name="wykresW2LayoutUpper"/>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_19">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>180</y>
+         <width>541</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="wykresW2LayoutLower"/>
       </widget>
      </widget>
     </widget>
@@ -2100,7 +2122,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menustandard">
