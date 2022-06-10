@@ -1851,7 +1851,22 @@
           </item>
           <item>
            <property name="text">
+            <string>DFT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Inv DFT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>FFT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Inv FFT</string>
            </property>
           </item>
           <item>
@@ -1861,7 +1876,17 @@
           </item>
           <item>
            <property name="text">
+            <string>Inv FCT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>WHT</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Inv WHT</string>
            </property>
           </item>
          </widget>
@@ -2122,7 +2147,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menustandard">

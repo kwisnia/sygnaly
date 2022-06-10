@@ -13,6 +13,15 @@ from gui.ui_mainwindow import Ui_MainWindow
 from operations import add, convolve, corelate, divide, multiply, subtract
 from quantization import quantize_rounded
 from reconstruction import first_order_hold, sinc, zero_order_hold
+from transformations import (
+    dft,
+    dit_fft,
+    fast_cosine_transform,
+    inverse_dft,
+    inverse_fast_cosine_transform,
+    inverse_dit_fft,
+    walsh_hadamard_transform,
+)
 
 
 class MainWindow(QMainWindow):
@@ -55,6 +64,10 @@ class MainWindow(QMainWindow):
         self.rightHistWidget = PlotWidget()
         self.resultGraphWidget = PlotWidget(560, 380)
         self.resultHistWidget = PlotWidget(560, 380)
+        self.w1UpperPlotWidget = PlotWidget(560, 220)
+        self.w1LowerPlotWidget = PlotWidget(560, 220)
+        self.w2UpperPlotWidget = PlotWidget(560, 220)
+        self.w2LowerPlotWidget = PlotWidget(560, 220)
 
         self.left_signal = None
         self.right_signal = None
@@ -66,6 +79,10 @@ class MainWindow(QMainWindow):
         self.ui.histogramPrawyLayout.addChildWidget(self.rightHistWidget)
         self.ui.wykresWynikowyLayout.addChildWidget(self.resultGraphWidget)
         self.ui.histogramWynikowyLayout.addChildWidget(self.resultHistWidget)
+        self.ui.wykresW1LayoutUpper.addChildWidget(self.w1UpperPlotWidget)
+        self.ui.wykresW1LayoutLower.addChildWidget(self.w1LowerPlotWidget)
+        self.ui.wykresW2LayoutUpper.addChildWidget(self.w2UpperPlotWidget)
+        self.ui.wykresW2LayoutLower.addChildWidget(self.w2LowerPlotWidget)
         self.ui.generujLewy.clicked.connect(lambda: self.generate_signal())
         self.ui.generujPrawy.clicked.connect(
             lambda: self.generate_signal(second_signal=True)
@@ -236,6 +253,107 @@ class MainWindow(QMainWindow):
         )
         return reconstructed_signal
 
+    def transform_signal_cosine(self, signal_to_transform: Signal):
+        transformed_signal = fast_cosine_transform(signal_to_transform)
+        self.resultGraphWidget.axes.clear()
+        self.resultGraphWidget.plot(
+            transformed_signal.samples,
+            transformed_signal.values,
+            PlotTypes.LINE,
+            False,
+        )
+        return transformed_signal
+
+    def transform_signal_icosine(self, signal_to_transform: Signal):
+        transformed_signal = inverse_fast_cosine_transform(signal_to_transform)
+        self.resultGraphWidget.axes.clear()
+        self.resultGraphWidget.plot(
+            transformed_signal.samples,
+            transformed_signal.values,
+            PlotTypes.LINE,
+            False,
+        )
+        return transformed_signal
+
+    def transform_signal_wht(self, signal_to_transform: Signal):
+        transformed_signal = walsh_hadamard_transform(signal_to_transform)
+        self.resultGraphWidget.axes.clear()
+        self.resultGraphWidget.plot(
+            transformed_signal.samples,
+            transformed_signal.values,
+            PlotTypes.LINE,
+            False,
+        )
+        return transformed_signal
+
+    def transform_signal_wht_inverse(self, signal_to_transform: Signal):
+        transformed_signal = walsh_hadamard_transform(signal_to_transform, inverted=True)
+        self.resultGraphWidget.axes.clear()
+        self.resultGraphWidget.plot(
+            transformed_signal.samples,
+            transformed_signal.values,
+            PlotTypes.LINE,
+            False,
+        )
+        return transformed_signal
+
+    def transform_signal_fft(self, signal_to_transform: Signal):
+        return self.complex_transform(signal_to_transform, dit_fft)
+
+    def transform_signal_ifft(self, signal_to_transform: Signal):
+        return self.inverse_complex_transform(signal_to_transform, inverse_dit_fft)
+
+    def transform_signal_dft(self, signal_to_transform: Signal):
+        return self.complex_transform(signal_to_transform, dft)
+
+    def transform_signal_idft(self, signal_to_transform: Signal):
+        return self.inverse_complex_transform(signal_to_transform, inverse_dft)
+
+    def inverse_complex_transform(
+        self, signal_to_transform: Signal, transform_function
+    ):
+        transformed_signal = transform_function(signal_to_transform)
+        self.resultGraphWidget.axes.clear()
+        self.resultGraphWidget.plot(
+            transformed_signal.samples,
+            transformed_signal.values,
+            PlotTypes.LINE,
+            False,
+        )
+        return transformed_signal
+
+    def complex_transform(self, signal_to_transform, transform_function):
+        transformed_signal = transform_function(signal_to_transform)
+        self.w1LowerPlotWidget.axes.clear()
+        self.w1UpperPlotWidget.axes.clear()
+        self.w2LowerPlotWidget.axes.clear()
+        self.w2UpperPlotWidget.axes.clear()
+        self.w1UpperPlotWidget.plot(
+            transformed_signal.samples,
+            [value.real for value in transformed_signal.values],
+            PlotTypes.LINE,
+            False,
+        )
+        self.w1LowerPlotWidget.plot(
+            transformed_signal.samples,
+            [value.imag for value in transformed_signal.values],
+            PlotTypes.LINE,
+            False,
+        )
+        self.w2UpperPlotWidget.plot(
+            transformed_signal.samples,
+            np.abs(transformed_signal.values),
+            PlotTypes.LINE,
+            False,
+        )
+        self.w2LowerPlotWidget.plot(
+            transformed_signal.samples,
+            np.angle(transformed_signal.values),
+            PlotTypes.LINE,
+            False,
+        )
+        return transformed_signal
+
     def generate_signal(self, second_signal=False):
         selected_signal_type = self.ui.typSygnaluComboBox.currentIndex() + 1
         generated_signal = self.signal_factory.create(
@@ -287,6 +405,14 @@ class MainWindow(QMainWindow):
             self.sample_signal,
             self.quantize_signal,
             self.reconstruct_signal,
+            self.transform_signal_dft,
+            self.transform_signal_idft,
+            self.transform_signal_fft,
+            self.transform_signal_ifft,
+            self.transform_signal_cosine,
+            self.transform_signal_icosine,
+            self.transform_signal_wht,
+            self.transform_signal_wht_inverse,
         ]
         operated_signal = self._get_signal_from_combobox("sygnalComboBox")[1]
         self.operation_result = operation_types[operation_type](operated_signal)

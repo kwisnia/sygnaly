@@ -3,7 +3,7 @@ import numpy as np
 import json
 from Signal import Signal
 
-SAMPLES = 1000
+SAMPLES = 1024
 
 
 def save_to_file(signal: Signal, file_name: str):
@@ -164,12 +164,15 @@ def generate_triangle_signal(
 ):
     samples = list(np.linspace(start, start + length, int(sample_rate * length)))
     values = list(
-        (amplitude / (fulfillment * frequency)) * (sample - (frequency * int(sample / frequency)) - start)
-        if 
-            (frequency * int(sample / frequency)) + start <= sample < (fulfillment * frequency) + (frequency * int(sample / frequency)) + start
-        else 
-            -(amplitude / (frequency * (1 - fulfillment))) * (sample - (frequency * int(sample / frequency)) - start) + (amplitude / (1 - fulfillment))
-        for sample in samples 
+        (amplitude / (fulfillment * frequency))
+        * (sample - (frequency * int(sample / frequency)) - start)
+        if (frequency * int(sample / frequency)) + start
+        <= sample
+        < (fulfillment * frequency) + (frequency * int(sample / frequency)) + start
+        else -(amplitude / (frequency * (1 - fulfillment)))
+        * (sample - (frequency * int(sample / frequency)) - start)
+        + (amplitude / (1 - fulfillment))
+        for sample in samples
     )
     return samples, values
 

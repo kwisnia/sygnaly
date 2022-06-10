@@ -73,7 +73,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1200, 820)
+        MainWindow.resize(1200, 1020)
         self.actiondystans = QAction(MainWindow)
         self.actiondystans.setObjectName("actiondystans")
         self.centralwidget = QWidget(MainWindow)
@@ -1239,86 +1239,20 @@ class Ui_MainWindow(object):
         self.generujStackedWidget.addWidget(self.filtrGornoprzepustowy)
         self.wygenerowaneGroupBox = QGroupBox(self.centralwidget)
         self.wygenerowaneGroupBox.setObjectName("wygenerowaneGroupBox")
-        self.wygenerowaneGroupBox.setGeometry(QRect(10, 440, 1181, 361))
+        self.wygenerowaneGroupBox.setGeometry(QRect(10, 550, 1181, 431))
         self.gridLayoutWidget = QWidget(self.wygenerowaneGroupBox)
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(9, 20, 1161, 331))
+        self.gridLayoutWidget.setGeometry(QRect(9, 20, 1161, 401))
         self.wygenerowaneLayout = QGridLayout(self.gridLayoutWidget)
         self.wygenerowaneLayout.setObjectName("wygenerowaneLayout")
         self.wygenerowaneLayout.setContentsMargins(0, 0, 0, 0)
-        self.lewyWygenerowaneTab = QTabWidget(self.gridLayoutWidget)
-        self.lewyWygenerowaneTab.setObjectName("lewyWygenerowaneTab")
-        self.wykresLewyWygenerowaneTab = QWidget()
-        self.wykresLewyWygenerowaneTab.setObjectName("wykresLewyWygenerowaneTab")
-        self.gridLayoutWidget_2 = QWidget(self.wykresLewyWygenerowaneTab)
-        self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
-        self.gridLayoutWidget_2.setGeometry(QRect(10, 10, 551, 291))
-        self.wykresLewyLayout = QGridLayout(self.gridLayoutWidget_2)
-        self.wykresLewyLayout.setSpacing(0)
-        self.wykresLewyLayout.setObjectName("wykresLewyLayout")
-        self.wykresLewyLayout.setContentsMargins(0, 0, 0, 0)
-        self.lewyWygenerowaneTab.addTab(self.wykresLewyWygenerowaneTab, "")
-        self.histogramLewyWygenerowaneTab = QWidget()
-        self.histogramLewyWygenerowaneTab.setObjectName("histogramLewyWygenerowaneTab")
-        self.verticalLayoutWidget_5 = QWidget(self.histogramLewyWygenerowaneTab)
-        self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
-        self.verticalLayoutWidget_5.setGeometry(QRect(10, 10, 551, 291))
-        self.histogramLewyLayout = QVBoxLayout(self.verticalLayoutWidget_5)
-        self.histogramLewyLayout.setObjectName("histogramLewyLayout")
-        self.histogramLewyLayout.setContentsMargins(0, 0, 0, 0)
-        self.lewyWygenerowaneTab.addTab(self.histogramLewyWygenerowaneTab, "")
-        self.statystykiLewyWygenerowaneTab = QWidget()
-        self.statystykiLewyWygenerowaneTab.setObjectName(
-            "statystykiLewyWygenerowaneTab"
-        )
-        self.verticalLayoutWidget_6 = QWidget(self.statystykiLewyWygenerowaneTab)
-        self.verticalLayoutWidget_6.setObjectName("verticalLayoutWidget_6")
-        self.verticalLayoutWidget_6.setGeometry(QRect(70, 50, 421, 181))
-        self.statystykiLewyLayout = QVBoxLayout(self.verticalLayoutWidget_6)
-        self.statystykiLewyLayout.setObjectName("statystykiLewyLayout")
-        self.statystykiLewyLayout.setContentsMargins(0, 0, 0, 0)
-        self.statystykiLewyWidget = QTableWidget(self.verticalLayoutWidget_6)
-        if self.statystykiLewyWidget.columnCount() < 1:
-            self.statystykiLewyWidget.setColumnCount(1)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.statystykiLewyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        if self.statystykiLewyWidget.rowCount() < 5:
-            self.statystykiLewyWidget.setRowCount(5)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.statystykiLewyWidget.setVerticalHeaderItem(0, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.statystykiLewyWidget.setVerticalHeaderItem(1, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.statystykiLewyWidget.setVerticalHeaderItem(2, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.statystykiLewyWidget.setVerticalHeaderItem(3, __qtablewidgetitem4)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.statystykiLewyWidget.setVerticalHeaderItem(4, __qtablewidgetitem5)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        self.statystykiLewyWidget.setItem(0, 0, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.statystykiLewyWidget.setItem(1, 0, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.statystykiLewyWidget.setItem(2, 0, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        self.statystykiLewyWidget.setItem(3, 0, __qtablewidgetitem9)
-        __qtablewidgetitem10 = QTableWidgetItem()
-        self.statystykiLewyWidget.setItem(4, 0, __qtablewidgetitem10)
-        self.statystykiLewyWidget.setObjectName("statystykiLewyWidget")
-
-        self.statystykiLewyLayout.addWidget(self.statystykiLewyWidget)
-
-        self.lewyWygenerowaneTab.addTab(self.statystykiLewyWygenerowaneTab, "")
-
-        self.wygenerowaneLayout.addWidget(self.lewyWygenerowaneTab, 0, 1, 1, 1)
-
         self.prawyWygenerowaneTab = QTabWidget(self.gridLayoutWidget)
         self.prawyWygenerowaneTab.setObjectName("prawyWygenerowaneTab")
         self.wykresPrawyWygenerowaneTab = QWidget()
         self.wykresPrawyWygenerowaneTab.setObjectName("wykresPrawyWygenerowaneTab")
         self.verticalLayoutWidget_8 = QWidget(self.wykresPrawyWygenerowaneTab)
         self.verticalLayoutWidget_8.setObjectName("verticalLayoutWidget_8")
-        self.verticalLayoutWidget_8.setGeometry(QRect(10, 10, 551, 291))
+        self.verticalLayoutWidget_8.setGeometry(QRect(10, 10, 551, 351))
         self.wykresPrawyLayout = QVBoxLayout(self.verticalLayoutWidget_8)
         self.wykresPrawyLayout.setObjectName("wykresPrawyLayout")
         self.wykresPrawyLayout.setContentsMargins(0, 0, 0, 0)
@@ -1329,7 +1263,7 @@ class Ui_MainWindow(object):
         )
         self.verticalLayoutWidget_7 = QWidget(self.histogramPrawyWygenerowaneTab)
         self.verticalLayoutWidget_7.setObjectName("verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(10, 10, 551, 291))
+        self.verticalLayoutWidget_7.setGeometry(QRect(10, 10, 551, 351))
         self.histogramPrawyLayout = QVBoxLayout(self.verticalLayoutWidget_7)
         self.histogramPrawyLayout.setObjectName("histogramPrawyLayout")
         self.histogramPrawyLayout.setContentsMargins(0, 0, 0, 0)
@@ -1347,30 +1281,30 @@ class Ui_MainWindow(object):
         self.statystykiPrawyWidget = QTableWidget(self.verticalLayoutWidget_10)
         if self.statystykiPrawyWidget.columnCount() < 1:
             self.statystykiPrawyWidget.setColumnCount(1)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem11)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.statystykiPrawyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
         if self.statystykiPrawyWidget.rowCount() < 5:
             self.statystykiPrawyWidget.setRowCount(5)
-        __qtablewidgetitem12 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setVerticalHeaderItem(0, __qtablewidgetitem12)
-        __qtablewidgetitem13 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setVerticalHeaderItem(1, __qtablewidgetitem13)
-        __qtablewidgetitem14 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setVerticalHeaderItem(2, __qtablewidgetitem14)
-        __qtablewidgetitem15 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setVerticalHeaderItem(3, __qtablewidgetitem15)
-        __qtablewidgetitem16 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setVerticalHeaderItem(4, __qtablewidgetitem16)
-        __qtablewidgetitem17 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setItem(0, 0, __qtablewidgetitem17)
-        __qtablewidgetitem18 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setItem(1, 0, __qtablewidgetitem18)
-        __qtablewidgetitem19 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setItem(2, 0, __qtablewidgetitem19)
-        __qtablewidgetitem20 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setItem(3, 0, __qtablewidgetitem20)
-        __qtablewidgetitem21 = QTableWidgetItem()
-        self.statystykiPrawyWidget.setItem(4, 0, __qtablewidgetitem21)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setVerticalHeaderItem(0, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setVerticalHeaderItem(1, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setVerticalHeaderItem(2, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setVerticalHeaderItem(3, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setVerticalHeaderItem(4, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(0, 0, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(1, 0, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(2, 0, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(3, 0, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.statystykiPrawyWidget.setItem(4, 0, __qtablewidgetitem10)
         self.statystykiPrawyWidget.setObjectName("statystykiPrawyWidget")
 
         self.statystykiPrawyLayout.addWidget(self.statystykiPrawyWidget)
@@ -1379,17 +1313,83 @@ class Ui_MainWindow(object):
 
         self.wygenerowaneLayout.addWidget(self.prawyWygenerowaneTab, 0, 2, 1, 1)
 
+        self.lewyWygenerowaneTab = QTabWidget(self.gridLayoutWidget)
+        self.lewyWygenerowaneTab.setObjectName("lewyWygenerowaneTab")
+        self.wykresLewyWygenerowaneTab = QWidget()
+        self.wykresLewyWygenerowaneTab.setObjectName("wykresLewyWygenerowaneTab")
+        self.gridLayoutWidget_2 = QWidget(self.wykresLewyWygenerowaneTab)
+        self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
+        self.gridLayoutWidget_2.setGeometry(QRect(10, 10, 551, 351))
+        self.wykresLewyLayout = QGridLayout(self.gridLayoutWidget_2)
+        self.wykresLewyLayout.setSpacing(0)
+        self.wykresLewyLayout.setObjectName("wykresLewyLayout")
+        self.wykresLewyLayout.setContentsMargins(0, 0, 0, 0)
+        self.lewyWygenerowaneTab.addTab(self.wykresLewyWygenerowaneTab, "")
+        self.histogramLewyWygenerowaneTab = QWidget()
+        self.histogramLewyWygenerowaneTab.setObjectName("histogramLewyWygenerowaneTab")
+        self.verticalLayoutWidget_5 = QWidget(self.histogramLewyWygenerowaneTab)
+        self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
+        self.verticalLayoutWidget_5.setGeometry(QRect(10, 10, 551, 351))
+        self.histogramLewyLayout = QVBoxLayout(self.verticalLayoutWidget_5)
+        self.histogramLewyLayout.setObjectName("histogramLewyLayout")
+        self.histogramLewyLayout.setContentsMargins(0, 0, 0, 0)
+        self.lewyWygenerowaneTab.addTab(self.histogramLewyWygenerowaneTab, "")
+        self.statystykiLewyWygenerowaneTab = QWidget()
+        self.statystykiLewyWygenerowaneTab.setObjectName(
+            "statystykiLewyWygenerowaneTab"
+        )
+        self.verticalLayoutWidget_6 = QWidget(self.statystykiLewyWygenerowaneTab)
+        self.verticalLayoutWidget_6.setObjectName("verticalLayoutWidget_6")
+        self.verticalLayoutWidget_6.setGeometry(QRect(70, 50, 421, 181))
+        self.statystykiLewyLayout = QVBoxLayout(self.verticalLayoutWidget_6)
+        self.statystykiLewyLayout.setObjectName("statystykiLewyLayout")
+        self.statystykiLewyLayout.setContentsMargins(0, 0, 0, 0)
+        self.statystykiLewyWidget = QTableWidget(self.verticalLayoutWidget_6)
+        if self.statystykiLewyWidget.columnCount() < 1:
+            self.statystykiLewyWidget.setColumnCount(1)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.statystykiLewyWidget.setHorizontalHeaderItem(0, __qtablewidgetitem11)
+        if self.statystykiLewyWidget.rowCount() < 5:
+            self.statystykiLewyWidget.setRowCount(5)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.statystykiLewyWidget.setVerticalHeaderItem(0, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        self.statystykiLewyWidget.setVerticalHeaderItem(1, __qtablewidgetitem13)
+        __qtablewidgetitem14 = QTableWidgetItem()
+        self.statystykiLewyWidget.setVerticalHeaderItem(2, __qtablewidgetitem14)
+        __qtablewidgetitem15 = QTableWidgetItem()
+        self.statystykiLewyWidget.setVerticalHeaderItem(3, __qtablewidgetitem15)
+        __qtablewidgetitem16 = QTableWidgetItem()
+        self.statystykiLewyWidget.setVerticalHeaderItem(4, __qtablewidgetitem16)
+        __qtablewidgetitem17 = QTableWidgetItem()
+        self.statystykiLewyWidget.setItem(0, 0, __qtablewidgetitem17)
+        __qtablewidgetitem18 = QTableWidgetItem()
+        self.statystykiLewyWidget.setItem(1, 0, __qtablewidgetitem18)
+        __qtablewidgetitem19 = QTableWidgetItem()
+        self.statystykiLewyWidget.setItem(2, 0, __qtablewidgetitem19)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        self.statystykiLewyWidget.setItem(3, 0, __qtablewidgetitem20)
+        __qtablewidgetitem21 = QTableWidgetItem()
+        self.statystykiLewyWidget.setItem(4, 0, __qtablewidgetitem21)
+        self.statystykiLewyWidget.setObjectName("statystykiLewyWidget")
+
+        self.statystykiLewyLayout.addWidget(self.statystykiLewyWidget)
+
+        self.lewyWygenerowaneTab.addTab(self.statystykiLewyWygenerowaneTab, "")
+
+        self.wygenerowaneLayout.addWidget(self.lewyWygenerowaneTab, 0, 1, 1, 1)
+
         self.dzialaniaGroupBox = QGroupBox(self.centralwidget)
         self.dzialaniaGroupBox.setObjectName("dzialaniaGroupBox")
-        self.dzialaniaGroupBox.setGeometry(QRect(380, 10, 811, 421))
+        self.dzialaniaGroupBox.setGeometry(QRect(380, 10, 811, 541))
         self.wynikowyTab = QTabWidget(self.dzialaniaGroupBox)
         self.wynikowyTab.setObjectName("wynikowyTab")
-        self.wynikowyTab.setGeometry(QRect(250, 10, 551, 401))
+        self.wynikowyTab.setGeometry(QRect(250, 10, 551, 531))
         self.wykresWynikowyTab = QWidget()
         self.wykresWynikowyTab.setObjectName("wykresWynikowyTab")
         self.verticalLayoutWidget_3 = QWidget(self.wykresWynikowyTab)
         self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
-        self.verticalLayoutWidget_3.setGeometry(QRect(10, 10, 531, 361))
+        self.verticalLayoutWidget_3.setGeometry(QRect(10, 10, 531, 481))
         self.wykresWynikowyLayout = QVBoxLayout(self.verticalLayoutWidget_3)
         self.wykresWynikowyLayout.setObjectName("wykresWynikowyLayout")
         self.wykresWynikowyLayout.setContentsMargins(0, 0, 0, 0)
@@ -1398,7 +1398,7 @@ class Ui_MainWindow(object):
         self.histogramWynikowyTab.setObjectName("histogramWynikowyTab")
         self.verticalLayoutWidget_9 = QWidget(self.histogramWynikowyTab)
         self.verticalLayoutWidget_9.setObjectName("verticalLayoutWidget_9")
-        self.verticalLayoutWidget_9.setGeometry(QRect(10, 10, 531, 361))
+        self.verticalLayoutWidget_9.setGeometry(QRect(10, 10, 531, 481))
         self.histogramWynikowyLayout = QVBoxLayout(self.verticalLayoutWidget_9)
         self.histogramWynikowyLayout.setObjectName("histogramWynikowyLayout")
         self.histogramWynikowyLayout.setContentsMargins(0, 0, 0, 0)
@@ -1494,19 +1494,31 @@ class Ui_MainWindow(object):
         self.wykresW1Tab.setObjectName("wykresW1Tab")
         self.verticalLayoutWidget_16 = QWidget(self.wykresW1Tab)
         self.verticalLayoutWidget_16.setObjectName("verticalLayoutWidget_16")
-        self.verticalLayoutWidget_16.setGeometry(QRect(0, 10, 541, 361))
-        self.wykresW1Layout = QVBoxLayout(self.verticalLayoutWidget_16)
-        self.wykresW1Layout.setObjectName("wykresW1Layout")
-        self.wykresW1Layout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutWidget_16.setGeometry(QRect(0, 0, 541, 251))
+        self.wykresW1LayoutUpper = QVBoxLayout(self.verticalLayoutWidget_16)
+        self.wykresW1LayoutUpper.setObjectName("wykresW1LayoutUpper")
+        self.wykresW1LayoutUpper.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutWidget_18 = QWidget(self.wykresW1Tab)
+        self.verticalLayoutWidget_18.setObjectName("verticalLayoutWidget_18")
+        self.verticalLayoutWidget_18.setGeometry(QRect(0, 250, 541, 251))
+        self.wykresW1LayoutLower = QVBoxLayout(self.verticalLayoutWidget_18)
+        self.wykresW1LayoutLower.setObjectName("wykresW1LayoutLower")
+        self.wykresW1LayoutLower.setContentsMargins(0, 0, 0, 0)
         self.wynikowyTab.addTab(self.wykresW1Tab, "")
         self.wykresW2Tab = QWidget()
         self.wykresW2Tab.setObjectName("wykresW2Tab")
         self.verticalLayoutWidget_17 = QWidget(self.wykresW2Tab)
         self.verticalLayoutWidget_17.setObjectName("verticalLayoutWidget_17")
-        self.verticalLayoutWidget_17.setGeometry(QRect(0, 0, 541, 371))
-        self.wykresW2Layout = QVBoxLayout(self.verticalLayoutWidget_17)
-        self.wykresW2Layout.setObjectName("wykresW2Layout")
-        self.wykresW2Layout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutWidget_17.setGeometry(QRect(0, 0, 541, 251))
+        self.wykresW2LayoutUpper = QVBoxLayout(self.verticalLayoutWidget_17)
+        self.wykresW2LayoutUpper.setObjectName("wykresW2LayoutUpper")
+        self.wykresW2LayoutUpper.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutWidget_19 = QWidget(self.wykresW2Tab)
+        self.verticalLayoutWidget_19.setObjectName("verticalLayoutWidget_19")
+        self.verticalLayoutWidget_19.setGeometry(QRect(0, 250, 541, 251))
+        self.wykresW2LayoutLower = QVBoxLayout(self.verticalLayoutWidget_19)
+        self.wykresW2LayoutLower.setObjectName("wykresW2LayoutLower")
+        self.wykresW2LayoutLower.setContentsMargins(0, 0, 0, 0)
         self.wynikowyTab.addTab(self.wykresW2Tab, "")
         self.dzialaniaTab = QTabWidget(self.dzialaniaGroupBox)
         self.dzialaniaTab.setObjectName("dzialaniaTab")
@@ -1528,6 +1540,11 @@ class Ui_MainWindow(object):
         )
 
         self.operacjaJednoComboBox = QComboBox(self.formLayoutWidget_2)
+        self.operacjaJednoComboBox.addItem("")
+        self.operacjaJednoComboBox.addItem("")
+        self.operacjaJednoComboBox.addItem("")
+        self.operacjaJednoComboBox.addItem("")
+        self.operacjaJednoComboBox.addItem("")
         self.operacjaJednoComboBox.addItem("")
         self.operacjaJednoComboBox.addItem("")
         self.operacjaJednoComboBox.addItem("")
@@ -1728,8 +1745,8 @@ class Ui_MainWindow(object):
         )
 
         self.generujStackedWidget.setCurrentIndex(0)
-        self.lewyWygenerowaneTab.setCurrentIndex(0)
         self.prawyWygenerowaneTab.setCurrentIndex(0)
+        self.lewyWygenerowaneTab.setCurrentIndex(0)
         self.wynikowyTab.setCurrentIndex(4)
         self.dzialaniaTab.setCurrentIndex(0)
 
@@ -2001,61 +2018,6 @@ class Ui_MainWindow(object):
         self.wygenerowaneGroupBox.setTitle(
             QCoreApplication.translate("MainWindow", "Wygenerowane sygna\u0142y", None)
         )
-        self.lewyWygenerowaneTab.setTabText(
-            self.lewyWygenerowaneTab.indexOf(self.wykresLewyWygenerowaneTab),
-            QCoreApplication.translate("MainWindow", "Wykres", None),
-        )
-        self.lewyWygenerowaneTab.setTabText(
-            self.lewyWygenerowaneTab.indexOf(self.histogramLewyWygenerowaneTab),
-            QCoreApplication.translate("MainWindow", "Histogram", None),
-        )
-        ___qtablewidgetitem = self.statystykiLewyWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(
-            QCoreApplication.translate("MainWindow", "Warto\u015b\u0107", None)
-        )
-        ___qtablewidgetitem1 = self.statystykiLewyWidget.verticalHeaderItem(0)
-        ___qtablewidgetitem1.setText(
-            QCoreApplication.translate(
-                "MainWindow", "Warto\u015b\u0107 \u015brednia sygna\u0142u", None
-            )
-        )
-        ___qtablewidgetitem2 = self.statystykiLewyWidget.verticalHeaderItem(1)
-        ___qtablewidgetitem2.setText(
-            QCoreApplication.translate(
-                "MainWindow",
-                "Warto\u015b\u0107 \u015brednia bezwzgl\u0119dna sygna\u0142u",
-                None,
-            )
-        )
-        ___qtablewidgetitem3 = self.statystykiLewyWidget.verticalHeaderItem(2)
-        ___qtablewidgetitem3.setText(
-            QCoreApplication.translate(
-                "MainWindow", "Moc \u015brednia sygna\u0142u", None
-            )
-        )
-        ___qtablewidgetitem4 = self.statystykiLewyWidget.verticalHeaderItem(3)
-        ___qtablewidgetitem4.setText(
-            QCoreApplication.translate(
-                "MainWindow",
-                "Wariancja sygna\u0142u w przedziale wok\u00f3\u0142 warto\u015bci \u015bredniej",
-                None,
-            )
-        )
-        ___qtablewidgetitem5 = self.statystykiLewyWidget.verticalHeaderItem(4)
-        ___qtablewidgetitem5.setText(
-            QCoreApplication.translate(
-                "MainWindow", "Warto\u015b\u0107 skuteczna sygna\u0142u", None
-            )
-        )
-
-        __sortingEnabled = self.statystykiLewyWidget.isSortingEnabled()
-        self.statystykiLewyWidget.setSortingEnabled(False)
-        self.statystykiLewyWidget.setSortingEnabled(__sortingEnabled)
-
-        self.lewyWygenerowaneTab.setTabText(
-            self.lewyWygenerowaneTab.indexOf(self.statystykiLewyWygenerowaneTab),
-            QCoreApplication.translate("MainWindow", "Statystyki", None),
-        )
         self.prawyWygenerowaneTab.setTabText(
             self.prawyWygenerowaneTab.indexOf(self.wykresPrawyWygenerowaneTab),
             QCoreApplication.translate("MainWindow", "Wykres", None),
@@ -2064,17 +2026,72 @@ class Ui_MainWindow(object):
             self.prawyWygenerowaneTab.indexOf(self.histogramPrawyWygenerowaneTab),
             QCoreApplication.translate("MainWindow", "Histogram", None),
         )
-        ___qtablewidgetitem6 = self.statystykiPrawyWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem = self.statystykiPrawyWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(
+            QCoreApplication.translate("MainWindow", "Warto\u015b\u0107", None)
+        )
+        ___qtablewidgetitem1 = self.statystykiPrawyWidget.verticalHeaderItem(0)
+        ___qtablewidgetitem1.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Warto\u015b\u0107 \u015brednia sygna\u0142u", None
+            )
+        )
+        ___qtablewidgetitem2 = self.statystykiPrawyWidget.verticalHeaderItem(1)
+        ___qtablewidgetitem2.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "Warto\u015b\u0107 \u015brednia bezwzgl\u0119dna sygna\u0142u",
+                None,
+            )
+        )
+        ___qtablewidgetitem3 = self.statystykiPrawyWidget.verticalHeaderItem(2)
+        ___qtablewidgetitem3.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Moc \u015brednia sygna\u0142u", None
+            )
+        )
+        ___qtablewidgetitem4 = self.statystykiPrawyWidget.verticalHeaderItem(3)
+        ___qtablewidgetitem4.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                "Wariancja sygna\u0142u w przedziale wok\u00f3\u0142 warto\u015bci \u015bredniej",
+                None,
+            )
+        )
+        ___qtablewidgetitem5 = self.statystykiPrawyWidget.verticalHeaderItem(4)
+        ___qtablewidgetitem5.setText(
+            QCoreApplication.translate(
+                "MainWindow", "Warto\u015b\u0107 skuteczna sygna\u0142u", None
+            )
+        )
+
+        __sortingEnabled = self.statystykiPrawyWidget.isSortingEnabled()
+        self.statystykiPrawyWidget.setSortingEnabled(False)
+        self.statystykiPrawyWidget.setSortingEnabled(__sortingEnabled)
+
+        self.prawyWygenerowaneTab.setTabText(
+            self.prawyWygenerowaneTab.indexOf(self.statystykiPrawyWygenerowaneTab),
+            QCoreApplication.translate("MainWindow", "Statystyki", None),
+        )
+        self.lewyWygenerowaneTab.setTabText(
+            self.lewyWygenerowaneTab.indexOf(self.wykresLewyWygenerowaneTab),
+            QCoreApplication.translate("MainWindow", "Wykres", None),
+        )
+        self.lewyWygenerowaneTab.setTabText(
+            self.lewyWygenerowaneTab.indexOf(self.histogramLewyWygenerowaneTab),
+            QCoreApplication.translate("MainWindow", "Histogram", None),
+        )
+        ___qtablewidgetitem6 = self.statystykiLewyWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem6.setText(
             QCoreApplication.translate("MainWindow", "Warto\u015b\u0107", None)
         )
-        ___qtablewidgetitem7 = self.statystykiPrawyWidget.verticalHeaderItem(0)
+        ___qtablewidgetitem7 = self.statystykiLewyWidget.verticalHeaderItem(0)
         ___qtablewidgetitem7.setText(
             QCoreApplication.translate(
                 "MainWindow", "Warto\u015b\u0107 \u015brednia sygna\u0142u", None
             )
         )
-        ___qtablewidgetitem8 = self.statystykiPrawyWidget.verticalHeaderItem(1)
+        ___qtablewidgetitem8 = self.statystykiLewyWidget.verticalHeaderItem(1)
         ___qtablewidgetitem8.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -2082,13 +2099,13 @@ class Ui_MainWindow(object):
                 None,
             )
         )
-        ___qtablewidgetitem9 = self.statystykiPrawyWidget.verticalHeaderItem(2)
+        ___qtablewidgetitem9 = self.statystykiLewyWidget.verticalHeaderItem(2)
         ___qtablewidgetitem9.setText(
             QCoreApplication.translate(
                 "MainWindow", "Moc \u015brednia sygna\u0142u", None
             )
         )
-        ___qtablewidgetitem10 = self.statystykiPrawyWidget.verticalHeaderItem(3)
+        ___qtablewidgetitem10 = self.statystykiLewyWidget.verticalHeaderItem(3)
         ___qtablewidgetitem10.setText(
             QCoreApplication.translate(
                 "MainWindow",
@@ -2096,19 +2113,19 @@ class Ui_MainWindow(object):
                 None,
             )
         )
-        ___qtablewidgetitem11 = self.statystykiPrawyWidget.verticalHeaderItem(4)
+        ___qtablewidgetitem11 = self.statystykiLewyWidget.verticalHeaderItem(4)
         ___qtablewidgetitem11.setText(
             QCoreApplication.translate(
                 "MainWindow", "Warto\u015b\u0107 skuteczna sygna\u0142u", None
             )
         )
 
-        __sortingEnabled1 = self.statystykiPrawyWidget.isSortingEnabled()
-        self.statystykiPrawyWidget.setSortingEnabled(False)
-        self.statystykiPrawyWidget.setSortingEnabled(__sortingEnabled1)
+        __sortingEnabled1 = self.statystykiLewyWidget.isSortingEnabled()
+        self.statystykiLewyWidget.setSortingEnabled(False)
+        self.statystykiLewyWidget.setSortingEnabled(__sortingEnabled1)
 
-        self.prawyWygenerowaneTab.setTabText(
-            self.prawyWygenerowaneTab.indexOf(self.statystykiPrawyWygenerowaneTab),
+        self.lewyWygenerowaneTab.setTabText(
+            self.lewyWygenerowaneTab.indexOf(self.statystykiLewyWygenerowaneTab),
             QCoreApplication.translate("MainWindow", "Statystyki", None),
         )
         self.dzialaniaGroupBox.setTitle(
@@ -2219,13 +2236,28 @@ class Ui_MainWindow(object):
             2, QCoreApplication.translate("MainWindow", "rekonstrukcja", None)
         )
         self.operacjaJednoComboBox.setItemText(
-            3, QCoreApplication.translate("MainWindow", "FFT", None)
+            3, QCoreApplication.translate("MainWindow", "DFT", None)
         )
         self.operacjaJednoComboBox.setItemText(
-            4, QCoreApplication.translate("MainWindow", "FCT", None)
+            4, QCoreApplication.translate("MainWindow", "Inv DFT", None)
         )
         self.operacjaJednoComboBox.setItemText(
-            5, QCoreApplication.translate("MainWindow", "WHT", None)
+            5, QCoreApplication.translate("MainWindow", "FFT", None)
+        )
+        self.operacjaJednoComboBox.setItemText(
+            6, QCoreApplication.translate("MainWindow", "Inv FFT", None)
+        )
+        self.operacjaJednoComboBox.setItemText(
+            7, QCoreApplication.translate("MainWindow", "FCT", None)
+        )
+        self.operacjaJednoComboBox.setItemText(
+            8, QCoreApplication.translate("MainWindow", "Inv FCT", None)
+        )
+        self.operacjaJednoComboBox.setItemText(
+            9, QCoreApplication.translate("MainWindow", "WHT", None)
+        )
+        self.operacjaJednoComboBox.setItemText(
+            10, QCoreApplication.translate("MainWindow", "Inv WHT", None)
         )
 
         self.jednoCzestotliwoscProbkowaniaLabel.setText(
