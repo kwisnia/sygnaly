@@ -1567,7 +1567,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="wykresWynikowyTab">
       <attribute name="title">
@@ -1748,7 +1748,7 @@
          <x>0</x>
          <y>0</y>
          <width>541</width>
-         <height>251</height>
+         <height>261</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="wykresW1LayoutUpper"/>
@@ -1759,7 +1759,7 @@
          <x>0</x>
          <y>250</y>
          <width>541</width>
-         <height>251</height>
+         <height>261</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="wykresW1LayoutLower"/>
@@ -1775,7 +1775,7 @@
          <x>0</x>
          <y>0</y>
          <width>541</width>
-         <height>251</height>
+         <height>261</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="wykresW2LayoutUpper"/>
@@ -1786,7 +1786,7 @@
          <x>0</x>
          <y>250</y>
          <width>541</width>
-         <height>251</height>
+         <height>261</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="wykresW2LayoutLower"/>
@@ -2147,7 +2147,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menustandard">
