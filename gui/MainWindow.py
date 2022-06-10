@@ -64,10 +64,14 @@ class MainWindow(QMainWindow):
         self.rightHistWidget = PlotWidget()
         self.resultGraphWidget = PlotWidget(560, 380)
         self.resultHistWidget = PlotWidget(560, 380)
-        self.w1UpperPlotWidget = PlotWidget(560, 220)
-        self.w1LowerPlotWidget = PlotWidget(560, 220)
-        self.w2UpperPlotWidget = PlotWidget(560, 220)
-        self.w2LowerPlotWidget = PlotWidget(560, 220)
+        self.w1UpperPlotWidget = PlotWidget(560, 250)
+        self.w1UpperPlotWidget.axes.set_xlabel("częstotliwość [Hz]")
+        self.w1LowerPlotWidget = PlotWidget(560, 250)
+        self.w1LowerPlotWidget.axes.set_xlabel("częstotliwość [Hz]")
+        self.w2UpperPlotWidget = PlotWidget(560, 250)
+        self.w2UpperPlotWidget.axes.set_xlabel("częstotliwość [Hz]")
+        self.w2LowerPlotWidget = PlotWidget(560, 250)
+        self.w2LowerPlotWidget.axes.set_xlabel("częstotliwość [Hz]")
 
         self.left_signal = None
         self.right_signal = None
